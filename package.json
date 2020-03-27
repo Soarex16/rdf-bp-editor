@@ -29,8 +29,9 @@
     "@types/jest": "^24.0.0"
   },
   "scripts": {
+    "build-css": "node-sass --include-path ./src --include-path ./node_modules src/ -o build/",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn build-css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

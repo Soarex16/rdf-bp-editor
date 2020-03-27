@@ -33,7 +33,7 @@ const ThemeContext = React.createContext<ThemeContextProps>(defaultContextValue)
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({themes, ...props}) => {
     const [currentTheme, setCurrentTheme] = React.useState(
-        localStorage.getItem(localStorageThemeKey) || defaultContextValue.currentTheme
+        localStorage.getItem(localStorageThemeKey) || themes[0] || defaultContextValue.currentTheme
     );
 
     const [availableThemes, setAvailableThemes] = React.useState<string[]>(themes);
