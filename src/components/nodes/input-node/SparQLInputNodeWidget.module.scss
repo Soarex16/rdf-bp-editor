@@ -1,0 +1,87 @@
+.nodeWidget {
+  font-family: "Yandex Sans";
+  color: var(--font-color);
+
+  display: flex;
+  justify-content: center;
+}
+
+.nodeHeader {
+  color: white;
+  background: var(--sparql-input-node-primary-color);
+  border: solid 2px var(--sparql-input-node-border-color);
+  border-radius: 6px;
+
+  z-index: 2;
+  position: absolute;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nodeTitle {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 6px;
+}
+
+.nodeIcon {
+  margin: 0px 10px;
+  opacity: 0.8;
+}
+
+.nodeContent {
+  position: relative;
+  z-index: 0;
+
+  border: solid var(--node-border-color);
+  border-width: 2px 2px 2px 2px;
+  border-radius: 6px 6px 6px 6px;
+
+  background: var(--node-bg-color);
+
+  padding: 30px 10px 10px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.circlePort {
+  position: absolute;
+
+  cursor: pointer;
+
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 50%;
+
+  background-color: var(--sparql-input-node-border-color);
+  transition: background-color 0.1s ease-in-out;
+}
+
+.circlePort:hover {
+  background-color: var(--port-bg-color-hover);
+}
+
+//TODO: вынести порты в отдельный класс, чтобы уменьшить дублирование кода
+// может портам задавать цвет текущего соединения? Я все равно собирался пилить кастомные соединения
+.circlePortOut {
+  right: 0;
+  top: 50%;
+  transform: translateX(75%) translateY(-50%);
+}
+
+:global(.theme-light) {
+  --sparql-input-node-primary-color: #0091ea;
+  --sparql-input-node-border-color: #64c1ff; //#0064b7;
+}
+
+:global(.theme-dark) {
+  --sparql-input-node-primary-color: #0091ea;
+  --sparql-input-node-border-color: #ffffff;
+}
