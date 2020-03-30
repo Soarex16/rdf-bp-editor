@@ -1,7 +1,6 @@
 .label {
   color: var(--flow-alias-label-text-color);
   background: var(--flow-alias-label-background);
-  opacity: 0.8;
 
   border: solid 2px var(--flow-alias-border-color);
   border-radius: 5px;
@@ -23,12 +22,12 @@
 
 :global .theme-light {
   --flow-alias-label-background: rgba(0, 0, 0, 0.9);
-  --flow-alias-label-text-color: #fff;
+  --flow-alias-label-text-color: #ffffff;
   --flow-alias-border-color: #484848;
 }
 
 :global .theme-dark {
   --flow-alias-label-background: rgba(250, 250, 250, 0.9);
-  --flow-alias-label-text-color: #000;
+  --flow-alias-label-text-color: #000000;
   --flow-alias-border-color: #ffffff
 }
