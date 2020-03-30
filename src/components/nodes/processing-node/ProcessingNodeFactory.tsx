@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ProcessingNodeModel} from './ProcessingNodeModel';
-import {AbstractReactFactory, GenerateModelEvent, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
+import {AbstractReactFactory, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {ProcessingNodeWidget} from './ProcessingNodeWidget';
 
@@ -9,7 +9,7 @@ export class ProcessingNodeFactory extends AbstractReactFactory<ProcessingNodeMo
         super('processing-node');
     }
 
-    generateModel(event: GenerateModelEvent): ProcessingNodeModel {
+    generateModel(): ProcessingNodeModel {
         return new ProcessingNodeModel();
     }
 

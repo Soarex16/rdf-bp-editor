@@ -1,5 +1,6 @@
-import {DefaultPortModel, NodeModel} from '@projectstorm/react-diagrams';
+import {NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
+import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 
 export interface SparQLInputNodeModelOptions extends BaseModelOptions {
     graphQLQuery?: string;
@@ -16,7 +17,7 @@ export class SparQLInputNodeModel extends NodeModel {
         this.graphQLQuery = options.graphQLQuery || '';
 
         this.addPort(
-            new DefaultPortModel({
+            new FlowPortModel({
                 in: false,
                 name: 'out'
             })
@@ -27,7 +28,7 @@ export class SparQLInputNodeModel extends NodeModel {
         return {
             ...super.serialize(),
             graphQLQuery: this.graphQLQuery
-        }
+        };
     }
 
     deserialize(event: DeserializeEvent<this>): void {

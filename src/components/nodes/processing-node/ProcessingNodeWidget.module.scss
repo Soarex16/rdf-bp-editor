@@ -19,6 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:hover {
+    background: var(--processing-node-hover-color);
+  }
 }
 
 .nodeTitle {
@@ -30,6 +34,8 @@
 .nodeIcon {
   margin: 0px 10px;
   opacity: 0.8;
+
+  pointer-events: none;
 }
 
 .nodeContent {
@@ -88,10 +94,12 @@
 
 :global(.theme-light) {
   --processing-node-primary-color: #00c853;
-  --processing-node-border-color: #5efc82; //#009624;
+  --processing-node-border-color: #5efc82;
+  --processing-node-hover-color: #009940;
 }
 
 :global(.theme-dark) {
   --processing-node-primary-color: #00c853;
   --processing-node-border-color: #ffffff;
+  --processing-node-hover-color: #009940;
 }

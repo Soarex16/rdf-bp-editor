@@ -1,5 +1,6 @@
 import {DefaultPortModel, NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
+import {BranchPortModel} from '../../ports/branch-port/BranchPortModel';
 
 export interface ProcessingNodeModelOptions extends BaseModelOptions {
     processingScriptName?: string;
@@ -23,7 +24,7 @@ export class BranchNodeModel extends NodeModel {
         );
 
         this.addPort(
-            new DefaultPortModel({
+            new BranchPortModel({
                 in: false,
                 name: 'out'
             })
@@ -34,7 +35,7 @@ export class BranchNodeModel extends NodeModel {
         return {
             ...super.serialize(),
             processingScriptName: this.processingScriptName
-        }
+        };
     }
 
     deserialize(event: DeserializeEvent<this>): void {

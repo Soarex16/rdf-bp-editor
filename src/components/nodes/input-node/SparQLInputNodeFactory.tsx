@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {SparQLInputNodeModel} from './SparQLInputNodeModel';
-import {AbstractReactFactory, GenerateModelEvent, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
+import {AbstractReactFactory, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {SparQLInputNodeWidget} from './SparQLInputNodeWidget';
 
@@ -9,7 +9,7 @@ export class SparQLInputNodeFactory extends AbstractReactFactory<SparQLInputNode
         super('sparql-input-node');
     }
 
-    generateModel(event: GenerateModelEvent): SparQLInputNodeModel {
+    generateModel(): SparQLInputNodeModel {
         return new SparQLInputNodeModel();
     }
 

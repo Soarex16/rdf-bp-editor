@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {BranchNodeModel} from './BranchNodeModel';
-import {AbstractReactFactory, GenerateModelEvent, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
+import {AbstractReactFactory, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {BranchNodeWidget} from './BranchNodeWidget';
 
@@ -9,7 +9,7 @@ export class BranchNodeFactory extends AbstractReactFactory<BranchNodeModel, Dia
         super('branch-node');
     }
 
-    generateModel(event: GenerateModelEvent): BranchNodeModel {
+    generateModel(): BranchNodeModel {
         return new BranchNodeModel();
     }
 

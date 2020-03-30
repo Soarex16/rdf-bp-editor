@@ -6,6 +6,9 @@ import {ProcessingNodeModel} from '../components/nodes/processing-node/Processin
 import {ProcessingNodeFactory} from '../components/nodes/processing-node/ProcessingNodeFactory';
 import {BranchNodeFactory} from '../components/nodes/branch-node/BranchNodeFactory';
 import {BranchNodeModel} from '../components/nodes/branch-node/BranchNodeModel';
+import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
+import {FormulaEditorLabelFactory} from '../components/labels/formual-editor-label/FormulaEditorLabelFactory';
+import {BranchLinkFactory} from '../components/links/branch-link/BranchLinkFactory';
 
 // create an instance of the engine
 const engine = createEngine({
@@ -21,12 +24,17 @@ if (state instanceof DefaultDiagramState) {
 }
 
 // limit number of points per link
-engine.setMaxNumberPointsPerLink(0);
+// engine.setMaxNumberPointsPerLink(0);
 
 // register factories
 engine.getNodeFactories().registerFactory(new SparQLInputNodeFactory());
 engine.getNodeFactories().registerFactory(new ProcessingNodeFactory());
 engine.getNodeFactories().registerFactory(new BranchNodeFactory());
+
+engine.getLinkFactories().registerFactory(new FlowLinkFactory());
+engine.getLinkFactories().registerFactory(new BranchLinkFactory());
+
+engine.getLabelFactories().registerFactory(new FormulaEditorLabelFactory());
 
 // create a diagram model
 const model = new DiagramModel();
@@ -45,11 +53,11 @@ const branchNode1 = new BranchNodeModel();
 branchNode1.setPosition(500, 250);
 
 // and some links between nodes
-const link1 = new DefaultLinkModel();
+/*const link1 = new DefaultLinkModel();
 (link1 as DefaultLinkModel).addLabel('Custom label 1');
 (link1 as DefaultLinkModel).addLabel('Custom label 2');
 link1.setSourcePort(inputNode1.getPort('out'));
-link1.setTargetPort(branchNode1.getPort('in'));
+link1.setTargetPort(branchNode1.getPort('in'));*/
 
 const link2 = new DefaultLinkModel();
 (link2 as DefaultLinkModel).addLabel('Custom label 2');
@@ -59,7 +67,7 @@ link2.setSourcePort(inputNode2.getPort('out'));
 link2.setTargetPort(processingNode1.getPort('in'));
 
 
-model.addAll(inputNode1, inputNode2, processingNode1, link2, link1, branchNode1);
+model.addAll(inputNode1, inputNode2, processingNode1, link2, branchNode1);
 
 // install the model into the engine
 engine.setModel(model);

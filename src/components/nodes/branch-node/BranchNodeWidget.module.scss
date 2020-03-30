@@ -21,8 +21,7 @@
   justify-content: space-between;
 
   &:hover {
-    background: var(--branch-node-border-color);
-    border: solid 2px var(--branch-node-primary-color);
+    background: var(--branch-node-hover-color);
   }
 }
 
@@ -38,6 +37,8 @@
 .nodeIcon {
   margin: 6px 16px;
   opacity: 0.8;
+
+  pointer-events: none;
 }
 
 .nodeContent {
@@ -95,11 +96,13 @@
 }
 
 :global(.theme-light) {
-  --branch-node-primary-color: #6200ea; //#ff6d00;
-  --branch-node-border-color: #9d46ff; //#c43c00;
+  --branch-node-primary-color: #6200ea;
+  --branch-node-border-color: #9d46ff;
+  --branch-node-hover-color: #4a00b3;
 }
 
 :global(.theme-dark) {
   --branch-node-primary-color: #6200ea;
   --branch-node-border-color: #ffffff;
+  --branch-node-hover-color: #4a00b3;
 }

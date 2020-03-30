@@ -10,17 +10,6 @@ export interface BranchNodeWidgetProps {
     engine: DiagramEngine;
 }
 
-{/*<svg width={size} height={size} className={styles.nodeTitle} onDoubleClick={toggleContentVisibility}>
-                    <polygon
-                        height={size}
-                        width={size}
-                        points={`${size/2},0 ${size},${size/2}, ${size/2},${size} 0,${size/2}`}
-                    >
-                        <use href={branch}/>
-                    </polygon>
-                </svg>*/
-}
-
 //TODO: при попытке стереть в текстовой ноде она удаляется, эвенты пропускает через себя react-diagrams
 // может надо будет отдельный обработчик?
 export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = (props) => {

@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
+
 import {ProcessingNodeModel} from './ProcessingNodeModel';
 import styles from './ProcessingNodeWidget.module.scss';
 
@@ -10,8 +11,6 @@ export interface ProcessingNodeWidgetProps {
     engine: DiagramEngine;
 }
 
-//TODO: при попытке стереть в текстовой ноде она удаляется, эвенты пропускает через себя react-diagrams
-// может надо будет отдельный обработчик?
 export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
 
