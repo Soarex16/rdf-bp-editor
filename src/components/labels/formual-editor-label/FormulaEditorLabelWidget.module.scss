@@ -15,7 +15,7 @@
     border: none;
 
     :global(.mq-cursor) {
-      border-color: var(--font-color);
+      border-color: var(--flow-alias-label-text-color);
     }
   }
 }
