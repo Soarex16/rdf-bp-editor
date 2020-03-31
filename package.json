@@ -21,7 +21,7 @@
     "react-mathquill": "^0.2.4",
     "react-scripts": "3.4.0",
     "resize-observer-polyfill": "^1.5.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.8.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
