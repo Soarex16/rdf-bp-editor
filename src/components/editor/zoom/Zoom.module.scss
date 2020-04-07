@@ -1,0 +1,39 @@
+.buttonContainer {
+  position: absolute;
+  right: 0;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 4;
+
+  margin: 20px;
+}
+
+.buttonZoom {
+  composes: editorButton from '../button.module.scss';
+}
+
+.zoomContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonInc {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  margin-bottom: 1px;
+}
+
+.buttonDec {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.buttonResetZoom {
+  margin-top: 15px;
+}

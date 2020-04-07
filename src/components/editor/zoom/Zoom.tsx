@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Zoom.module.scss';
 
-import plus from '../../../assets/icons/plus.svg';
-import reset from '../../../assets/icons/zoom-fit.svg';
-import minus from '../../../assets/icons/minus.svg';
+import {ReactComponent as IconPlus} from '../../../assets/icons/plus.svg';
+import {ReactComponent as IconReset} from '../../../assets/icons/zoom-fit.svg';
+import {ReactComponent as IconMinus} from '../../../assets/icons/minus.svg';
 
 export interface ZoomProps {
     onInc: React.MouseEventHandler<HTMLButtonElement>;
@@ -16,11 +16,11 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset}) => {
         <div className={styles.buttonContainer}>
             <div className={styles.zoomContainer}>
                 <button onClick={onInc} className={[styles.buttonZoom, styles.buttonInc].join(' ')}>
-                    <img src={plus} className={styles.icon} width={18}/>
+                    <IconPlus/>
                 </button>
 
                 <button onClick={onDec} className={[styles.buttonZoom, styles.buttonDec].join(' ')}>
-                    <img src={minus} className={styles.icon} width={18}/>
+                    <IconMinus/>
                 </button>
             </div>
 
@@ -28,7 +28,7 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset}) => {
                 className={[styles.buttonZoom, styles.buttonResetZoom].join(' ')}
                 onClick={onReset}
             >
-                <img src={reset} className={styles.icon}/>
+                <IconReset/>
             </button>
         </div>
     );
