@@ -19,7 +19,7 @@ export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = 
 
     return (
         <div className={styles.nodeWidget}>
-            <div className={styles.nodeHeader}>
+            <div className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}>
                 <img src={branch} className={styles.nodeIcon} width={20} onDoubleClick={toggleContentVisibility}/>
 
                 <PortWidget
@@ -35,9 +35,15 @@ export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = 
                 />
             </div>
 
-            <div className={styles.nodeContent} style={{visibility: opened ? 'visible' : 'hidden'}}>
+            {opened && <div className={styles.nodeContent}>
                 PLACEHOLDER
-            </div>
+                <br/>
+                PLACEHOLDER
+                <br/>
+                PLACEHOLDER
+                <br/>
+                PLACEHOLDER
+            </div>}
         </div>
     );
 };

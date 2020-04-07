@@ -23,6 +23,10 @@
   &:hover {
     background: var(--branch-node-hover-color);
   }
+
+  &.selected {
+    border-color: var(--node-selection);
+  }
 }
 
 //TODO: выделенные ноды надо чем-то отмечать прям стопроц, а то непонятно
@@ -59,10 +63,6 @@
   justify-content: space-between;
 }
 
-.processingScript {
-  margin-top: 10px;
-}
-
 .circlePort {
   position: absolute;
 
@@ -79,6 +79,10 @@
 
 .circlePort:hover {
   background-color: var(--port-bg-color-hover);
+}
+
+.processingScript {
+  margin-top: 10px;
 }
 
 //TODO: вынести порты в отдельный класс, чтобы уменьшить дублирование кода

@@ -1,8 +1,8 @@
 .diagramContainer {
   background-color: var(--canvas-background);
-  background-image: radial-gradient(circle, var(--canvas-dot-color) 1.5px, transparent 2.5px);
+  background-image: radial-gradient(circle, var(--canvas-dot-color) 0.1rem, transparent 0.1rem);
 
-  background-size: 32px 32px;
+  background-size: 2rem 2rem;
 
   width: 100vw;
   height: 100vh;

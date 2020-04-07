@@ -20,8 +20,14 @@
   align-items: center;
   justify-content: space-between;
 
+  white-space: nowrap;
+
   &:hover {
     background: var(--sparql-input-node-hover-color);
+  }
+
+  &.selected {
+    border-color: var(--node-selection);
   }
 }
 
@@ -32,7 +38,7 @@
 }
 
 .nodeIcon {
-  margin: 0px 10px;
+  margin: 0 10px;
   opacity: 0.8;
 
   pointer-events: none;

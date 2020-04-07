@@ -4,10 +4,14 @@ import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 
 export interface SparQLInputNodeModelOptions extends BaseModelOptions {
     graphQLQuery?: string;
+    resultSetAlias?: string
 }
 
 export class SparQLInputNodeModel extends NodeModel {
+    static resultSetCounter: number = 1;
+
     graphQLQuery: string;
+    resultSetAlias: string;
 
     constructor(options: SparQLInputNodeModelOptions = {}) {
         super({
@@ -15,6 +19,9 @@ export class SparQLInputNodeModel extends NodeModel {
             type: 'sparql-input-node'
         });
         this.graphQLQuery = options.graphQLQuery || '';
+
+        this.resultSetAlias = options.resultSetAlias || `rdf-set-${SparQLInputNodeModel.resultSetCounter}`;
+        SparQLInputNodeModel.resultSetCounter++;
 
         this.addPort(
             new FlowPortModel({
@@ -27,12 +34,14 @@ export class SparQLInputNodeModel extends NodeModel {
     serialize() {
         return {
             ...super.serialize(),
-            graphQLQuery: this.graphQLQuery
+            graphQLQuery: this.graphQLQuery,
+            resultSetAlias: this.resultSetAlias
         };
     }
 
     deserialize(event: DeserializeEvent<this>): void {
         super.deserialize(event);
+        this.graphQLQuery = event.data.graphQLQuery;
         this.graphQLQuery = event.data.graphQLQuery;
     }
 }

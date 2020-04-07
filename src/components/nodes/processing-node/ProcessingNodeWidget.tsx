@@ -18,7 +18,7 @@ export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetP
 
     return (
         <div className={styles.nodeWidget}>
-            <div className={styles.nodeHeader}>
+            <div className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}>
                 <div className={styles.nodeTitle} onDoubleClick={toggleContentVisibility}>
                     Обработка
                 </div>
@@ -38,7 +38,7 @@ export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetP
                 />
             </div>
 
-            <div className={styles.nodeContent} style={{visibility: opened ? 'visible' : 'hidden'}}>
+            {opened && <div className={styles.nodeContent}>
                 Скрипт обработки:
                 <select className={styles.processingScript}>
                     <option>Поиск клиента в базе</option>
@@ -48,7 +48,7 @@ export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetP
                 </select>
 
                 <textarea/>
-            </div>
+            </div>}
         </div>
     );
 };

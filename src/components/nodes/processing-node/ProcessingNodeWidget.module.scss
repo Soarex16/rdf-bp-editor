@@ -23,6 +23,10 @@
   &:hover {
     background: var(--processing-node-hover-color);
   }
+
+  &.selected {
+    border-color: var(--node-selection);
+  }
 }
 
 .nodeTitle {
@@ -32,7 +36,7 @@
 }
 
 .nodeIcon {
-  margin: 0px 10px;
+  margin: 0 10px;
   opacity: 0.8;
 
   pointer-events: none;

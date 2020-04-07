@@ -9,7 +9,7 @@ export class BranchLinkModel extends DefaultLinkModel {
 
         this.addLabel(
             new FormulaEditorLabelModel({
-                formula: '\\text{formula}'
+                formula: '\\text{predicate}'
             })
         );
 

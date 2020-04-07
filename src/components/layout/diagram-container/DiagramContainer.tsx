@@ -4,7 +4,6 @@ import {DiagramEngine} from '@projectstorm/react-diagrams';
 import {CanvasWidget} from '@projectstorm/react-canvas-core';
 
 import styles from './DiagramContainer.module.scss';
-import {useTheme} from '../theme-context/theme-provider';
 
 export interface DiagramContainerProps {
     engine: DiagramEngine
@@ -19,7 +18,7 @@ const DiagramContainer: React.FC<DiagramContainerProps> = ({engine}) => {
 
     React.useEffect(() => {
         // 32 - background-size value in DiagramContainer.module.scss
-        const zoomMultiplier = engine.getModel().getZoomLevel() / 32;
+        const zoomMultiplier = engine.getModel().getZoomLevel() * 5 * 0.1;
 
         const minZoom = 75;
         const maxZoom = 200;
@@ -48,7 +47,7 @@ const DiagramContainer: React.FC<DiagramContainerProps> = ({engine}) => {
             const newZoom: number = event.zoom / zoomMultiplier;
 
             requestAnimationFrame(() => {
-                canvasWidgetRef.current.style.backgroundSize = `${newZoom}px ${newZoom}px`;
+                canvasWidgetRef.current.style.backgroundSize = `${newZoom}rem ${newZoom}rem`;
             });
         };
 
@@ -70,50 +69,12 @@ const DiagramContainer: React.FC<DiagramContainerProps> = ({engine}) => {
         engine.getModel().registerListener(canvasListener);
     }, [engine, canvasWidgetRef]);
 
-    // TODO: experiments
-    // const [isLightTheme, setLightTheme] = React.useState<boolean>(true);
-    const {toggleTheme} = useTheme();
-    const handleThemeChange = React.useCallback(() => toggleTheme(), [toggleTheme]);
-
-    const increaseScale = () => {
-        engine.getModel().setZoomLevel(engine.getModel().getZoomLevel() + 10);
-        engine.repaintCanvas();
-    };
-
-    const decreaseScale = () => {
-        engine.getModel().setZoomLevel(engine.getModel().getZoomLevel() - 10);
-        engine.repaintCanvas();
-    };
-
-    const resetScale = () => {
-        engine.getModel().setZoomLevel(100);
-        engine.repaintCanvas();
-    };
-
-    const zoomToFit = () => {
-        engine.zoomToFit();
-    };
-
     // outer div is a paper background (because f*****g CanvasWidget doesn't accepts refs)
     return (
-        <div ref={canvasWidgetRef}
-             className={`${styles.diagramContainer}`}> {/*${isLightTheme ? styles.diagramContainer_light : styles.diagramContainer_dark}*/}
-            <div style={{
-                backgroundColor: 'transparent',
-                position: 'absolute',
-                zIndex: 2
-            }}>
-                <button onClick={handleThemeChange}>Toggle theme</button>
-                <br/>
-
-                <button onClick={decreaseScale}>-</button>
-                <button onClick={resetScale}>Reset</button>
-                <button onClick={increaseScale}>+</button>
-
-                <br/>
-                <button onClick={zoomToFit}>Zoom to fit</button>
-            </div>
-
+        <div
+            ref={canvasWidgetRef}
+            className={styles.diagramContainer}
+        >
             <CanvasWidget className={styles.canvasWidget} engine={engine}/>
         </div>
     );

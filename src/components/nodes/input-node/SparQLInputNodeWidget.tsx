@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {ChangeEvent, useCallback, useState} from 'react';
 import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
 import {SparQLInputNodeModel} from './SparQLInputNodeModel';
 import styles from './SparQLInputNodeWidget.module.scss';
@@ -14,12 +14,19 @@ export interface SparQLInputNodeWidgetProps {
 // может надо будет отдельный обработчик?
 export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
+    const [resultSetAlias, setResultSetAlias] = useState(props.node.resultSetAlias);
 
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
+    const handleAliasChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
+        const newVal = ev.target.value.trim();
+        setResultSetAlias(newVal);
+        props.node.resultSetAlias = newVal;
+    }, []);
+
     return (
         <div className={styles.nodeWidget}>
-            <div className={styles.nodeHeader}>
+            <div className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}>
                 <div className={styles.nodeTitle} onDoubleClick={toggleContentVisibility}>
                     Входные факты
                 </div>
@@ -33,10 +40,13 @@ export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidge
                 />
             </div>
 
-            <div className={styles.nodeContent} style={{visibility: opened ? 'visible' : 'hidden'}}>
+            {opened && <div className={styles.nodeContent}>
                 SPARQL запрос:
                 <textarea/>
-            </div>
+
+                Result set alias:
+                <input value={resultSetAlias} onChange={handleAliasChange}/>
+            </div>}
         </div>
     );
 };

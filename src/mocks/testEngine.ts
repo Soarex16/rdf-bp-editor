@@ -24,7 +24,7 @@ if (state instanceof DefaultDiagramState) {
 }
 
 // limit number of points per link
-// engine.setMaxNumberPointsPerLink(0);
+engine.setMaxNumberPointsPerLink(0);
 
 // register factories
 engine.getNodeFactories().registerFactory(new SparQLInputNodeFactory());
@@ -40,14 +40,35 @@ engine.getLabelFactories().registerFactory(new FormulaEditorLabelFactory());
 const model = new DiagramModel();
 
 // create some nodes
-const inputNode1 = new SparQLInputNodeModel({graphQLQuery: 'asdasdasd'});
-inputNode1.setPosition(100, 50);
+const inputNode1 = new SparQLInputNodeModel({
+    graphQLQuery: `SELECT ?item ?itemLabel ?pic
+WHERE
+{
+    ?item wdt:P31 wd:Q146 .
+    ?item wdt:P18 ?pic
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" }
+}`,
+    resultSetAlias: 'cats with images'
+});
+inputNode1.setPosition(100, 150);
 
-const inputNode2 = new SparQLInputNodeModel({graphQLQuery: 'asdasdasd'});
+const inputNode2 = new SparQLInputNodeModel({
+    graphQLQuery: `SELECT (COUNT(?item) AS ?count)
+WHERE {
+    ?item wdt:P31 wd:Q5 .
+}`,
+    resultSetAlias: 'num of humans'
+});
 inputNode2.setPosition(100, 350);
 
 const processingNode1 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
-processingNode1.setPosition(800, 250);
+processingNode1.setPosition(700, 150);
+
+const processingNode2 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
+processingNode2.setPosition(800, 250);
+
+const processingNode3 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
+processingNode3.setPosition(700, 350);
 
 const branchNode1 = new BranchNodeModel();
 branchNode1.setPosition(500, 250);
@@ -67,7 +88,7 @@ link2.setSourcePort(inputNode2.getPort('out'));
 link2.setTargetPort(processingNode1.getPort('in'));
 
 
-model.addAll(inputNode1, inputNode2, processingNode1, link2, branchNode1);
+model.addAll(inputNode1, inputNode2, processingNode1, processingNode2, processingNode3, branchNode1);
 
 // install the model into the engine
 engine.setModel(model);
