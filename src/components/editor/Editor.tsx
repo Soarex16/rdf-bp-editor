@@ -72,7 +72,8 @@ const Editor: React.FC = () => {
 
             <div style={{
                 position: 'absolute',
-                background: 'transparent'
+                background: 'transparent',
+                zIndex: 1
             }}>
                 <button onClick={saveDiagram}>Save</button>
                 <button onClick={loadDiagram}>Load</button>

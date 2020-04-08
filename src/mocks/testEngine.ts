@@ -87,7 +87,7 @@ link2.setColor('#2e54ab');
 link2.setSourcePort(inputNode2.getPort('out'));
 link2.setTargetPort(processingNode1.getPort('in'));
 
-
+//TODO: добавить проверку на то, что из однй ноды в другую можно провести только одно соединение (чекать, нет ли уже такого)
 model.addAll(inputNode1, inputNode2, processingNode1, processingNode2, processingNode3, branchNode1);
 
 // install the model into the engine

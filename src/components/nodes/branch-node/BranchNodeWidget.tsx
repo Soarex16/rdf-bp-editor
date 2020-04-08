@@ -1,44 +1,58 @@
 import React, {useCallback, useState} from 'react';
-import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
-import {BranchNodeModel} from './BranchNodeModel';
-import styles from './BranchNodeWidget.module.scss';
+import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 
-import branch from '../../../assets/icons/branch-formula.svg';
+import {BranchNodeModel} from './BranchNodeModel';
+
+import {inPortName, NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
+import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula.svg';
+
+import styles from './BranchNodeWidget.module.scss';
+import nodeStyles from '../node/NodeWidget.module.scss';
 
 export interface BranchNodeWidgetProps {
     node: BranchNodeModel;
     engine: DiagramEngine;
 }
 
-//TODO: при попытке стереть в текстовой ноде она удаляется, эвенты пропускает через себя react-diagrams
-// может надо будет отдельный обработчик?
+const BranchNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+    return (
+        <NodeHeader
+            onDoubleClick={props.onDoubleClick}
+            className={`${nodeStyles.node__header_position_center} ${nodeStyles.node__title_icon_only} ${styles.node__header_theme_branch}`}
+            icon={() => <BranchIcon className={nodeStyles.node__icon}/>}
+            selected={selected}
+            left={props.left}
+            right={props.right}
+        >
+            {children}
+        </NodeHeader>
+    );
+};
+
 export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
 
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
     return (
-        <div className={styles.nodeWidget}>
-            <div
-                className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}
+        <div>
+            <BranchNodeHeader
                 onDoubleClick={toggleContentVisibility}
+                selected={props.node.isSelected()}
+                left={() => <Port
+                    engine={props.engine}
+                    port={props.node.getPort(inPortName)}
+                />}
+                right={() => <Port
+                    engine={props.engine}
+                    port={props.node.getPort(outPortName)}
+                />}
+            />
+
+            <NodeContent
+                opened={opened}
+                className={`${nodeStyles.node__content_position_center} ${nodeStyles.node__content_layout_column}`}
             >
-                <img src={branch} className={styles.nodeIcon} width={20}/>
-
-                <PortWidget
-                    engine={props.engine}
-                    port={props.node.getPort('in')}
-                    className={[styles.circlePort, styles.circlePortIn].join(' ')}
-                />
-
-                <PortWidget
-                    engine={props.engine}
-                    port={props.node.getPort('out')}
-                    className={[styles.circlePort, styles.circlePortOut].join(' ')}
-                />
-            </div>
-
-            {opened && <div className={styles.nodeContent}>
                 PLACEHOLDER
                 <br/>
                 PLACEHOLDER
@@ -46,7 +60,7 @@ export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = 
                 PLACEHOLDER
                 <br/>
                 PLACEHOLDER
-            </div>}
+            </NodeContent>
         </div>
     );
 };

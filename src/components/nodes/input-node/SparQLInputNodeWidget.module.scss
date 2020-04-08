@@ -1,97 +1,20 @@
-.sparql_node {
-  composes: node from '../node/NodeWidget.module.scss';
-}
-
-
-
-
-
-
-.nodeHeader {
-  color: white;
-  background: var(--sparql-input-node-primary-color);
-  border: solid 2px var(--sparql-input-node-border-color);
-  border-radius: 6px;
-
-  z-index: 2;
-  position: absolute;
-  transform: translateY(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  white-space: nowrap;
+.node__header_theme_sparql {
+  background: var(--sparql-node-background-color);
+  border: solid 2px var(--sparql-node-border-color);
 
   &:hover {
-    background: var(--sparql-input-node-hover-color);
+    background: var(--sparql-node-hover-color);
   }
-
-  &.selected {
-    border-color: var(--node-selected-color);
-  }
-}
-
-// TODO: make icons as components as in ThemeSwitcher
-.nodeIcon {
-  margin: 0 10px;
-  opacity: 0.8;
-
-  pointer-events: none;
-}
-
-.nodeContent {
-  position: relative;
-  z-index: 0;
-
-  border: solid var(--node-content-border-color);
-  border-width: 2px 2px 2px 2px;
-  border-radius: 6px 6px 6px 6px;
-
-  background: var(--node-content-background-color);
-
-  padding: 30px 10px 10px 10px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.circlePort {
-  position: absolute;
-
-  cursor: pointer;
-
-  width: 12px;
-  height: 12px;
-  margin: 2px;
-  border-radius: 50%;
-
-  background-color: var(--sparql-input-node-border-color);
-  transition: background-color 0.1s ease-in-out;
-}
-
-.circlePort:hover {
-  background-color: var(--port-bg-color-hover);
-}
-
-//TODO: вынести порты в отдельный класс, чтобы уменьшить дублирование кода
-// может портам задавать цвет текущего соединения? Я все равно собирался пилить кастомные соединения
-.circlePortOut {
-  right: 0;
-  top: 50%;
-  transform: translateX(75%) translateY(-50%);
 }
 
 :global(.theme-light) {
-  --sparql-input-node-primary-color: #0091ea;
-  --sparql-input-node-border-color: #64c1ff;
-  --sparql-input-node-hover-color: #006eb3;
+  --sparql-node-background-color: #0091ea;
+  --sparql-node-border-color: #64c1ff;
+  --sparql-node-hover-color: #006eb3;
 }
 
 :global(.theme-dark) {
-  --sparql-input-node-primary-color: #0091ea;
-  --sparql-input-node-border-color: #ffffff;
-  --sparql-input-node-hover-color: #006eb3;
+  --sparql-node-background-color: #0091ea;
+  --sparql-node-border-color: #ffffff;
+  --sparql-node-hover-color: #006eb3;
 }

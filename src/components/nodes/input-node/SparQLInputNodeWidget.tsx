@@ -3,7 +3,7 @@ import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 
 import {SparQLInputNodeModel} from './SparQLInputNodeModel';
 
-import {NodeContent, NodeHeader, outNodeName, Port} from '../node/NodeWidget';
+import {NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
 import {ReactComponent as InputIcon} from '../../../assets/icons/database.svg';
 
 import styles from './SparQLInputNodeWidget.module.scss';
@@ -13,6 +13,22 @@ export interface SparQLInputNodeWidgetProps {
     node: SparQLInputNodeModel;
     engine: DiagramEngine;
 }
+
+const SparQLInputNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+    return (
+        <NodeHeader
+            onDoubleClick={props.onDoubleClick}
+            className={`${nodeStyles.node__header_position_center} ${styles.node__header_theme_sparql}`}
+            icon={() => <InputIcon className={nodeStyles.node__icon}/>}
+            title="Входные факты"
+            selected={selected}
+            left={props.left}
+            right={props.right}
+        >
+            {children}
+        </NodeHeader>
+    );
+};
 
 export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
@@ -26,18 +42,14 @@ export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidge
     }, []);
 
     return (
-        <div className={styles.sparql_node}>
-            <NodeHeader
+        <div>
+            <SparQLInputNodeHeader
                 onDoubleClick={toggleContentVisibility}
-                className={nodeStyles.node__header_position_center}
-                icon={() => <InputIcon className={nodeStyles.node__icon}/>}
-                title="Входные факты"
                 selected={props.node.isSelected()}
-            />
-
-            <Port
-                engine={props.engine}
-                port={props.node.getPort(outNodeName)}
+                right={() => <Port
+                    engine={props.engine}
+                    port={props.node.getPort(outPortName)}
+                />}
             />
 
             <NodeContent
