@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {ProcessingNodeModel} from './ProcessingNodeModel';
+import {ProcessingNodeModel, processingNodeName} from './ProcessingNodeModel';
 import {AbstractReactFactory, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {ProcessingNodeWidget} from './ProcessingNodeWidget';
 
 export class ProcessingNodeFactory extends AbstractReactFactory<ProcessingNodeModel, DiagramEngine> {
     constructor() {
-        super('processing-node');
+        super(processingNodeName);
     }
 
     generateModel(): ProcessingNodeModel {

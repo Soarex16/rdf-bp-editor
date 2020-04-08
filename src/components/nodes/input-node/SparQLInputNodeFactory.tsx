@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SparQLInputNodeModel} from './SparQLInputNodeModel';
+import {SparQLInputNodeModel, sparQLInputNodeName} from './SparQLInputNodeModel';
 import {AbstractReactFactory, GenerateWidgetEvent, ListenerHandle} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {SparQLInputNodeWidget} from './SparQLInputNodeWidget';
@@ -11,8 +11,7 @@ export class SparQLInputNodeFactory extends AbstractReactFactory<SparQLInputNode
     updateLinkEventHandle: ListenerHandle;
 
     constructor() {
-        //TODO: refactor - move all strings in one place
-        super('sparql-input-node');
+        super(sparQLInputNodeName);
     }
 
     generateModel(): SparQLInputNodeModel {

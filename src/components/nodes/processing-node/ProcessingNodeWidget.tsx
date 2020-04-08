@@ -1,44 +1,58 @@
 import React, {useCallback, useState} from 'react';
-import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
+import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 
 import {ProcessingNodeModel} from './ProcessingNodeModel';
-import styles from './ProcessingNodeWidget.module.scss';
 
-import icon from '../../../assets/icons/cogs.svg';
+import {inPortName, NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
+import {ReactComponent as CogsIcon} from '../../../assets/icons/cogs.svg';
+
+import styles from './ProcessingNodeWidget.module.scss';
+import nodeStyles from '../node/NodeWidget.module.scss';
 
 export interface ProcessingNodeWidgetProps {
     node: ProcessingNodeModel;
     engine: DiagramEngine;
 }
 
+const ProcessingNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+    return (
+        <NodeHeader
+            onDoubleClick={props.onDoubleClick}
+            className={`${nodeStyles.node__header_position_center} ${styles.node__header_theme_processing}`}
+            icon={() => <CogsIcon className={nodeStyles.node__icon}/>}
+            title="Обработка"
+            selected={selected}
+            left={props.left}
+            right={props.right}
+        >
+            {children}
+        </NodeHeader>
+    );
+};
+
 export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
-
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
     return (
-        <div className={styles.nodeWidget}>
-            <div className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}>
-                <div className={styles.nodeTitle} onDoubleClick={toggleContentVisibility}>
-                    Обработка
-                </div>
-
-                <img src={icon} className={styles.nodeIcon} width={20}/>
-
-                <PortWidget
+        <div>
+            <ProcessingNodeHeader
+                onDoubleClick={toggleContentVisibility}
+                selected={props.node.isSelected()}
+                left={() => <Port
                     engine={props.engine}
-                    port={props.node.getPort('in')}
-                    className={[styles.circlePort, styles.circlePortIn].join(' ')}
-                />
-
-                <PortWidget
+                    port={props.node.getPort(inPortName)}
+                />}
+                right={() => <Port
                     engine={props.engine}
-                    port={props.node.getPort('out')}
-                    className={[styles.circlePort, styles.circlePortOut].join(' ')}
-                />
-            </div>
+                    port={props.node.getPort(outPortName)}
+                />}
+            />
 
-            {opened && <div className={styles.nodeContent}>
+            <NodeContent
+                opened={opened}
+                className={`${nodeStyles.node__content_position_center} ${nodeStyles.node__content_layout_column}`}
+            >
                 Скрипт обработки:
                 <select className={styles.processingScript}>
                     <option>Поиск клиента в базе</option>
@@ -48,7 +62,7 @@ export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetP
                 </select>
 
                 <textarea/>
-            </div>}
+            </NodeContent>
         </div>
     );
 };
