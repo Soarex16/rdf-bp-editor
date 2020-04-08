@@ -2,7 +2,7 @@ import {DefaultPortModel, NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
 import {inPortName, outPortName} from '../node/NodeWidget';
 
-export const processingNodeName: string = 'branch-node';
+export const processingNodeName: string = 'processing-node';
 
 export interface ProcessingNodeModelOptions extends BaseModelOptions {
     processingScriptName?: string;
