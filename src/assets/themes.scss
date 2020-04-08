@@ -4,13 +4,13 @@
   --canvas-background: #fafafa;
   --canvas-dot-color: #e1e1e1;
 
-  --node-bg-color: #ffffff;
-  --node-border-color: #e6e6e6;
+  --node-content-background-color: #ffffff;
+  --node-content-border-color: #e6e6e6;
 
   --port-bg-color: #00e5ff;
   --port-bg-color-hover: #76ff03;
 
-  --node-selection: #f50057;
+  --node-selected-color: #f50057;
 }
 
 .theme-dark {
@@ -19,11 +19,11 @@
   --canvas-background: #303030;
   --canvas-dot-color: #424242;
 
-  --node-bg-color: #3f3f3f;
-  --node-border-color: #474747;
+  --node-content-background-color: #3f3f3f;
+  --node-content-border-color: #474747;
 
   --port-bg-color: #00e5ff;
   --port-bg-color-hover: #76ff03;
 
-  --node-selection: #f50057;
+  --node-selected-color: #f50057;
 }

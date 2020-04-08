@@ -3,7 +3,7 @@ import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
 import {BranchNodeModel} from './BranchNodeModel';
 import styles from './BranchNodeWidget.module.scss';
 
-import branch from '../../../assets/icons/branch.svg';
+import branch from '../../../assets/icons/branch-formula.svg';
 
 export interface BranchNodeWidgetProps {
     node: BranchNodeModel;
@@ -19,8 +19,11 @@ export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = 
 
     return (
         <div className={styles.nodeWidget}>
-            <div className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}>
-                <img src={branch} className={styles.nodeIcon} width={20} onDoubleClick={toggleContentVisibility}/>
+            <div
+                className={[styles.nodeHeader, props.node.isSelected() ? styles.selected : null].join(' ')}
+                onDoubleClick={toggleContentVisibility}
+            >
+                <img src={branch} className={styles.nodeIcon} width={20}/>
 
                 <PortWidget
                     engine={props.engine}

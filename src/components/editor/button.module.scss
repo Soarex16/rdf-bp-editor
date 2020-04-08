@@ -9,7 +9,7 @@
   border-radius: 50%;
 
   background: var(--editor-button);
-  box-shadow: 0 0.2rem 0.75rem -2px #9f9f9f;
+  box-shadow: 0 0.2rem 0.75rem -2px var(--editor-button-shadow);
 
   cursor: pointer;
 
@@ -48,11 +48,13 @@
 :global(.theme-light) {
   --editor-button: #ffffff;
   --editor-button-hovered: #efefef;
+  --editor-button-shadow: #9f9f9f;
   --editor-button-icon: #000000;
 }
 
 :global(.theme-dark) {
   --editor-button: #292929;
   --editor-button-hovered: #191919;
+  --editor-button-shadow: #9f9f9f;
   --editor-button-icon: #ffffff;
 }

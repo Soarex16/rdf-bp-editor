@@ -70,9 +70,14 @@ const Editor: React.FC = () => {
                 onInc={increaseScale}
             />
 
-            <button onClick={saveDiagram}>Save</button>
-            <button onClick={loadDiagram}>Load</button>
-            <button onClick={repaint}>Repaint</button>
+            <div style={{
+                position: 'absolute',
+                background: 'transparent'
+            }}>
+                <button onClick={saveDiagram}>Save</button>
+                <button onClick={loadDiagram}>Load</button>
+                <button onClick={repaint}>Repaint</button>
+            </div>
 
             <DiagramContainer engine={engine}/>
         </ThemeProvider>

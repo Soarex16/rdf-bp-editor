@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTheme} from '../../layout/theme-context/theme-provider';
 import styles from './ThemeSwitcher.module.scss';
-import {ReactComponent as IconPlus} from '../../../assets/icons/theme-switch.svg';
+import {ReactComponent as IconPlus} from '../../../assets/icons/palette.svg';
 
 const ThemeSwitcher: React.FC = () => {
     const {toggleTheme} = useTheme();

@@ -1,10 +1,11 @@
-.nodeWidget {
-  font-family: "Yandex Sans";
-  color: var(--font-color);
-
-  display: flex;
-  justify-content: center;
+.sparql_node {
+  composes: node from '../node/NodeWidget.module.scss';
 }
+
+
+
+
+
 
 .nodeHeader {
   color: white;
@@ -27,14 +28,8 @@
   }
 
   &.selected {
-    border-color: var(--node-selection);
+    border-color: var(--node-selected-color);
   }
-}
-
-.nodeTitle {
-  font-weight: 500;
-  font-size: 1rem;
-  margin: 6px;
 }
 
 // TODO: make icons as components as in ThemeSwitcher
@@ -49,11 +44,11 @@
   position: relative;
   z-index: 0;
 
-  border: solid var(--node-border-color);
+  border: solid var(--node-content-border-color);
   border-width: 2px 2px 2px 2px;
   border-radius: 6px 6px 6px 6px;
 
-  background: var(--node-bg-color);
+  background: var(--node-content-background-color);
 
   padding: 30px 10px 10px 10px;
 
