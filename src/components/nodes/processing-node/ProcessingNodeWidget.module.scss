@@ -7,6 +7,14 @@
   }
 }
 
+.node__port_theme_processing {
+  background-color: var(--processing-node-border-color);
+
+  &:hover {
+    background-color: var(--port-bg-color-hover);
+  }
+}
+
 :global(.theme-light) {
   --processing-node-background-color: #00c853;
   --processing-node-border-color: #5efc82;

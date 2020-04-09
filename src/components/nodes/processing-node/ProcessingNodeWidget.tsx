@@ -14,11 +14,11 @@ export interface ProcessingNodeWidgetProps {
     engine: DiagramEngine;
 }
 
-const ProcessingNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+export const ProcessingNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${nodeStyles.node__header_position_center} ${styles.node__header_theme_processing}`}
+            className={`${props.className || ''} ${styles.node__header_theme_processing}`}
             icon={() => <CogsIcon className={nodeStyles.node__icon}/>}
             title="Обработка"
             selected={selected}
@@ -30,20 +30,23 @@ const ProcessingNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTML
     );
 };
 
-export const ProcessingNodeWidget: React.FunctionComponent<ProcessingNodeWidgetProps> = (props) => {
+export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
     return (
         <div>
-            <ProcessingNodeHeader
+            <ProcessingNode
+                className={nodeStyles.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 left={() => <Port
+                    className={`${nodeStyles.node__portIn_position_border} ${styles.node__port_theme_processing}`}
                     engine={props.engine}
                     port={props.node.getPort(inPortName)}
                 />}
                 right={() => <Port
+                    className={`${nodeStyles.node__portOut_position_border} ${styles.node__port_theme_processing}`}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}

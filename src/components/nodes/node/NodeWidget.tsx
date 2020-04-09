@@ -31,8 +31,6 @@ const NodeWidget: React.FunctionComponent<NodeWidgetProps> = (props) => {
                 порты располагаются в виджете, потому что не являются обязательным элементом ноды
                 например, если мы рендерим ноду в палитре, то ей не надо иметь NodeContent и порты
             */}
-
-
             <NodeContent opened={opened}>
                 PLACEHOLDER
             </NodeContent>
@@ -78,7 +76,8 @@ export const NodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDiv
             {title &&
             <div className={styles.node__title}>
                 {title}
-            </div>}
+            </div>
+            }
 
             {icon()}
 

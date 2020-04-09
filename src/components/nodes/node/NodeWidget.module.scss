@@ -65,7 +65,9 @@
   border-radius: 50%;
 
   transition: background-color 250ms ease-in-out;
+}
 
+.node__port_theme_default {
   background-color: white;
 
   &:hover {
@@ -73,16 +75,16 @@
   }
 }
 
-.node__portIn_border_position {
+.node__portIn_position_border {
   position: absolute;
   left: 0;
-  transform: translateX(-60%);
+  transform: translate(-60%, -50%);
 }
 
-.node__portOut_border_position {
+.node__portOut_position_border {
   position: absolute;
   right: 0;
-  transform: translateX(60%);
+  transform: translate(60%, -50%);
 }
 
 .node__content {

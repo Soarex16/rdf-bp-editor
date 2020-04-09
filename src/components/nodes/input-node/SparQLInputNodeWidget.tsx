@@ -14,11 +14,11 @@ export interface SparQLInputNodeWidgetProps {
     engine: DiagramEngine;
 }
 
-const SparQLInputNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${nodeStyles.node__header_position_center} ${styles.node__header_theme_sparql}`}
+            className={`${props.className || ''} ${styles.node__header_theme_sparql}`}
             icon={() => <InputIcon className={nodeStyles.node__icon}/>}
             title="Входные факты"
             selected={selected}
@@ -30,7 +30,7 @@ const SparQLInputNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTM
     );
 };
 
-export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
+export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
@@ -43,10 +43,12 @@ export const SparQLInputNodeWidget: React.FunctionComponent<SparQLInputNodeWidge
 
     return (
         <div>
-            <SparQLInputNodeHeader
+            <SparQLInputNode
+                className={nodeStyles.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 right={() => <Port
+                    className={`${nodeStyles.node__portOut_position_border} ${styles.node__port_theme_sparql}`}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}

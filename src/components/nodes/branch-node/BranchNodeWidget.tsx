@@ -14,11 +14,11 @@ export interface BranchNodeWidgetProps {
     engine: DiagramEngine;
 }
 
-const BranchNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+export const BranchNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${nodeStyles.node__header_position_center} ${nodeStyles.node__title_icon_only} ${styles.node__header_theme_branch}`}
+            className={`${props.className || ''} ${nodeStyles.node__title_icon_only} ${styles.node__header_theme_branch}`}
             icon={() => <BranchIcon className={nodeStyles.node__icon}/>}
             selected={selected}
             left={props.left}
@@ -29,21 +29,24 @@ const BranchNodeHeader: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivE
     );
 };
 
-export const BranchNodeWidget: React.FunctionComponent<BranchNodeWidgetProps> = (props) => {
+export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
 
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
     return (
         <div>
-            <BranchNodeHeader
+            <BranchNode
+                className={nodeStyles.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 left={() => <Port
+                    className={`${nodeStyles.node__portIn_position_border} ${styles.node__port_theme_branch}`}
                     engine={props.engine}
                     port={props.node.getPort(inPortName)}
                 />}
                 right={() => <Port
+                    className={`${nodeStyles.node__portOut_position_border} ${styles.node__port_theme_branch}`}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}

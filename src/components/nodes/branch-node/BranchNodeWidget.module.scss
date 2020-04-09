@@ -7,6 +7,14 @@
   }
 }
 
+.node__port_theme_branch {
+  background-color: var(--branch-node-border-color);
+
+  &:hover {
+    background-color: var(--port-bg-color-hover);
+  }
+}
+
 :global(.theme-light) {
   --branch-node-background-color: #6200ea;
   --branch-node-border-color: #9d46ff;

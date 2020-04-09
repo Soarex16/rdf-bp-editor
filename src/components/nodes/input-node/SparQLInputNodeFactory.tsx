@@ -2,7 +2,7 @@ import * as React from 'react';
 import {SparQLInputNodeModel, sparQLInputNodeName} from './SparQLInputNodeModel';
 import {AbstractReactFactory, GenerateWidgetEvent, ListenerHandle} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
-import {SparQLInputNodeWidget} from './SparQLInputNodeWidget';
+import {SparQLInputNodeDiagramWidget} from './SparQLInputNodeWidget';
 import {FormulaEditorLabelModel} from '../../labels/formual-editor-label/FormulaEditorLabelModel';
 import {FlowLinkModel} from '../../links/flow-link/FlowLinkModel';
 
@@ -38,7 +38,7 @@ export class SparQLInputNodeFactory extends AbstractReactFactory<SparQLInputNode
             });
         }
 
-        return <SparQLInputNodeWidget engine={this.engine as DiagramEngine} node={event.model}/>;
+        return <SparQLInputNodeDiagramWidget engine={this.engine as DiagramEngine} node={event.model}/>;
     }
 
 }
