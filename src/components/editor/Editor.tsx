@@ -8,13 +8,14 @@ import mockEngine from '../../mocks/testEngine';
 import {DiagramEngine} from '@projectstorm/react-diagrams';
 import Zoom from './zoom/Zoom';
 import ThemeSwitcher from './theme-switcher/ThemeSwitcher';
-import {NodePaletteDropReceiver, NodePaletteItem} from '../palette/NodePalette';
+import {NodePalette, NodePaletteDropReceiver, NodePaletteItem} from '../palette/NodePalette';
 import {SparQLInputNode} from '../nodes/input-node/SparQLInputNodeWidget';
 import {BranchNode} from '../nodes/branch-node/BranchNodeWidget';
 import {ProcessingNode} from '../nodes/processing-node/ProcessingNodeWidget';
 import {SparQLInputNodeModel} from '../nodes/input-node/SparQLInputNodeModel';
 import {BranchNodeModel} from '../nodes/branch-node/BranchNodeModel';
 import {ProcessingNodeModel} from '../nodes/processing-node/ProcessingNodeModel';
+import Help from './help/Help';
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -77,6 +78,8 @@ const Editor: React.FC = () => {
                 onInc={increaseScale}
             />
 
+            <Help/>
+
             <div style={{
                 position: 'absolute',
                 bottom: 0,
@@ -88,18 +91,7 @@ const Editor: React.FC = () => {
                 <button onClick={repaint}>Repaint</button>
             </div>
 
-            <div style={{
-                padding: 10,
-                borderRadius: 6,
-                background: 'var(--node-content-background-color)',
-                border: 'solid 2px var(--node-content-border-color)',
-                position: 'absolute',
-                display: 'flex',
-                alignItems: 'center',
-                top: 0,
-                width: '100%',
-                zIndex: 1
-            }}>
+            <NodePalette>
                 <NodePaletteItem
                     data={new SparQLInputNodeModel()}
                 >
@@ -117,12 +109,14 @@ const Editor: React.FC = () => {
                 >
                     <ProcessingNode/>
                 </NodePaletteItem>
-            </div>
+            </NodePalette>
 
             <NodePaletteDropReceiver
                 engine={engine}
             >
-                <DiagramContainer engine={engine}/>
+                <DiagramContainer
+                    engine={engine}
+                />
             </NodePaletteDropReceiver>
         </ThemeProvider>
     )
