@@ -1,22 +1,11 @@
 import {DefaultLinkModel} from '@projectstorm/react-diagrams';
-import {FormulaEditorLabelModel} from '../../labels/formual-editor-label/FormulaEditorLabelModel';
+
+export const branchLinkType: string = 'branch-link';
 
 export class BranchLinkModel extends DefaultLinkModel {
     constructor() {
         super({
-            type: 'branch'
+            type: branchLinkType
         });
-
-        this.addLabel(
-            new FormulaEditorLabelModel({
-                formula: '\\text{predicate}'
-            })
-        );
-
-        this.addLabel(
-            new FormulaEditorLabelModel({
-                formula: '\\text{alias}'
-            })
-        )
     }
 }

@@ -17,6 +17,9 @@ export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, chil
                 const model = new DiagramModel();
                 model.addNode(data as NodeModel);
 
+                console.log('dragged', data);
+                console.log('dragged model', model.serialize());
+
                 const strData: string = JSON.stringify(model.serialize());
                 event.dataTransfer.setData(dataTransferKey, strData);
             }}
@@ -33,9 +36,17 @@ export const NodePalette: React.FC = ({children}) => {
     return (
         <div style={{
             position: 'absolute',
-            bottom: 0,
-            background: 'transparent',
-            zIndex: 1
+            width: '100%',
+
+            boxSizing: 'border-box',
+            padding: 10,
+            background: 'var(--node-content-background-color)',
+            borderBottom: 'solid 2px var(--node-content-border-color)',
+
+            display: 'flex',
+            alignItems: 'center',
+            zIndex: 1,
+
         }}>
             {children}
         </div>
@@ -58,8 +69,10 @@ export const NodePaletteDropReceiver: React.FC<NodePaletteDropReceiverProps> = (
                 const mousePos = engine.getRelativeMousePoint(event);
                 node.setPosition(mousePos);
 
+                const n = node.clone();
+
                 // add cloned node, because otherwise we cannot add many nodes of the same type
-                engine.getModel().addNode(node.clone());
+                engine.getModel().addNode(n);
                 engine.repaintCanvas();
             }}
 
