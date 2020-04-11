@@ -1,12 +1,13 @@
+import * as React from 'react';
 import {DefaultLinkFactory} from '@projectstorm/react-diagrams';
-import {FlowLinkModel} from './FlowLinkModel';
+import {FlowLinkModel, flowLinkType} from './FlowLinkModel';
 
-export class FlowLinkFactory extends DefaultLinkFactory {
+export class FlowLinkFactory extends DefaultLinkFactory<FlowLinkModel> {
     constructor() {
-        super('flow');
+        super(flowLinkType);
     }
 
-    generateModel(): FlowLinkModel {
+    generateModel(event: any): FlowLinkModel {
         return new FlowLinkModel();
     }
 }

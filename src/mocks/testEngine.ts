@@ -1,4 +1,4 @@
-import createEngine, {DefaultDiagramState, DefaultLinkModel, DiagramModel} from '@projectstorm/react-diagrams';
+import createEngine, {DefaultDiagramState, DiagramModel} from '@projectstorm/react-diagrams';
 import {DeleteItemsAction} from '@projectstorm/react-canvas-core';
 import {SparQLInputNodeModel} from '../components/nodes/input-node/SparQLInputNodeModel';
 import {SparQLInputNodeFactory} from '../components/nodes/input-node/SparQLInputNodeFactory';
@@ -6,9 +6,13 @@ import {ProcessingNodeModel} from '../components/nodes/processing-node/Processin
 import {ProcessingNodeFactory} from '../components/nodes/processing-node/ProcessingNodeFactory';
 import {BranchNodeFactory} from '../components/nodes/branch-node/BranchNodeFactory';
 import {BranchNodeModel} from '../components/nodes/branch-node/BranchNodeModel';
-import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
 import {FormulaEditorLabelFactory} from '../components/labels/formual-editor-label/FormulaEditorLabelFactory';
+import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
+import {FlowPortFactory} from '../components/links/flow-link/FlowPortFactory';
+import {CopyItemsAction} from '../components/editor/actions/CopyItemsAction';
+import {SelectAllItemsAction} from '../components/editor/actions/SelectAllItemsAction';
 import {BranchLinkFactory} from '../components/links/branch-link/BranchLinkFactory';
+import {BranchPortFactory} from '../components/links/branch-link/BranchPortFactory';
 
 // create an instance of the engine
 const engine = createEngine({
@@ -16,6 +20,8 @@ const engine = createEngine({
 });
 
 engine.getActionEventBus().registerAction(new DeleteItemsAction({keyCodes: [46]}));
+engine.getActionEventBus().registerAction(new CopyItemsAction());
+engine.getActionEventBus().registerAction(new SelectAllItemsAction());
 
 // prevent loose links
 const state = engine.getStateMachine().getCurrentState();
@@ -34,6 +40,9 @@ engine.getNodeFactories().registerFactory(new BranchNodeFactory());
 
 engine.getLinkFactories().registerFactory(new FlowLinkFactory());
 engine.getLinkFactories().registerFactory(new BranchLinkFactory());
+
+engine.getPortFactories().registerFactory(new FlowPortFactory());
+engine.getPortFactories().registerFactory(new BranchPortFactory());
 
 engine.getLabelFactories().registerFactory(new FormulaEditorLabelFactory());
 
@@ -73,23 +82,6 @@ processingNode3.setPosition(700, 350);
 
 const branchNode1 = new BranchNodeModel();
 branchNode1.setPosition(500, 250);
-
-// and some links between nodes
-/*const link1 = new DefaultLinkModel();
-(link1 as DefaultLinkModel).addLabel('Custom label 1');
-(link1 as DefaultLinkModel).addLabel('Custom label 2');
-link1.setSourcePort(inputNode1.getPort('out'));
-link1.setTargetPort(branchNode1.getPort('in'));*/
-
-const link2 = new DefaultLinkModel();
-(link2 as DefaultLinkModel).addLabel('Custom label 2');
-(link2 as DefaultLinkModel).addLabel('∀person∈X(person.name != "John" & P(person))');
-link2.setColor('#2e54ab');
-link2.setSourcePort(inputNode2.getPort('out'));
-link2.setTargetPort(processingNode1.getPort('in'));
-
-//TODO: добавить проверку на то, что из однй ноды в другую можно провести только одно соединение (чекать, нет ли уже такого)
-model.addAll(inputNode1, inputNode2, processingNode1, processingNode2, processingNode3, branchNode1);
 
 // install the model into the engine
 engine.setModel(model);

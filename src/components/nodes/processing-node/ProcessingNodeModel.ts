@@ -1,8 +1,9 @@
-import {DefaultPortModel, NodeModel} from '@projectstorm/react-diagrams';
+import {NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
 import {inPortName, outPortName} from '../node/NodeWidget';
+import {FlowPortModel} from '../../links/flow-link/FlowPortModel';
 
-export const processingNodeName: string = 'processing-node';
+export const processingNodeType: string = 'processing-node';
 
 export interface ProcessingNodeModelOptions extends BaseModelOptions {
     processingScriptName?: string;
@@ -14,19 +15,19 @@ export class ProcessingNodeModel extends NodeModel {
     constructor(options: ProcessingNodeModelOptions = {}) {
         super({
             ...options,
-            type: processingNodeName
+            type: processingNodeType
         });
         this.processingScriptName = options.processingScriptName || '';
 
         this.addPort(
-            new DefaultPortModel({
+            new FlowPortModel({
                 in: true,
                 name: inPortName
             })
         );
 
         this.addPort(
-            new DefaultPortModel({
+            new FlowPortModel({
                 in: false,
                 name: outPortName
             })

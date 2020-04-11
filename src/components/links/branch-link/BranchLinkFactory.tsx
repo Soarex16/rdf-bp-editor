@@ -1,12 +1,13 @@
+import * as React from 'react';
 import {DefaultLinkFactory} from '@projectstorm/react-diagrams';
-import {BranchLinkModel} from './BranchLinkModel';
+import {BranchLinkModel, branchLinkType} from './BranchLinkModel';
 
-export class BranchLinkFactory extends DefaultLinkFactory {
+export class BranchLinkFactory extends DefaultLinkFactory<BranchLinkModel> {
     constructor() {
-        super('branch');
+        super(branchLinkType);
     }
 
-    generateModel(): BranchLinkModel {
+    generateModel(event: any): BranchLinkModel {
         return new BranchLinkModel();
     }
 }

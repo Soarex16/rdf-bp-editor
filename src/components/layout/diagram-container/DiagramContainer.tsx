@@ -13,7 +13,7 @@ export interface DiagramContainerProps {
 
 // TODO: попробовать вынести эвент в отдельный класс как тут
 //  https://github.com/projectstorm/react-diagrams/blob/master/packages/diagrams-demo-gallery/demos/demo-custom-action/index.tsx
-const DiagramContainer: React.FC<DiagramContainerProps> = ({engine}) => {
+const DiagramContainer: React.FC<DiagramContainerProps & React.HTMLAttributes<HTMLDivElement>> = ({engine}) => {
     const canvasWidgetRef = React.createRef<HTMLDivElement>();
 
     React.useEffect(() => {

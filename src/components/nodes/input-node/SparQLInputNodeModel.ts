@@ -1,9 +1,9 @@
 import {NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
-import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 import {outPortName} from '../node/NodeWidget';
+import {FlowPortModel} from '../../links/flow-link/FlowPortModel';
 
-export const sparQLInputNodeName: string = 'sparql-input-node';
+export const sparQLInputNodeType: string = 'sparql-input-node';
 
 export interface SparQLInputNodeModelOptions extends BaseModelOptions {
     graphQLQuery?: string;
@@ -19,7 +19,7 @@ export class SparQLInputNodeModel extends NodeModel {
     constructor(options: SparQLInputNodeModelOptions = {}) {
         super({
             ...options,
-            type: sparQLInputNodeName
+            type: sparQLInputNodeType
         });
         this.graphQLQuery = options.graphQLQuery || '';
 
