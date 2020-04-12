@@ -20,10 +20,8 @@ const autocompleteSuggestions = [
 
     // set relations
     '\\subset',
-    '\\subsetneq',
     '\\subseteq',
     '\\supset',
-    '\\supsetneq',
     '\\in',
     '\\ni',
     '\\notin',
@@ -51,6 +49,7 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
 
     const changeVal = (val: string) => {
         props.model.formula = val;
+        setStr(val);
     };
 
     return (
@@ -59,7 +58,7 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
             <LatexAutocompleteInput
                 suggestions={autocompleteSuggestions}
                 onChange={changeVal}
-                value={props.model.formula}
+                value={str}
             />
         </div>
     );

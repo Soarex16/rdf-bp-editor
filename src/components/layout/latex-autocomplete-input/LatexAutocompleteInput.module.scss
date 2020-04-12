@@ -3,18 +3,26 @@
 }
 
 .autocomplete__suggestionsList {
-  height: 200px;
+  height: 100px;
   width: auto;
   overflow-y: scroll;
+
+  line-break: normal;
 
   cursor: pointer;
 
   position: absolute;
+  left: 110%;
+  top: 0;
   background: var(--flow-alias-label-background);
+  border-radius: 5px;
+  border: solid 2px var(--flow-alias-border-color);
 
   &::-webkit-scrollbar {
     display: none;
   }
+
+
 }
 
 .autocomplete__suggestionsListItem {

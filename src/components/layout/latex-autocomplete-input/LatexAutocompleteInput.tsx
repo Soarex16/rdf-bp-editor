@@ -1,5 +1,5 @@
-import React, {ChangeEvent, KeyboardEvent, MouseEvent} from 'react';
-import {EditableMathField, StaticMathField} from 'react-mathquill';
+import React, {MouseEvent} from 'react';
+import {EditableMathField, MathField, StaticMathField} from 'react-mathquill';
 
 import styles from './LatexAutocompleteInput.module.scss';
 
@@ -10,68 +10,55 @@ export interface LatexAutocompleteInputProps {
 }
 
 const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggestions = [], onChange, value}) => {
+    const [userInput, setUserInput] = React.useState<string>(value);
     const [showSuggestions, setShowSuggestions] = React.useState<boolean>(false);
     const [activeSuggestion, setActiveSuggestion] = React.useState<number>(0);
     const [filteredSuggestions, setFilteredSuggestions] = React.useState<string[]>(suggestions);
 
-    const suggest = (suggestion: string) => {
-        const lastLatexStart = value.lastIndexOf('\\');
-        const trimmed = value.substring(0, lastLatexStart);
-        onChange(trimmed + suggestion);
-    };
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const userInput = event.target.value;
-
+    const getSuggestion = React.useCallback((suggestion: string) => {
         const lastLatexStart = userInput.lastIndexOf('\\');
-        const currentLatexVal = userInput.substr(lastLatexStart);
+        const trimmed = userInput.substring(0, lastLatexStart);
+
+        return trimmed + suggestion;
+    }, [userInput]);
+
+    // TODO: fix bugs (suggest sets user input that triggers change that sets user input)
+    const handleChange = React.useCallback((field: MathField) => {
+        const rawText = field.latex();
+
+        const lastLatexStart = rawText.lastIndexOf('\\');
+        const currentLatexVal = rawText.substr(lastLatexStart).trim();
         const filtered = suggestions.filter(word => word.indexOf(currentLatexVal) > -1);
-        onChange(userInput);
 
+        const needSuggest = filtered.length > 1;
+
+        onChange(rawText);
+        setUserInput(rawText);
         setActiveSuggestion(0);
-        setShowSuggestions(true);
+        setShowSuggestions(needSuggest);
         setFilteredSuggestions(filtered);
-    };
-
-    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.keyCode === 13) {
-            console.log('enter');
-
-            // enter
-            event.preventDefault();
-            setActiveSuggestion(0);
-            setShowSuggestions(false);
-            suggest(filteredSuggestions[activeSuggestion]);
-            setActiveSuggestion(0);
-
-        } else if (event.keyCode === 38) {
-            console.log('up');
-
-            // up arrow
-            if (activeSuggestion === 0) {
-                return;
-            }
-
-            event.preventDefault();
-            setActiveSuggestion(activeSug => activeSug - 1);
-
-        } else if (event.keyCode === 40) {
-            console.log('down');
-
-            // down arrow
-            event.preventDefault();
-            setActiveSuggestion(activeSug => (activeSug + 1) % filteredSuggestions.length)
-        }
-    };
+    }, [suggestions]);
 
     const handleSuggestionHover = (event: MouseEvent<HTMLLIElement>) => {
         setActiveSuggestion(event.currentTarget.value);
     };
 
-    const handleSuggestionClick = (event: MouseEvent<HTMLLIElement>) => {
+    const handleSuggestionClick = React.useCallback((event: MouseEvent<HTMLLIElement>) => {
+        const suggestion = getSuggestion(filteredSuggestions[event.currentTarget.value]);
+
+        onChange(suggestion);
+        setUserInput(suggestion);
+
         setShowSuggestions(false);
-        suggest(filteredSuggestions[event.currentTarget.value])
-    };
+    }, [filteredSuggestions]);
+
+    const handleUpKeyPressed = React.useCallback((mathField: MathField) => {
+        setActiveSuggestion(activeSug => activeSug > 0 ? activeSug - 1 : 0);
+    }, [activeSuggestion]);
+
+    const handleDownKeyPressed = React.useCallback((mathField: MathField) => {
+        setActiveSuggestion(activeSug => (activeSug + 1) % filteredSuggestions.length);
+    }, [activeSuggestion, filteredSuggestions]);
 
     let suggestionsListComponent;
     if (showSuggestions && value) {
@@ -84,7 +71,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
                             key={suggestion}
                             onClick={handleSuggestionClick}
                             onMouseEnter={handleSuggestionHover}
-                            className={i === activeSuggestion ? styles.autocomplete__suggestionsListItem_active : ''}
+                            className={`${styles.autocomplete__suggestionsListItem} ${i === activeSuggestion ? styles.autocomplete__suggestionsListItem_active : ''}`}
                         >
                             {suggestion}
                             <StaticMathField>
@@ -99,26 +86,14 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
 
     return (
         <>
-            {/*<input
-                type="text"
-                value={value}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-            />*/}
-
             <EditableMathField
-                latex={value}
-                onChange={(field) => {
-                    const userInput = field.text();
-
-                    const lastLatexStart = userInput.lastIndexOf('\\');
-                    const currentLatexVal = userInput.substr(lastLatexStart);
-                    const filtered = suggestions.filter(word => word.indexOf(currentLatexVal) > -1);
-                    onChange(userInput);
-
-                    setActiveSuggestion(0);
-                    setShowSuggestions(true);
-                    setFilteredSuggestions(filtered);
+                latex={userInput}
+                onChange={handleChange}
+                config={{
+                    handlers: {
+                        upOutOf: handleUpKeyPressed,
+                        downOutOf: handleDownKeyPressed
+                    }
                 }}
             />
 
@@ -126,24 +101,5 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
         </>
     );
 };
-
-/*
-* <EditableMathField
-                latex={value}
-                onChange={(field) => onChange(field.latex())}
-            />
-
-            <div style={{
-                position: 'absolute'
-            }}>
-                {filteredSuggections.map(suggestion => (
-                    <div>
-                        {suggestion}
-                        <StaticMathField>
-                            {suggestion}
-                        </StaticMathField>
-                    </div>
-                ))}
-            </div>*/
 
 export default LatexAutocompleteInput;
