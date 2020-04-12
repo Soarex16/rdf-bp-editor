@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import DiagramContainer from '../layout/diagram-container/DiagramContainer';
 
@@ -19,6 +19,7 @@ import Help from '../layout/help/Help';
 import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBar';
 import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
 import styles from './Editor.module.scss';
+import {MathFieldComponent} from 'react-mathlive';
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -70,6 +71,8 @@ const Editor: React.FC = () => {
     };
 
     const repaint = () => engine.repaintCanvas();
+
+    const [str, setStr] = useState('f(x)=\\log _10 x');
 
     return (
         <ThemeProvider themes={themes}>
@@ -123,6 +126,11 @@ const Editor: React.FC = () => {
                         </NodePaletteItem>
                     </NodePalette>
                 </div>
+
+                <MathFieldComponent
+                    latex={str}
+                    onChange={(val) => setStr(val)}
+                />
 
                 <Avatar
                     icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}

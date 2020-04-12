@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormulaEditorLabelModel} from './FormulaEditorLabelModel';
 
 import styles from './FormulaEditorLabelWidget.module.scss';
-import LatexAutocompleteInput from '../../layout/latex-autocomplete-input/LatexAutocompleteInput';
+import {MathFieldComponent} from 'react-mathlive';
 
 export interface FlowAliasLabelWidgetProps {
     model: FormulaEditorLabelModel;
@@ -47,19 +47,18 @@ const autocompleteSuggestions = [
 ];
 
 export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetProps> = (props) => {
-    const [str, setStr] = useState(props.model.formula);
+    const [str, setStr] = useState('\\forall');
 
     const changeVal = (val: string) => {
         props.model.formula = val;
+        setStr(val);
     };
 
     return (
         <div className={styles.label}>
-            {/*А не приведет ли это к бесконечному циклу?*/}
-            <LatexAutocompleteInput
-                suggestions={autocompleteSuggestions}
+            <MathFieldComponent
+                latex={str}
                 onChange={changeVal}
-                value={props.model.formula}
             />
         </div>
     );
