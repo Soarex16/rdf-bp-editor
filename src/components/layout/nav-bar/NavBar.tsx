@@ -17,15 +17,15 @@ const NavBar: React.FC = ({children}) => {
 };
 
 export interface NavBarBrandProps {
-    title?: string;
+    brand?: string;
 }
 
-export const NavBarBrand: React.FC<NavBarBrandProps> = ({title}) => {
+export const NavBarBrand: React.FC<NavBarBrandProps & React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
     return (
-        <a className={styles.navBar__brand}>
+        <a className={styles.navBar__brand} title={props.title} href={props.href}>
             <LogoIcon className={styles.navBar__brandIcon}/>
 
-            {title}
+            {props.brand}
         </a>
     );
 };

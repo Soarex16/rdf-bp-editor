@@ -13,6 +13,7 @@ import {CopyPasteItemsAction} from '../components/editor/actions/CopyPasteItemsA
 import {BranchLinkFactory} from '../components/links/branch-link/BranchLinkFactory';
 import {BranchPortFactory} from '../components/links/branch-link/BranchPortFactory';
 import {TextInputLabelFactory} from '../components/labels/text-input-label/TextInputLabelFactory';
+import {SelectAllItemsAction} from '../components/editor/actions/SelectAllItemsAction';
 
 // create an instance of the engine
 const engine = createEngine({
@@ -21,8 +22,7 @@ const engine = createEngine({
 
 engine.getActionEventBus().registerAction(new DeleteItemsAction({keyCodes: [46]}));
 engine.getActionEventBus().registerAction(new CopyPasteItemsAction());
-// select all отключен, потому что мешает math quill
-// engine.getActionEventBus().registerAction(new SelectAllItemsAction());
+engine.getActionEventBus().registerAction(new SelectAllItemsAction());
 
 // prevent loose links
 const state = engine.getStateMachine().getCurrentState();

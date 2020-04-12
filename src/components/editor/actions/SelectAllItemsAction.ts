@@ -11,11 +11,11 @@ export class SelectAllItemsAction extends Action {
         super({
             type: InputType.KEY_DOWN,
             fire: (event: any) => {
-                const {keyCode, ctrlKey} = event.event;
+                const {keyCode, ctrlKey, shiftKey} = event.event;
 
                 const engine = this.engine as DiagramEngine;
 
-                if (!ctrlKey) {
+                if (!(ctrlKey && shiftKey)) {
                     return;
                 }
 

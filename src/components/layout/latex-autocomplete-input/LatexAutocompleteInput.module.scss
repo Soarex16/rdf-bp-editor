@@ -1,0 +1,26 @@
+.autocomplete {
+  position: relative;
+}
+
+.autocomplete__suggestionsList {
+  height: 200px;
+  width: auto;
+  overflow-y: scroll;
+
+  cursor: pointer;
+
+  position: absolute;
+  background: var(--flow-alias-label-background);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.autocomplete__suggestionsListItem {
+  display: flex;
+}
+
+.autocomplete__suggestionsListItem_active {
+  background: #00e5ff;
+}

@@ -13,7 +13,13 @@ export const TextInputLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetP
     return (
         <div className={styles.label}>
             <input
-                size={str.length / 2}
+                // https://qna.habr.com/q/222136
+                // мне самому не нравится этот хак, но он
+                // единственный дает приемлемые результаты
+                // (на чистом css не вышло)
+                style={{
+                    width: (str.length + 1) * 8
+                }}
                 className={styles.label__input}
                 type="text"
                 value={str}

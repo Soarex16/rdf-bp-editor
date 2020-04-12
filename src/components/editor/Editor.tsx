@@ -84,7 +84,7 @@ const Editor: React.FC = () => {
             <Help/>
 
             <NavBar>
-                <NavBarBrand title="FDTFE"/>
+                <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
 
                 <NavMenu>
                     <NavMenuItem>
@@ -138,7 +138,9 @@ const Editor: React.FC = () => {
                 background: 'var(--node-content-background-color)',
                 border: 'solid 2px var(--node-content-border-color)'
             }}>
-
+                <button onClick={saveDiagram}>Save</button>
+                <button onClick={loadDiagram}>Load</button>
+                <button onClick={repaint}>Repaint</button>
             </div>
 
             <NodePaletteDropReceiver
