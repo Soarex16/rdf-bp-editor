@@ -27,7 +27,7 @@ export class SparQLInputNodeFactory extends AbstractReactFactory<SparQLInputNode
 
                     if (ev.link.getSourcePort().getNode().getType() === 'sparql-input-node') {
                         const sourceNode: SparQLInputNodeModel = link.getSourcePort().getNode() as SparQLInputNodeModel;
-                        (link.getLabels()[0] as FormulaEditorLabelModel).formula = `\\text{${sourceNode.resultSetAlias}}`;
+                        (link.getLabels()[0] as TextInputLabelModel).formula = `\\text{${sourceNode.resultSetAlias}}`;
                     }
                 }
             };

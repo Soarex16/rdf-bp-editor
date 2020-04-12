@@ -9,6 +9,16 @@ html, body, #root {
 
 @font-face {
     font-family: 'Yandex Sans';
+    src: local('Yandex Sans Text Light'), local('Yandex-Sans-Text-Light'),
+    url('assets/fonts/YandexSansText-Light.woff2') format('woff2'),
+    url('assets/fonts/YandexSansText-Light.woff') format('woff'),
+    url('assets/fonts/YandexSansText-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yandex Sans';
     src: url('assets/fonts/YandexSansText-Regular.woff2') format('woff2'),
     url('assets/fonts/YandexSansText-Regular.woff') format('woff'),
     url('assets/fonts/YandexSansText-Regular.ttf') format('truetype');

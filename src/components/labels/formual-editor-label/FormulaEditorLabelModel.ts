@@ -1,6 +1,8 @@
 import {LabelModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
 
+export const formulaEditorLabelType: string = 'formula-label';
+
 export interface FormulaEditorLabelOptions extends BaseModelOptions {
     formula?: string;
 }
@@ -11,7 +13,7 @@ export class FormulaEditorLabelModel extends LabelModel {
     constructor(options: FormulaEditorLabelOptions = {}) {
         super({
             ...options,
-            type: 'formula'
+            type: formulaEditorLabelType
         });
         this.formula = options.formula || '';
     }
@@ -19,12 +21,12 @@ export class FormulaEditorLabelModel extends LabelModel {
     serialize() {
         return {
             ...super.serialize(),
-            flowAlias: this.formula
+            formula: this.formula
         };
     }
 
     deserialize(event: DeserializeEvent<this>): void {
         super.deserialize(event);
-        this.formula = event.data.flowAlias;
+        this.formula = event.data.formula;
     }
 }

@@ -1,0 +1,101 @@
+.navBar {
+  background: var(--node-content-background-color);
+  border-bottom: solid 2px var(--node-content-border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: 0 10px;
+}
+
+.navBar_position_top {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  box-sizing: border-box;
+}
+
+.navBar__brand {
+  padding: 10px 0;
+
+  display: flex;
+  align-items: center;
+
+  margin-right: 10px;
+
+  font-family: "Yandex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+
+  color: var(--font-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.navBar__brandIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+
+  fill: var(--font-color);
+  transition: fill 0.3s ease-in-out;
+}
+
+.navBar__navMenu {
+  align-self: stretch;
+  display: flex;
+
+  flex-grow: 1;
+  margin: 0 5vw;
+}
+
+.navBar__navItem {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  font-family: "Yandex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: capitalize;
+
+  color: var(--nav-item-color);
+  border-top: solid 3px;
+  border-color: transparent;
+
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--nav-item-hover-color);
+    border-color: #0091ea;
+    background: var(--nav-item-hover-background-color);
+  }
+}
+
+.navBar__navItem_active {
+  border-top-color: #0091ea;
+}
+
+.navBar__avatar {
+  cursor: pointer;
+
+  & svg {
+    fill: gray;
+  }
+}
+
+:global .theme-light {
+  --nav-item-color: #848484;
+  --nav-item-hover-color: #000000;
+  --nav-item-hover-background-color: #e5e5e5;
+}
+
+:global .theme-dark {
+  --nav-item-color: #848484;
+  --nav-item-hover-color: #ffffff;
+  --nav-item-hover-background-color: #595959;
+}

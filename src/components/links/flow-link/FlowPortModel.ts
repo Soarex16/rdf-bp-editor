@@ -1,7 +1,7 @@
 import {DefaultPortModel, PortModel, PortModelGenerics} from '@projectstorm/react-diagrams';
 import {FlowLinkModel} from './FlowLinkModel';
 import {DefaultPortModelOptions} from '@projectstorm/react-diagrams-defaults';
-import {FormulaEditorLabelModel} from '../../labels/formual-editor-label/FormulaEditorLabelModel';
+import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelModel';
 
 export const flowPortType: string = 'flow-port';
 
@@ -19,8 +19,8 @@ export class FlowPortModel extends DefaultPortModel {
     createLinkModel(): FlowLinkModel {
         const model = new FlowLinkModel();
 
-        model.addLabel(new FormulaEditorLabelModel({
-            formula: `\\text{alias}`
+        model.addLabel(new TextInputLabelModel({
+            value: 'alias'
         }));
 
         return model;

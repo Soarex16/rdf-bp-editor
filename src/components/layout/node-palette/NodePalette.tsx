@@ -1,6 +1,8 @@
 import React from 'react';
 import {DiagramEngine, DiagramModel, NodeModel} from '@projectstorm/react-diagrams';
 
+import styles from './NodePalette.module.scss';
+
 interface PaletteItemProps {
     data: any;
     tooltip?: string;
@@ -17,14 +19,8 @@ export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, chil
                 const model = new DiagramModel();
                 model.addNode(data as NodeModel);
 
-                console.log('dragged', data);
-                console.log('dragged model', model.serialize());
-
                 const strData: string = JSON.stringify(model.serialize());
                 event.dataTransfer.setData(dataTransferKey, strData);
-            }}
-            style={{
-                padding: '0 10px'
             }}
         >
             {children}
@@ -33,22 +29,14 @@ export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, chil
 };
 
 export const NodePalette: React.FC = ({children}) => {
+
     return (
-        <div style={{
-            position: 'absolute',
-            width: '100%',
-
-            boxSizing: 'border-box',
-            padding: 10,
-            background: 'var(--node-content-background-color)',
-            borderBottom: 'solid 2px var(--node-content-border-color)',
-
-            display: 'flex',
-            alignItems: 'center',
-            zIndex: 1,
-
-        }}>
-            {children}
+        <div className={`${styles.palette}`}>
+            {React.Children.map(children, child => (
+                <div className={styles.palette__item}>
+                    {child}
+                </div>
+            ))}
         </div>
     );
 };

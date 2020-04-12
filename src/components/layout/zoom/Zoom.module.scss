@@ -14,7 +14,7 @@
 }
 
 .buttonZoom {
-  composes: editorButton from '../button.module.scss';
+  composes: editorButton from '../button/button.module.scss';
 }
 
 .zoomContainer {

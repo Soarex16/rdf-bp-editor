@@ -1,29 +1,12 @@
 import {Action, InputType} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams';
 
-export interface CopyItemsActionOptions {
-    keyCodes?: number[];
-    modifiers?: {
-        ctrlKey?: boolean;
-        shiftKey?: boolean;
-        altKey?: boolean;
-        metaKey?: boolean;
-    };
-}
-
 /**
- * Copy all selected items
+ * Selects all items on diagram
  */
 export class SelectAllItemsAction extends Action {
-    constructor(options: CopyItemsActionOptions = {}) {
+    constructor() {
         const keyA = 65;
-        const modifiers = {
-            ctrlKey: true,
-            shiftKey: false,
-            altKey: false,
-            metaKey: false,
-            ...options.modifiers
-        };
 
         super({
             type: InputType.KEY_DOWN,

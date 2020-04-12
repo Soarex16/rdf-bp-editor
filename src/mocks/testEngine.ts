@@ -9,10 +9,10 @@ import {BranchNodeModel} from '../components/nodes/branch-node/BranchNodeModel';
 import {FormulaEditorLabelFactory} from '../components/labels/formual-editor-label/FormulaEditorLabelFactory';
 import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
 import {FlowPortFactory} from '../components/links/flow-link/FlowPortFactory';
-import {CopyItemsAction} from '../components/editor/actions/CopyItemsAction';
-import {SelectAllItemsAction} from '../components/editor/actions/SelectAllItemsAction';
+import {CopyPasteItemsAction} from '../components/editor/actions/CopyPasteItemsAction';
 import {BranchLinkFactory} from '../components/links/branch-link/BranchLinkFactory';
 import {BranchPortFactory} from '../components/links/branch-link/BranchPortFactory';
+import {TextInputLabelFactory} from '../components/labels/text-input-label/TextInputLabelFactory';
 
 // create an instance of the engine
 const engine = createEngine({
@@ -20,8 +20,9 @@ const engine = createEngine({
 });
 
 engine.getActionEventBus().registerAction(new DeleteItemsAction({keyCodes: [46]}));
-engine.getActionEventBus().registerAction(new CopyItemsAction());
-engine.getActionEventBus().registerAction(new SelectAllItemsAction());
+engine.getActionEventBus().registerAction(new CopyPasteItemsAction());
+// select all отключен, потому что мешает math quill
+// engine.getActionEventBus().registerAction(new SelectAllItemsAction());
 
 // prevent loose links
 const state = engine.getStateMachine().getCurrentState();
@@ -45,6 +46,7 @@ engine.getPortFactories().registerFactory(new FlowPortFactory());
 engine.getPortFactories().registerFactory(new BranchPortFactory());
 
 engine.getLabelFactories().registerFactory(new FormulaEditorLabelFactory());
+engine.getLabelFactories().registerFactory(new TextInputLabelFactory());
 
 // create a diagram model
 const model = new DiagramModel();
@@ -82,6 +84,12 @@ processingNode3.setPosition(700, 350);
 
 const branchNode1 = new BranchNodeModel();
 branchNode1.setPosition(500, 250);
+
+engine.registerListener({
+    'mousemove': ev => {
+        console.log(ev);
+    }
+});
 
 // install the model into the engine
 engine.setModel(model);
