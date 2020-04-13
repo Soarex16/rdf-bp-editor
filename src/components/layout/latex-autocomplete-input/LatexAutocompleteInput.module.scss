@@ -1,5 +1,22 @@
 .autocomplete {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 120%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-right-color: var(--flow-alias-border-color);
+    border-left: 0;
+    margin-left: -6px;
+    margin-top: 5px;
+    z-index: 999;
+  }
 }
 
 .autocomplete__suggestionsList {
@@ -21,8 +38,6 @@
   &::-webkit-scrollbar {
     display: none;
   }
-
-
 }
 
 .autocomplete__suggestionsListItem {

@@ -80,7 +80,13 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
                         </li>
                     ))}
                 </ul>
-            )
+            );
+
+            suggestionsListComponent = (
+                <div className={styles.autocomplete}>
+                    {suggestionsListComponent}
+                </div>
+            );
         }
     }
 
