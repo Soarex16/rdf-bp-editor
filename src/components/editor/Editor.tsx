@@ -6,16 +6,19 @@ import {ThemeProvider} from '../layout/theme-context/theme-provider';
 
 import mockEngine from '../../mocks/testEngine';
 import {DiagramEngine} from '@projectstorm/react-diagrams';
-import Zoom from './zoom/Zoom';
-import ThemeSwitcher from './theme-switcher/ThemeSwitcher';
-import {NodePalette, NodePaletteDropReceiver, NodePaletteItem} from '../palette/NodePalette';
+import Zoom from '../layout/zoom/Zoom';
+import ThemeSwitcher from '../layout/theme-switcher/ThemeSwitcher';
+import {NodePalette, NodePaletteDropReceiver, NodePaletteItem} from '../layout/node-palette/NodePalette';
 import {SparQLInputNode} from '../nodes/input-node/SparQLInputNodeWidget';
 import {BranchNode} from '../nodes/branch-node/BranchNodeWidget';
 import {ProcessingNode} from '../nodes/processing-node/ProcessingNodeWidget';
 import {SparQLInputNodeModel} from '../nodes/input-node/SparQLInputNodeModel';
 import {BranchNodeModel} from '../nodes/branch-node/BranchNodeModel';
 import {ProcessingNodeModel} from '../nodes/processing-node/ProcessingNodeModel';
-import Help from './help/Help';
+import Help from '../layout/help/Help';
+import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBar';
+import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
+import styles from './Editor.module.scss';
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -80,36 +83,65 @@ const Editor: React.FC = () => {
 
             <Help/>
 
+            <NavBar>
+                <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
+
+                <NavMenu>
+                    <NavMenuItem>
+                        Projects
+                    </NavMenuItem>
+
+                    <NavMenuItem>
+                        Operations
+                    </NavMenuItem>
+
+                    <NavMenuItem>
+                        Data
+                    </NavMenuItem>
+                </NavMenu>
+
+                <div className={styles.editor__paletteContainer}>
+                    Palette:
+
+                    <NodePalette>
+                        <NodePaletteItem
+                            data={new SparQLInputNodeModel()}
+                        >
+                            <SparQLInputNode/>
+                        </NodePaletteItem>
+
+                        <NodePaletteItem
+                            data={new BranchNodeModel()}
+                        >
+                            <BranchNode/>
+                        </NodePaletteItem>
+
+                        <NodePaletteItem
+                            data={new ProcessingNodeModel()}
+                        >
+                            <ProcessingNode/>
+                        </NodePaletteItem>
+                    </NodePalette>
+                </div>
+
+                <Avatar
+                    icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}
+                    name="USR"
+                />
+            </NavBar>
+
             <div style={{
                 position: 'absolute',
-                bottom: 0,
-                background: 'transparent',
-                zIndex: 1
+                bottom: '0',
+                right: '50%',
+                zIndex: 1,
+                background: 'var(--node-content-background-color)',
+                border: 'solid 2px var(--node-content-border-color)'
             }}>
                 <button onClick={saveDiagram}>Save</button>
                 <button onClick={loadDiagram}>Load</button>
                 <button onClick={repaint}>Repaint</button>
             </div>
-
-            <NodePalette>
-                <NodePaletteItem
-                    data={new SparQLInputNodeModel()}
-                >
-                    <SparQLInputNode/>
-                </NodePaletteItem>
-
-                <NodePaletteItem
-                    data={new BranchNodeModel()}
-                >
-                    <BranchNode/>
-                </NodePaletteItem>
-
-                <NodePaletteItem
-                    data={new ProcessingNodeModel()}
-                >
-                    <ProcessingNode/>
-                </NodePaletteItem>
-            </NodePalette>
 
             <NodePaletteDropReceiver
                 engine={engine}

@@ -2,6 +2,7 @@ import {DefaultPortModel, PortModel, PortModelGenerics} from '@projectstorm/reac
 import {BranchLinkModel} from './BranchLinkModel';
 import {DefaultPortModelOptions} from '@projectstorm/react-diagrams-defaults';
 import {FormulaEditorLabelModel} from '../../labels/formual-editor-label/FormulaEditorLabelModel';
+import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelModel';
 
 export const branchPortType: string = 'branch-port';
 
@@ -23,8 +24,8 @@ export class BranchPortModel extends DefaultPortModel {
             formula: `\\text{predicate}`
         }));
 
-        model.addLabel(new FormulaEditorLabelModel({
-            formula: `\\text{alias}`
+        model.addLabel(new TextInputLabelModel({
+            value: 'alias'
         }));
 
         return model;

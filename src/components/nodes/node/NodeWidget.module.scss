@@ -39,7 +39,7 @@
 }
 
 .node__title {
-  font-family: "Yandex Sans";
+  font-family: "Yandex Sans", sans-serif;
 
   font-weight: 500;
   font-size: 1rem;
@@ -71,7 +71,7 @@
   background-color: white;
 
   &:hover {
-    background-color: var(--port-bg-color-hover);
+    background-color: var(--port-background-color-hover);
   }
 }
 
@@ -96,6 +96,7 @@
 
   padding: 30px 10px 10px 10px;
 
+  font-family: "Yandex Sans", sans-serif;
   color: var(--font-color);
 }
 
@@ -117,10 +118,14 @@
   --node-default-background-color: #6200ea;
   --node-default-border-color: #9d46ff;
   --node-default-hover-color: #4a00b3;
+
+  --port-background-color-hover: #76ff03;
 }
 
 :global(.theme-dark) {
   --node-default-background-color: #6200ea;
   --node-default-border-color: #ffffff;
   --node-default-hover-color: #4a00b3;
+
+  --port-background-color-hover: #76ff03;
 }

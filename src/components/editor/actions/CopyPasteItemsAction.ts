@@ -1,34 +1,17 @@
 import {Action, BaseModel, InputType} from '@projectstorm/react-canvas-core';
 import {DiagramEngine, LinkModel, NodeModel} from '@projectstorm/react-diagrams';
 
-export interface CopyItemsActionOptions {
-    keyCodes?: number[];
-    modifiers?: {
-        ctrlKey?: boolean;
-        shiftKey?: boolean;
-        altKey?: boolean;
-        metaKey?: boolean;
-    };
-}
-
 /**
- * Copy all selected items
+ * Copy/Paste/Cut all selected items
  */
-export class CopyItemsAction extends Action {
+export class CopyPasteItemsAction extends Action {
     // it is a some sort of hack
     private static clipboard: BaseModel[] = [];
 
-    constructor(options: CopyItemsActionOptions = {}) {
+    constructor() {
         const keyCut = 88;
         const keyCopy = 67;
         const keyPaste = 86;
-        const modifiers = {
-            ctrlKey: true,
-            shiftKey: false,
-            altKey: false,
-            metaKey: false,
-            ...options.modifiers
-        };
 
         super({
             type: InputType.KEY_DOWN,
@@ -46,14 +29,14 @@ export class CopyItemsAction extends Action {
                 const model = engine.getModel();
 
                 if (keyCode === keyCopy) {
-                    CopyItemsAction.clipboard = model.getSelectedEntities();
+                    CopyPasteItemsAction.clipboard = model.getSelectedEntities();
                     model.clearSelection();
                 }
 
                 if (keyCode === keyCut) {
-                    CopyItemsAction.clipboard = model.getSelectedEntities();
+                    CopyPasteItemsAction.clipboard = model.getSelectedEntities();
 
-                    for (let item of CopyItemsAction.clipboard) {
+                    for (let item of CopyPasteItemsAction.clipboard) {
                         item.remove();
                     }
 
@@ -62,7 +45,7 @@ export class CopyItemsAction extends Action {
 
                 if (keyCode === keyPaste) {
                     let itemMap = {};
-                    for (let item of CopyItemsAction.clipboard) {
+                    for (let item of CopyPasteItemsAction.clipboard) {
                         let newItem = item.clone(itemMap);
 
                         // offset the nodes slightly
@@ -80,8 +63,8 @@ export class CopyItemsAction extends Action {
                                 const sID = (item as LinkModel).getSourcePort().getNode().getID();
                                 const tID = (item as LinkModel).getTargetPort().getNode().getID();
 
-                                const sFound = CopyItemsAction.clipboard.find(a => a.getID() === sID);
-                                const tFound = CopyItemsAction.clipboard.find(a => a.getID() === tID);
+                                const sFound = CopyPasteItemsAction.clipboard.find(a => a.getID() === sID);
+                                const tFound = CopyPasteItemsAction.clipboard.find(a => a.getID() === tID);
 
                                 if (sFound && tFound) {
 
@@ -97,7 +80,7 @@ export class CopyItemsAction extends Action {
                         newItem.setSelected();
                     }
 
-                    for (let item of CopyItemsAction.clipboard) {
+                    for (let item of CopyPasteItemsAction.clipboard) {
                         item.setSelected(false);
                     }
 

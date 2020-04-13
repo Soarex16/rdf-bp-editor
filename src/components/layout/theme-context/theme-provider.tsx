@@ -38,6 +38,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({themes, ...props}) => {
 
     const [availableThemes, setAvailableThemes] = React.useState<string[]>(themes);
 
+    React.useEffect(() => {
+        document.documentElement.className = currentTheme;
+    }, [currentTheme]);
+
     const toggleTheme = (theme?: string) => {
         let nextTheme;
 
@@ -79,20 +83,16 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({themes, ...props}) => {
     };
 
     return (
-        // a little bit hacky, but I prefer this implementation, because it fully relies on css variables
-        // maybe set style globally in html or body tag??
-        <div className={currentTheme}>
-            <ThemeContext.Provider value={{
-                currentTheme: currentTheme,
-                toggleTheme,
+        <ThemeContext.Provider value={{
+            currentTheme: currentTheme,
+            toggleTheme,
 
-                availableThemes,
-                addTheme,
-                removeTheme
-            }}>
-                {props.children}
-            </ThemeContext.Provider>
-        </div>
+            availableThemes,
+            addTheme,
+            removeTheme
+        }}>
+            {props.children}
+        </ThemeContext.Provider>
     );
 };
 

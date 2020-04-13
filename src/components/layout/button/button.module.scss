@@ -26,7 +26,7 @@
   }
 
   &:hover {
-    box-shadow: 0 0.2rem 0.95rem -1px #9f9f9f;
+    box-shadow: 0 0.2rem 0.95rem -1px var(--editor-button-shadow);
   }
 
   &:active {

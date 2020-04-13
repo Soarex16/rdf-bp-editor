@@ -1,2 +1,16 @@
 .editor {
 }
+
+.editor__paletteContainer {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+
+  margin: 0 3vw;
+  padding-left: 10px;
+
+  font-family: "Yandex Sans", sans-serif;
+  color: var(--font-color);
+  border-left: solid 2px var(--node-content-border-color);
+  border-right: solid 2px var(--node-content-border-color);
+}
