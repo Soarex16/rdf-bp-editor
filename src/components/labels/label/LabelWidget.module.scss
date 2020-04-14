@@ -1,0 +1,25 @@
+.label {
+  color: var(--label-text-color);
+  background: var(--label-background-color);
+
+  border: solid 2px var(--label-border-color);
+  border-radius: 5px;
+
+  font-size: 13px;
+  font-family: sans-serif;
+
+  user-select: none;
+  pointer-events: auto;
+}
+
+:global .theme-light {
+  --label-background-color: rgba(0, 0, 0, 0.9);
+  --label-border-color: #484848;
+  --label-text-color: #ffffff;
+}
+
+:global .theme-dark {
+  --label-background-color: rgba(250, 250, 250, 0.9);
+  --label-border-color: #ffffff;
+  --label-text-color: #000000;
+}
