@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {TextInputLabelModel} from './TextInputLabelModel';
 
 import classes from './TextInputLabelWidget.module.scss';
+import LabelWidget from '../label/LabelWidget';
 
 export interface FlowAliasLabelWidgetProps {
     model: TextInputLabelModel;
@@ -11,7 +12,7 @@ export const TextInputLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetP
     const [str, setStr] = useState(props.model.value);
 
     return (
-        <div className={classes.label}>
+        <LabelWidget>
             <input
                 // https://qna.habr.com/q/222136
                 // мне самому не нравится этот хак, но он
@@ -30,6 +31,6 @@ export const TextInputLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetP
                     props.model.value = newVal;
                 }}
             />
-        </div>
+        </LabelWidget>
     );
 };

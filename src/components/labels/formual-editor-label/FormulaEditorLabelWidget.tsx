@@ -3,6 +3,7 @@ import {FormulaEditorLabelModel} from './FormulaEditorLabelModel';
 
 import classes from './FormulaEditorLabelWidget.module.scss';
 import LatexAutocompleteInput from '../../layout/latex-autocomplete-input/LatexAutocompleteInput';
+import LabelWidget from '../label/LabelWidget';
 
 export interface FlowAliasLabelWidgetProps {
     model: FormulaEditorLabelModel;
@@ -53,13 +54,13 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
     };
 
     return (
-        <div className={classes.label}>
+        <LabelWidget className={classes.mqLabel}>
             {/*А не приведет ли это к бесконечному циклу?*/}
             <LatexAutocompleteInput
                 suggestions={autocompleteSuggestions}
                 onChange={changeVal}
                 value={str}
             />
-        </div>
+        </LabelWidget>
     );
 };
