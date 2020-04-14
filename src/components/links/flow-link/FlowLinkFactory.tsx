@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {DefaultLinkFactory} from '@projectstorm/react-diagrams';
 import {FlowLinkModel, flowLinkType} from './FlowLinkModel';
 

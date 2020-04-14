@@ -9,7 +9,7 @@ export interface AvatarProps {
 // TODO: on hover show modal with user info, etc.
 export const Avatar: React.FC<AvatarProps> = ({icon, name}) => {
     return (
-        <a className={classes.avatar}>
+        <a className={classes.avatar} href="">
             {icon
                 ? icon()
                 : (
