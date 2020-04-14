@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Avatar.module.scss';
+import classes from './Avatar.module.scss';
 
 export interface AvatarProps {
     icon?: () => JSX.Element;
@@ -9,13 +9,13 @@ export interface AvatarProps {
 // TODO: on hover show modal with user info, etc.
 export const Avatar: React.FC<AvatarProps> = ({icon, name}) => {
     return (
-        <a className={styles.avatar}>
+        <a className={classes.avatar}>
             {icon
                 ? icon()
                 : (
-                    <div className={styles.avatar__fallback}>
+                    <div className={classes.avatar__fallback}>
                         <span
-                            className={styles.avatar__text}
+                            className={classes.avatar__text}
                         >
                             {name.substr(0, 2)}
                         </span>
@@ -31,5 +31,5 @@ export interface AvatarImageProps {
 }
 
 export const AvatarImage: React.FC<AvatarImageProps> = ({src}) => {
-    return <img src={src} className={styles.avatar__image}/>;
+    return <img src={src} className={classes.avatar__image}/>;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {DiagramEngine, DiagramModel, NodeModel} from '@projectstorm/react-diagrams';
 
-import styles from './NodePalette.module.scss';
+import classes from './NodePalette.module.scss';
 
 interface PaletteItemProps {
     data: any;
@@ -31,9 +31,9 @@ export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, chil
 export const NodePalette: React.FC = ({children}) => {
 
     return (
-        <div className={`${styles.palette}`}>
+        <div className={`${classes.palette}`}>
             {React.Children.map(children, child => (
-                <div className={styles.palette__item}>
+                <div className={classes.palette__item}>
                     {child}
                 </div>
             ))}

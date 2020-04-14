@@ -1,10 +1,10 @@
 import React from 'react';
 
+import mockEngine from '../../mocks/testEngine';
+
 import DiagramContainer from '../layout/diagram-container/DiagramContainer';
 
 import {ThemeProvider} from '../layout/theme-context/theme-provider';
-
-import mockEngine from '../../mocks/testEngine';
 import {DiagramEngine} from '@projectstorm/react-diagrams';
 import Zoom from '../layout/zoom/Zoom';
 import ThemeSwitcher from '../layout/theme-switcher/ThemeSwitcher';
@@ -18,7 +18,8 @@ import {ProcessingNodeModel} from '../nodes/processing-node/ProcessingNodeModel'
 import Help from '../layout/help/Help';
 import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBar';
 import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
-import styles from './Editor.module.scss';
+
+import classes from './Editor.module.scss';
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -100,7 +101,7 @@ const Editor: React.FC = () => {
                     </NavMenuItem>
                 </NavMenu>
 
-                <div className={styles.editor__paletteContainer}>
+                <div className={classes.editor__paletteContainer}>
                     Palette:
 
                     <NodePalette>

@@ -3,7 +3,7 @@ import React from 'react';
 import {DiagramEngine} from '@projectstorm/react-diagrams';
 import {CanvasWidget} from '@projectstorm/react-canvas-core';
 
-import styles from './DiagramContainer.module.scss';
+import classes from './DiagramContainer.module.scss';
 
 export interface DiagramContainerProps {
     engine: DiagramEngine
@@ -73,9 +73,9 @@ const DiagramContainer: React.FC<DiagramContainerProps & React.HTMLAttributes<HT
     return (
         <div
             ref={canvasWidgetRef}
-            className={styles.diagramContainer}
+            className={classes.diagramContainer}
         >
-            <CanvasWidget className={styles.canvasWidget} engine={engine}/>
+            <CanvasWidget className={classes.canvasWidget} engine={engine}/>
         </div>
     );
 };

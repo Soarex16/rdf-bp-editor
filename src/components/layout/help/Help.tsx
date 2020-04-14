@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './Help.module.scss';
-import {ReactComponent as IconHelp} from '../../../assets/icons/help.svg';
+
 import Modal from '../modal/Modal';
+
+import {ReactComponent as IconHelp} from '../../../assets/icons/help.svg';
+import classes from './Help.module.scss';
 
 const Help: React.FC = () => {
     const [helpVisible, setHelpVisible] = React.useState<boolean>(false);
@@ -22,8 +24,8 @@ const Help: React.FC = () => {
                     </Modal>
                 </div>
             </Modal>
-            <div className={styles.buttonContainer}>
-                <button onClick={toggleHelp} className={styles.buttonHelp}>
+            <div className={classes.buttonContainer}>
+                <button onClick={toggleHelp} className={classes.buttonHelp}>
                     <IconHelp/>
                 </button>
             </div>

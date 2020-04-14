@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {TextInputLabelModel} from './TextInputLabelModel';
 
-import styles from './TextInputLabelWidget.module.scss';
+import classes from './TextInputLabelWidget.module.scss';
 
 export interface FlowAliasLabelWidgetProps {
     model: TextInputLabelModel;
@@ -11,7 +11,7 @@ export const TextInputLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetP
     const [str, setStr] = useState(props.model.value);
 
     return (
-        <div className={styles.label}>
+        <div className={classes.label}>
             <input
                 // https://qna.habr.com/q/222136
                 // мне самому не нравится этот хак, но он
@@ -20,7 +20,7 @@ export const TextInputLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetP
                 style={{
                     width: (str.length + 1) * 8
                 }}
-                className={styles.label__input}
+                className={classes.label__input}
                 type="text"
                 value={str}
                 onChange={event => {
