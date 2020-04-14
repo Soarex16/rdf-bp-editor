@@ -40,7 +40,7 @@ export const NavMenu: React.FC = (props) => {
 
 export const NavMenuItem: React.FC = (props) => {
     return (
-        <a className={classes.navBar__navItem}>
+        <a className={classes.navBar__navItem} href="#">
             {props.children}
         </a>
     );

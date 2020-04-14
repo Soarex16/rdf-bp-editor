@@ -39,7 +39,7 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
         const newVal = ev.target.value.trim();
         setResultSetAlias(newVal);
         props.node.resultSetAlias = newVal;
-    }, []);
+    }, [props.node.resultSetAlias]);
 
     return (
         <div>

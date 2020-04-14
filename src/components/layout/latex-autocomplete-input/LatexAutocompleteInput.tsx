@@ -37,7 +37,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
         setActiveSuggestion(0);
         setShowSuggestions(needSuggest);
         setFilteredSuggestions(filtered);
-    }, [suggestions]);
+    }, [onChange, suggestions]);
 
     const handleSuggestionHover = (event: MouseEvent<HTMLLIElement>) => {
         setActiveSuggestion(event.currentTarget.value);
@@ -54,11 +54,11 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
 
     const handleUpKeyPressed = React.useCallback((mathField: MathField) => {
         setActiveSuggestion(activeSug => activeSug > 0 ? activeSug - 1 : 0);
-    }, [activeSuggestion]);
+    }, []);
 
     const handleDownKeyPressed = React.useCallback((mathField: MathField) => {
         setActiveSuggestion(activeSug => (activeSug + 1) % filteredSuggestions.length);
-    }, [activeSuggestion, filteredSuggestions]);
+    }, [filteredSuggestions]);
 
     let suggestionsListComponent;
     if (showSuggestions && value) {
