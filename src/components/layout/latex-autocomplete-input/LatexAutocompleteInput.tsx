@@ -1,7 +1,7 @@
 import React, {MouseEvent} from 'react';
 import {EditableMathField, MathField, StaticMathField} from 'react-mathquill';
 
-import styles from './LatexAutocompleteInput.module.scss';
+import classes from './LatexAutocompleteInput.module.scss';
 
 export interface LatexAutocompleteInputProps {
     suggestions: string[];
@@ -37,7 +37,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
         setActiveSuggestion(0);
         setShowSuggestions(needSuggest);
         setFilteredSuggestions(filtered);
-    }, [suggestions]);
+    }, [onChange, suggestions]);
 
     const handleSuggestionHover = (event: MouseEvent<HTMLLIElement>) => {
         setActiveSuggestion(event.currentTarget.value);
@@ -50,28 +50,28 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
         setUserInput(suggestion);
 
         setShowSuggestions(false);
-    }, [filteredSuggestions]);
+    }, [getSuggestion, onChange, filteredSuggestions]);
 
     const handleUpKeyPressed = React.useCallback((mathField: MathField) => {
         setActiveSuggestion(activeSug => activeSug > 0 ? activeSug - 1 : 0);
-    }, [activeSuggestion]);
+    }, []);
 
     const handleDownKeyPressed = React.useCallback((mathField: MathField) => {
         setActiveSuggestion(activeSug => (activeSug + 1) % filteredSuggestions.length);
-    }, [activeSuggestion, filteredSuggestions]);
+    }, [filteredSuggestions]);
 
     let suggestionsListComponent;
     if (showSuggestions && value) {
         if (filteredSuggestions.length) {
             suggestionsListComponent = (
-                <ul className={styles.autocomplete__suggestionsList}>
+                <ul className={classes.autocomplete__suggestionsList}>
                     {filteredSuggestions.map((suggestion, i) => (
                         <li
                             value={i}
                             key={suggestion}
                             onClick={handleSuggestionClick}
                             onMouseEnter={handleSuggestionHover}
-                            className={`${styles.autocomplete__suggestionsListItem} ${i === activeSuggestion ? styles.autocomplete__suggestionsListItem_active : ''}`}
+                            className={`${classes.autocomplete__suggestionsListItem} ${i === activeSuggestion ? classes.autocomplete__suggestionsListItem_active : ''}`}
                         >
                             {suggestion}
                             <StaticMathField>
@@ -83,7 +83,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
             );
 
             suggestionsListComponent = (
-                <div className={styles.autocomplete}>
+                <div className={classes.autocomplete}>
                     {suggestionsListComponent}
                 </div>
             );

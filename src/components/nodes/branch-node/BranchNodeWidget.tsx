@@ -6,8 +6,8 @@ import {BranchNodeModel} from './BranchNodeModel';
 import {inPortName, NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
 import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula.svg';
 
-import styles from './BranchNodeWidget.module.scss';
-import nodeStyles from '../node/NodeWidget.module.scss';
+import classes from './BranchNodeWidget.module.scss';
+import nodeClasses from '../node/NodeWidget.module.scss';
 
 export interface BranchNodeWidgetProps {
     node: BranchNodeModel;
@@ -18,8 +18,8 @@ export const BranchNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDiv
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${props.className || ''} ${nodeStyles.node__title_icon_only} ${styles.node__header_theme_branch}`}
-            icon={() => <BranchIcon className={nodeStyles.node__icon}/>}
+            className={`${props.className || ''} ${nodeClasses.node__title_icon_only} ${classes.node__header_theme_branch}`}
+            icon={() => <BranchIcon className={nodeClasses.node__icon}/>}
             selected={selected}
             left={props.left}
             right={props.right}
@@ -37,16 +37,16 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
     return (
         <div>
             <BranchNode
-                className={nodeStyles.node__header_position_center}
+                className={nodeClasses.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 left={() => <Port
-                    className={`${nodeStyles.node__portIn_position_border} ${styles.node__port_theme_branch}`}
+                    className={`${nodeClasses.node__portIn_position_border} ${classes.node__port_theme_branch}`}
                     engine={props.engine}
                     port={props.node.getPort(inPortName)}
                 />}
                 right={() => <Port
-                    className={`${nodeStyles.node__portOut_position_border} ${styles.node__port_theme_branch}`}
+                    className={`${nodeClasses.node__portOut_position_border} ${classes.node__port_theme_branch}`}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}
@@ -54,7 +54,7 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
 
             <NodeContent
                 opened={opened}
-                className={`${nodeStyles.node__content_position_center} ${nodeStyles.node__content_layout_column}`}
+                className={`${nodeClasses.node__content_position_center} ${nodeClasses.node__content_layout_column}`}
             >
                 PLACEHOLDER
                 <br/>

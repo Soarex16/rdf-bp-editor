@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {FormulaEditorLabelModel} from './FormulaEditorLabelModel';
 
-import styles from './FormulaEditorLabelWidget.module.scss';
+import classes from './FormulaEditorLabelWidget.module.scss';
 import LatexAutocompleteInput from '../../layout/latex-autocomplete-input/LatexAutocompleteInput';
+import LabelWidget from '../label/LabelWidget';
 
 export interface FlowAliasLabelWidgetProps {
     model: FormulaEditorLabelModel;
@@ -53,13 +54,13 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
     };
 
     return (
-        <div className={styles.label}>
+        <LabelWidget className={classes.mqLabel}>
             {/*А не приведет ли это к бесконечному циклу?*/}
             <LatexAutocompleteInput
                 suggestions={autocompleteSuggestions}
                 onChange={changeVal}
                 value={str}
             />
-        </div>
+        </LabelWidget>
     );
 };

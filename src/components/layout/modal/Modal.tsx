@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import styles from './Modal.module.scss';
+import classes from './Modal.module.scss';
 import {ReactComponent as CloseIcon} from '../../../assets/icons/close.svg';
 
 export interface ModalProps {
@@ -14,27 +14,27 @@ const Modal: React.FC<ModalProps> = ({title, visible, hide, children, ...props})
     return visible ? ReactDOM.createPortal(
         <div
             role="dialog"
-            className={styles.modal}
+            className={classes.modal}
             onClick={hide}
         >
             <div
-                className={styles.modal__card}
+                className={classes.modal__card}
                 onClick={e => e.stopPropagation()}
             >
                 <button
-                    className={styles.modal__buttonClose}
+                    className={classes.modal__buttonClose}
                     onClick={hide}
                 >
-                    <CloseIcon className={styles.modal__iconClose}/>
+                    <CloseIcon className={classes.modal__iconClose}/>
                 </button>
 
-                <div className={styles.modal__header}>
-                    <span className={styles.modal__title}>
+                <div className={classes.modal__header}>
+                    <span className={classes.modal__title}>
                         {title}
                     </span>
                 </div>
 
-                <div className={styles.modal__body}>
+                <div className={classes.modal__body}>
                     {children}
                 </div>
             </div>

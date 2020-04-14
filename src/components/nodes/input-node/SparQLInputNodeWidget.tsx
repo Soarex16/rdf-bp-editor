@@ -6,8 +6,8 @@ import {SparQLInputNodeModel} from './SparQLInputNodeModel';
 import {NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
 import {ReactComponent as InputIcon} from '../../../assets/icons/database.svg';
 
-import styles from './SparQLInputNodeWidget.module.scss';
-import nodeStyles from '../node/NodeWidget.module.scss';
+import classes from './SparQLInputNodeWidget.module.scss';
+import nodeClasses from '../node/NodeWidget.module.scss';
 
 export interface SparQLInputNodeWidgetProps {
     node: SparQLInputNodeModel;
@@ -18,8 +18,8 @@ export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HT
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${props.className || ''} ${styles.node__header_theme_sparql}`}
-            icon={() => <InputIcon className={nodeStyles.node__icon}/>}
+            className={`${props.className || ''} ${classes.node__header_theme_sparql}`}
+            icon={() => <InputIcon className={nodeClasses.node__icon}/>}
             title="Входные факты"
             selected={selected}
             left={props.left}
@@ -39,16 +39,16 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
         const newVal = ev.target.value.trim();
         setResultSetAlias(newVal);
         props.node.resultSetAlias = newVal;
-    }, []);
+    }, [props.node.resultSetAlias]);
 
     return (
         <div>
             <SparQLInputNode
-                className={nodeStyles.node__header_position_center}
+                className={nodeClasses.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 right={() => <Port
-                    className={`${nodeStyles.node__portOut_position_border} ${styles.node__port_theme_sparql}`}
+                    className={`${nodeClasses.node__portOut_position_border} ${classes.node__port_theme_sparql}`}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}
@@ -56,7 +56,7 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
 
             <NodeContent
                 opened={opened}
-                className={`${nodeStyles.node__content_position_center} ${nodeStyles.node__content_layout_column}`}
+                className={`${nodeClasses.node__content_position_center} ${nodeClasses.node__content_layout_column}`}
             >
                 SPARQL запрос:
                 <textarea/>

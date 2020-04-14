@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Zoom.module.scss';
+import classes from './Zoom.module.scss';
 
 import {ReactComponent as IconPlus} from '../../../assets/icons/plus.svg';
 import {ReactComponent as IconReset} from '../../../assets/icons/zoom-fit.svg';
@@ -13,19 +13,19 @@ export interface ZoomProps {
 
 const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset}) => {
     return (
-        <div className={styles.buttonContainer}>
-            <div className={styles.zoomContainer}>
-                <button onClick={onInc} className={[styles.buttonZoom, styles.buttonInc].join(' ')}>
+        <div className={classes.buttonContainer}>
+            <div className={classes.zoomContainer}>
+                <button onClick={onInc} className={[classes.buttonZoom, classes.buttonInc].join(' ')}>
                     <IconPlus/>
                 </button>
 
-                <button onClick={onDec} className={[styles.buttonZoom, styles.buttonDec].join(' ')}>
+                <button onClick={onDec} className={[classes.buttonZoom, classes.buttonDec].join(' ')}>
                     <IconMinus/>
                 </button>
             </div>
 
             <button
-                className={[styles.buttonZoom, styles.buttonResetZoom].join(' ')}
+                className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
                 onClick={onReset}
             >
                 <IconReset/>

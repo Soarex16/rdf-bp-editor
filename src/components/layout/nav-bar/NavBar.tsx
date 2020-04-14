@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './NavigationBar.module.scss';
+import classes from './NavigationBar.module.scss';
 
 import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
 
@@ -9,7 +9,7 @@ import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
 const NavBar: React.FC = ({children}) => {
     return (
         <div
-            className={`${styles.navBar} ${styles.navBar_position_top}`}
+            className={`${classes.navBar} ${classes.navBar_position_top}`}
         >
             {children}
         </div>
@@ -22,8 +22,8 @@ export interface NavBarBrandProps {
 
 export const NavBarBrand: React.FC<NavBarBrandProps & React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
     return (
-        <a className={styles.navBar__brand} title={props.title} href={props.href}>
-            <LogoIcon className={styles.navBar__brandIcon}/>
+        <a className={classes.navBar__brand} title={props.title} href={props.href}>
+            <LogoIcon className={classes.navBar__brandIcon}/>
 
             {props.brand}
         </a>
@@ -32,7 +32,7 @@ export const NavBarBrand: React.FC<NavBarBrandProps & React.AnchorHTMLAttributes
 
 export const NavMenu: React.FC = (props) => {
     return (
-        <nav className={styles.navBar__navMenu}>
+        <nav className={classes.navBar__navMenu}>
             {props.children}
         </nav>
     );
@@ -40,7 +40,7 @@ export const NavMenu: React.FC = (props) => {
 
 export const NavMenuItem: React.FC = (props) => {
     return (
-        <a className={styles.navBar__navItem}>
+        <a className={classes.navBar__navItem} href="/">
             {props.children}
         </a>
     );

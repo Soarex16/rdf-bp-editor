@@ -1,15 +1,4 @@
 .label {
-  color: var(--flow-alias-label-text-color);
-  background: var(--flow-alias-label-background);
-
-  border: solid 2px var(--flow-alias-border-color);
-  border-radius: 5px;
-
-  font-size: 13px;
-  font-family: sans-serif;
-
-  user-select: none;
-  pointer-events: auto;
 }
 
 .label__input {
@@ -18,16 +7,4 @@
   background: transparent;
   border: none;
   color: var(--flow-alias-label-text-color);;
-}
-
-:global .theme-light {
-  --flow-alias-label-background: rgba(0, 0, 0, 0.9);
-  --flow-alias-label-text-color: #ffffff;
-  --flow-alias-border-color: #484848;
-}
-
-:global .theme-dark {
-  --flow-alias-label-background: rgba(250, 250, 250, 0.9);
-  --flow-alias-label-text-color: #000000;
-  --flow-alias-border-color: #ffffff
 }
