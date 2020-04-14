@@ -1,8 +1,6 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {DiagramEngine, PortWidget} from '@projectstorm/react-diagrams-core';
 import {NodeModel, PortModel} from '@projectstorm/react-diagrams';
-
-import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula.svg';
 import classes from './NodeWidget.module.scss';
 
 export interface NodeWidgetProps {
@@ -14,7 +12,7 @@ export const inPortName = 'in';
 export const outPortName = 'out';
 
 // just for demo (может в тесты вынести)
-const NodeWidget: React.FunctionComponent<NodeWidgetProps> = (props) => {
+/*const NodeWidget: React.FunctionComponent<NodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
@@ -27,16 +25,16 @@ const NodeWidget: React.FunctionComponent<NodeWidgetProps> = (props) => {
                 />
             </div>
 
-            {/*
+            {/!*
                 порты располагаются в виджете, потому что не являются обязательным элементом ноды
                 например, если мы рендерим ноду в палитре, то ей не надо иметь NodeContent и порты
-            */}
+            *!/}
             <NodeContent opened={opened}>
                 PLACEHOLDER
             </NodeContent>
         </div>
     );
-};
+};*/
 
 export interface PortProps {
     engine: DiagramEngine;
