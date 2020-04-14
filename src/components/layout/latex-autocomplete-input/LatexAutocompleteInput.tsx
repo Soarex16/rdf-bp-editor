@@ -50,7 +50,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
         setUserInput(suggestion);
 
         setShowSuggestions(false);
-    }, [filteredSuggestions]);
+    }, [getSuggestion, onChange, filteredSuggestions]);
 
     const handleUpKeyPressed = React.useCallback((mathField: MathField) => {
         setActiveSuggestion(activeSug => activeSug > 0 ? activeSug - 1 : 0);
