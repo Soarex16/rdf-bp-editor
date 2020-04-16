@@ -4,6 +4,7 @@ import classes from './Zoom.module.scss';
 import {ReactComponent as IconPlus} from '../../../assets/icons/plus.svg';
 import {ReactComponent as IconReset} from '../../../assets/icons/zoom-fit.svg';
 import {ReactComponent as IconMinus} from '../../../assets/icons/minus.svg';
+import EditorButton from '../editor-button/EditorButton';
 
 export interface ZoomProps {
     onInc: React.MouseEventHandler<HTMLButtonElement>;
@@ -15,21 +16,21 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset}) => {
     return (
         <div className={classes.buttonContainer}>
             <div className={classes.zoomContainer}>
-                <button onClick={onInc} className={[classes.buttonZoom, classes.buttonInc].join(' ')}>
+                <EditorButton onClick={onInc} className={classes.buttonInc}>
                     <IconPlus/>
-                </button>
+                </EditorButton>
 
-                <button onClick={onDec} className={[classes.buttonZoom, classes.buttonDec].join(' ')}>
+                <EditorButton onClick={onDec} className={classes.buttonDec}>
                     <IconMinus/>
-                </button>
+                </EditorButton>
             </div>
 
-            <button
+            <EditorButton
                 className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
                 onClick={onReset}
             >
                 <IconReset/>
-            </button>
+            </EditorButton>
         </div>
     );
 };

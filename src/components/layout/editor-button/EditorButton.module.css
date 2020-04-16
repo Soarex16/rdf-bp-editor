@@ -14,15 +14,19 @@
     justify-content: center;
     align-items: center;
 }
+
 .editorButton:hover {
     background: var(--editor-button-hovered);
 }
+
 .editorButton:hover {
     box-shadow: 0 0.2rem 0.95rem -1px #9f9f9f;
 }
+
 .editorButton:active {
     transform: scale(0.97);
 }
+
 .editorButton svg {
     user-select: none;
     -moz-user-select: none;
@@ -47,4 +51,4 @@
     --editor-button-icon: #ffffff;
 }
 
-/*# sourceMappingURL=button.module.css.map */
+/*# sourceMappingURL=EditorButton.module.css.map */

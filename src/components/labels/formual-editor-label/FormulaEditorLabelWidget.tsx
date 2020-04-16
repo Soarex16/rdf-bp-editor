@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormulaEditorLabelModel} from './FormulaEditorLabelModel';
 
 import classes from './FormulaEditorLabelWidget.module.scss';
-import LatexAutocompleteInput from '../../layout/latex-autocomplete-input/LatexAutocompleteInput';
+import LatexAutocompleteInput from './LatexAutocompleteInput';
 import LabelWidget from '../label/LabelWidget';
 
 export interface FlowAliasLabelWidgetProps {

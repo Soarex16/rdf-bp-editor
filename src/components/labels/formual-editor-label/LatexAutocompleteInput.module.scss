@@ -11,7 +11,7 @@
     width: 0;
     height: 0;
     border: 7px solid transparent;
-    border-right-color: var(--flow-alias-border-color);
+    border-right-color: var(--label-border-color);
     border-left: 0;
     margin-left: -6px;
     margin-top: 5px;
@@ -31,9 +31,9 @@
   position: absolute;
   left: 110%;
   top: 0;
-  background: var(--flow-alias-label-background);
+  background: var(--label-background-color);
   border-radius: 5px;
-  border: solid 2px var(--flow-alias-border-color);
+  border: solid 2px var(--label-background-color);
 
   &::-webkit-scrollbar {
     display: none;

@@ -1,5 +1,5 @@
 import {DefaultPortModel, PortModel, PortModelGenerics} from '@projectstorm/react-diagrams';
-import {FlowLinkModel} from './FlowLinkModel';
+import {FlowLinkModel} from '../../links/flow-link/FlowLinkModel';
 import {DefaultPortModelOptions} from '@projectstorm/react-diagrams-defaults';
 import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelModel';
 

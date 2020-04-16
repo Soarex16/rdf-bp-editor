@@ -9,10 +9,6 @@ export interface DiagramContainerProps {
     engine: DiagramEngine
 }
 
-// TODO: запретить подключать выход ноды к ее входу
-
-// TODO: попробовать вынести эвент в отдельный класс как тут
-//  https://github.com/projectstorm/react-diagrams/blob/master/packages/diagrams-demo-gallery/demos/demo-custom-action/index.tsx
 const DiagramContainer: React.FC<DiagramContainerProps & React.HTMLAttributes<HTMLDivElement>> = ({engine}) => {
     const canvasWidgetRef = React.createRef<HTMLDivElement>();
 

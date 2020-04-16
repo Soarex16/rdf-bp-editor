@@ -1,7 +1,7 @@
 import {NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
 import {outPortName} from '../node/NodeWidget';
-import {FlowPortModel} from '../../links/flow-link/FlowPortModel';
+import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 
 export const sparQLInputNodeType: string = 'sparql-input-node';
 
