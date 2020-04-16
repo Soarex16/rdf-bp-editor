@@ -1,5 +1,5 @@
 import {DefaultPortModel, PortModel, PortModelGenerics} from '@projectstorm/react-diagrams';
-import {BranchLinkModel} from './BranchLinkModel';
+import {BranchLinkModel} from '../../links/branch-link/BranchLinkModel';
 import {DefaultPortModelOptions} from '@projectstorm/react-diagrams-defaults';
 import {FormulaEditorLabelModel} from '../../labels/formual-editor-label/FormulaEditorLabelModel';
 import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelModel';

@@ -13,10 +13,6 @@
   margin: 20px;
 }
 
-.buttonZoom {
-  composes: editorButton from '../button/button.module.scss';
-}
-
 .zoomContainer {
   display: flex;
   flex-direction: column;

@@ -1,8 +1,8 @@
 import {NodeModel} from '@projectstorm/react-diagrams';
 import {BaseModelOptions, DeserializeEvent} from '@projectstorm/react-canvas-core';
 import {inPortName, outPortName} from '../node/NodeWidget';
-import {BranchPortModel} from '../../links/branch-link/BranchPortModel';
-import {FlowPortModel} from '../../links/flow-link/FlowPortModel';
+import {BranchPortModel} from '../../ports/branch-port/BranchPortModel';
+import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 
 export const branchNodeNodeType: string = 'branch-node';
 

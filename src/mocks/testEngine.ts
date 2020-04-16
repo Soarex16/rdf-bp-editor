@@ -8,10 +8,10 @@ import {BranchNodeFactory} from '../components/nodes/branch-node/BranchNodeFacto
 import {BranchNodeModel} from '../components/nodes/branch-node/BranchNodeModel';
 import {FormulaEditorLabelFactory} from '../components/labels/formual-editor-label/FormulaEditorLabelFactory';
 import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
-import {FlowPortFactory} from '../components/links/flow-link/FlowPortFactory';
+import {FlowPortFactory} from '../components/ports/flow-port/FlowPortFactory';
 import {CopyPasteItemsAction} from '../components/editor/actions/CopyPasteItemsAction';
 import {BranchLinkFactory} from '../components/links/branch-link/BranchLinkFactory';
-import {BranchPortFactory} from '../components/links/branch-link/BranchPortFactory';
+import {BranchPortFactory} from '../components/ports/branch-port/BranchPortFactory';
 import {TextInputLabelFactory} from '../components/labels/text-input-label/TextInputLabelFactory';
 import {SelectAllItemsAction} from '../components/editor/actions/SelectAllItemsAction';
 

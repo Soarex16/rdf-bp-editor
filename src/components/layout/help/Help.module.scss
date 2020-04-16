@@ -9,5 +9,5 @@
 }
 
 .buttonHelp {
-  composes: editorButton from '../button/button.module.scss';
+  composes: editorButton from '../editor-button/EditorButton.module.scss';
 }
