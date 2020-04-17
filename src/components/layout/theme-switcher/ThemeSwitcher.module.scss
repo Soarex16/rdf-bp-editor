@@ -10,4 +10,5 @@
 
 .buttonThemeSwitcher {
   composes: editorButton from '../editor-button/EditorButton.module.scss';
+  composes: editorButton_round from '../editor-button/EditorButton.module.scss';
 }
