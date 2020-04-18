@@ -1,0 +1,123 @@
+.dropdown {
+  position: relative;
+
+  &:hover .dropdown__content {
+    display: flex;
+  }
+
+  &:hover .dropdown__title {
+    color: var(--nav-item-hover-color);
+    border-color: #0091ea;
+    background: var(--nav-item-hover-background-color);
+  }
+
+  &:hover > .dropdown__title > svg {
+    fill: var(--nav-item-hover-color);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    margin-top: -0.5rem;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+.dropdown__title {
+  height: 100%;
+
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+
+  background: transparent;
+
+  & > svg {
+    fill: var(--nav-item-color);
+  }
+}
+
+.dropdown__content {
+  box-sizing: border-box;
+
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  animation: slide-up 0.2s ease-in-out;
+
+  border: solid 2px var(--node-content-border-color);
+  border-radius: 4px;
+
+  box-shadow: 0 0.2rem 0.95rem -7px var(--editor-button-shadow)
+}
+
+.dropdown__content:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 0.6em solid transparent;
+  border-bottom-color: var(--node-content-border-color);
+  border-top: 0;
+  margin-left: -0.6em;
+  margin-top: calc(-0.6em - 2px);
+}
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+
+  border: none;
+  outline: none;
+
+  padding: 0.75rem 1rem;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+  text-align: left;
+
+  color: var(--nav-item-color);
+  background: var(--node-content-background-color);
+
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--nav-item-hover-color);
+    background: var(--nav-item-hover-background-color);
+
+    &:hover > svg {
+      fill: var(--nav-item-hover-color);
+    }
+  }
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  & > svg {
+    width: 1.2em;
+    fill: var(--nav-item-color);
+  }
+}

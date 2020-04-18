@@ -20,6 +20,11 @@ import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBa
 import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
 
 import classes from './Editor.module.scss';
+import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
+
+import {ReactComponent as IconNew} from '../../assets/icons/file-plus.svg';
+import {ReactComponent as IconUpload} from '../../assets/icons/upload.svg';
+import {ReactComponent as IconDownload} from '../../assets/icons/download.svg';
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -70,7 +75,14 @@ const Editor: React.FC = () => {
         input.click();
     };
 
-    const repaint = () => engine.repaintCanvas();
+    const clearDiagram = () => {
+        const clear = window.confirm('Вы действительно хотите продолжить без сохранения? Данное действие необратимо');
+
+        if (clear) {
+            engine.getModel().getModels().forEach(m => m.remove());
+            engine.repaintCanvas();
+        }
+    };
 
     return (
         <ThemeProvider themes={themes}>
@@ -88,6 +100,20 @@ const Editor: React.FC = () => {
                 <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
 
                 <NavMenu>
+                    <Dropdown title="Project">
+                        <DropdownItem onClick={clearDiagram}>
+                            <IconNew/>New
+                        </DropdownItem>
+
+                        <DropdownItem onClick={saveDiagram}>
+                            <IconDownload/>Save
+                        </DropdownItem>
+
+                        <DropdownItem onClick={loadDiagram}>
+                            <IconUpload/> Load
+                        </DropdownItem>
+                    </Dropdown>
+
                     <NavMenuItem>
                         Projects
                     </NavMenuItem>
@@ -130,19 +156,6 @@ const Editor: React.FC = () => {
                     name="USR"
                 />
             </NavBar>
-
-            <div style={{
-                position: 'absolute',
-                bottom: '0',
-                right: '50%',
-                zIndex: 1,
-                background: 'var(--node-content-background-color)',
-                border: 'solid 2px var(--node-content-border-color)'
-            }}>
-                <button onClick={saveDiagram}>Save</button>
-                <button onClick={loadDiagram}>Load</button>
-                <button onClick={repaint}>Repaint</button>
-            </div>
 
             <NodePaletteDropReceiver
                 engine={engine}

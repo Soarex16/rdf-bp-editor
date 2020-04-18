@@ -4,10 +4,51 @@
   bottom: 0;
 
   z-index: 4;
-
   margin: 20px;
 }
 
 .buttonHelp {
   composes: editorButton from '../editor-button/EditorButton.module.scss';
+  composes: editorButton_round from '../editor-button/EditorButton.module.scss';
+}
+
+.help__helpEntry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.help__actionShortcut {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-grow: 10;
+  margin-right: 10%;
+}
+
+.help__action {
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    width: 1.5em;
+    height: 1.5em;
+    fill: var(--font-color);
+  }
+}
+
+.help__actionName {
+  font-size: 0.7rem;
+  max-width: 50%;
+}
+
+.help__shortcutDescription {
+  margin-left: 10%;
+  //padding-left: 10%;
+  text-align: right;
 }

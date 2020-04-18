@@ -85,12 +85,6 @@ processingNode3.setPosition(700, 350);
 const branchNode1 = new BranchNodeModel();
 branchNode1.setPosition(500, 250);
 
-engine.registerListener({
-    'mousemove': ev => {
-        console.log(ev);
-    }
-});
-
 // install the model into the engine
 engine.setModel(model);
 

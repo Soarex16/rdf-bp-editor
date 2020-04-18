@@ -19,17 +19,18 @@
 }
 
 .buttonInc {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 
   margin-bottom: 1px;
 }
 
 .buttonDec {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
 
 .buttonResetZoom {
   margin-top: 15px;
+  composes: editorButton_round from '../editor-button/EditorButton.module.scss';
 }
