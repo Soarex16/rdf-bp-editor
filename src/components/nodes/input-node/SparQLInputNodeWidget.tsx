@@ -41,6 +41,8 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
         props.node.resultSetAlias = newVal;
     }, [props.node.resultSetAlias]);
 
+    const [queryString, setQueryString] = useState<string>('');
+
     return (
         <div>
             <SparQLInputNode
@@ -58,11 +60,23 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
                 opened={opened}
                 className={`${nodeClasses.node__content_position_center} ${nodeClasses.node__content_layout_column}`}
             >
-                SPARQL запрос:
-                <textarea/>
+                <div className={classes.sparqlNode__inputLabel}>SPARQL запрос</div>
+                <textarea
+                    className={classes.sparqlNode__input}
+                    placeholder={'SELECT...'}
+                    value={queryString}
+                    onChange={(ev) => setQueryString(ev.target.value)}
+                />
 
-                Result set alias:
-                <input value={resultSetAlias} onChange={handleAliasChange}/>
+                <span className={classes.sparqlNode__inputLabel}>
+                    Result set alias:
+                </span>
+                <input
+                    className={classes.sparqlNode__input}
+                    value={resultSetAlias}
+                    onChange={handleAliasChange}
+                    placeholder={'Alias'}
+                />
             </NodeContent>
         </div>
     );

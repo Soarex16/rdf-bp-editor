@@ -15,6 +15,31 @@
   }
 }
 
+.sparqlNode__inputLabel {
+  width: 100%;
+  margin-top: 0.75rem;
+
+  font-weight: 300;
+  font-size: 0.85rem;
+}
+
+.sparqlNode__input {
+  outline: none;
+
+  padding: 2px;
+  border: solid 1.5px;
+  border-color: var(--node-content-border-color);
+  background: var(--node-content-background-color);
+  color: var(--font-color);
+  border-radius: 3px;
+
+  transition: border-color 0.15s ease-in-out;
+
+  &:focus {
+    border-color: var(--sparql-node-border-color);
+  }
+}
+
 :global(.theme-light) {
   --sparql-node-background-color: #0091ea;
   --sparql-node-border-color: #64c1ff;
