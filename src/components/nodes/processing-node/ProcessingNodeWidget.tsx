@@ -63,8 +63,6 @@ export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNode
                     <option>Отправка на доработку</option>
                     <option>Уточнение данных</option>
                 </select>
-
-                <textarea/>
             </NodeContent>
         </div>
     );
