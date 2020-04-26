@@ -46,6 +46,10 @@ const Editor: React.FC = () => {
         engine.repaintCanvas();
     };
 
+    const zoomToFit = () => {
+        engine.zoomToFit();
+    };
+
     const saveDiagram = () => {
         let data = engine.getModel().serialize();
 
@@ -92,6 +96,7 @@ const Editor: React.FC = () => {
                 onDec={decreaseScale}
                 onReset={resetScale}
                 onInc={increaseScale}
+                onLocate={zoomToFit}
             />
 
             <Help/>
