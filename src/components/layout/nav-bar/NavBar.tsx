@@ -4,8 +4,6 @@ import classes from './NavigationBar.module.scss';
 
 import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
 
-//TODO: DRY - вынести лишние сущности в отдельные классы
-
 const NavBar: React.FC = ({children}) => {
     return (
         <div

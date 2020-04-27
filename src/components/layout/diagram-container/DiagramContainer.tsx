@@ -13,8 +13,8 @@ const DiagramContainer: React.FC<DiagramContainerProps & React.HTMLAttributes<HT
     const canvasWidgetRef = React.createRef<HTMLDivElement>();
 
     React.useEffect(() => {
-        // 32 - background-size value in DiagramContainer.module.scss
         const zoomMultiplier = engine.getModel().getZoomLevel() * 5 * 0.1;
+        const newGridSize = engine.getModel().getZoomLevel() / 100 / 10 * 0.7;
 
         const minZoom = 75;
         const maxZoom = 200;
@@ -43,6 +43,8 @@ const DiagramContainer: React.FC<DiagramContainerProps & React.HTMLAttributes<HT
             const newZoom: number = event.zoom / zoomMultiplier;
 
             requestAnimationFrame(() => {
+                canvasWidgetRef.current.style.background = `radial-gradient(circle, var(--canvas-dot-color) ${newGridSize}rem, transparent ${newGridSize}rem)`;
+                canvasWidgetRef.current.style.backgroundColor = `var(--canvas-background)`;
                 canvasWidgetRef.current.style.backgroundSize = `${newZoom}rem ${newZoom}rem`;
             });
         };

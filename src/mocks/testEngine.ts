@@ -33,7 +33,6 @@ if (state instanceof DefaultDiagramState) {
 // limit number of points per link
 engine.setMaxNumberPointsPerLink(0);
 
-// TODO: регистрацию надо вынести в одно место, чтобы сразу и в палитру добавлялось и сюда
 // register factories
 engine.getNodeFactories().registerFactory(new SparQLInputNodeFactory());
 engine.getNodeFactories().registerFactory(new ProcessingNodeFactory());

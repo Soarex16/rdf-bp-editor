@@ -18,7 +18,6 @@ const Help: React.FC = () => {
 
     const toggleHelp = React.useCallback(() => setHelpVisible(!helpVisible), [helpVisible]);
 
-    const [innerModal, setInnerOpened] = React.useState<boolean>(false);
     return (
         <>
             <Modal visible={helpVisible} hide={toggleHelp} title={'Подсказки навигации'}>
