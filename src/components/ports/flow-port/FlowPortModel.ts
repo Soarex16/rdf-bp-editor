@@ -6,14 +6,11 @@ import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelM
 export const flowPortType: string = 'flow-port';
 
 export class FlowPortModel extends DefaultPortModel {
-    in: boolean;
-
     constructor(options: DefaultPortModelOptions) {
         super({
             ...options,
             type: flowPortType
         });
-        this.in = options.in;
     }
 
     createLinkModel(): FlowLinkModel {
@@ -29,7 +26,7 @@ export class FlowPortModel extends DefaultPortModel {
     // запрещаем более одной связи между каждой парой портов
     canLinkToPort(port: PortModel<PortModelGenerics>): boolean {
         // из конца в начало не соединяем
-        if (this.in) {
+        if (this.options.in) {
             return false;
         }
 

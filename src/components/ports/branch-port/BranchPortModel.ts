@@ -7,15 +7,12 @@ import {TextInputLabelModel} from '../../labels/text-input-label/TextInputLabelM
 export const branchPortType: string = 'branch-port';
 
 export class BranchPortModel extends DefaultPortModel {
-    in: boolean;
-
-    constructor(options: DefaultPortModelOptions) {
-        super({
-            ...options,
-            type: branchPortType
-        });
-        this.in = options.in;
-    }
+   constructor(options: DefaultPortModelOptions) {
+       super({
+           ...options,
+           type: branchPortType
+       });
+   }
 
     createLinkModel(): BranchLinkModel {
         const model = new BranchLinkModel();
@@ -35,7 +32,7 @@ export class BranchPortModel extends DefaultPortModel {
     // не делаем так у branch port, потому что у него может быть несколько условий для пары портов
     canLinkToPort(port: PortModel<PortModelGenerics>): boolean {
         // из конца в начало не соединяем
-        if (this.in) {
+        if (this.options.in) {
             return false;
         }
 
