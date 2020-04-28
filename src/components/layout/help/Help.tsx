@@ -38,14 +38,38 @@ enum InputActionTypes {
     KeyShift = 'shift',
     KeyCtrl = 'ctrl',
     KeyDel = 'del',
+
+    KeyA = 'a',
+
     Mouse = 'mouse',
     MouseRight = 'mouse-right',
     MouseLeftDbl = 'mouse-left-dbl',
     MouseRightDbl = 'mouse-right-dbl',
     MouseLeft = 'mouse-left',
     MouseMiddle = 'mouse-middle',
-    MouseScroll = 'mouse-scroll'
+    MouseScroll = 'mouse-scroll',
 }
+
+interface KeyboardButtonIconProps {
+    text: string;
+}
+
+const KeyboardButtonIcon: React.FC<KeyboardButtonIconProps> = ({text}) => {
+    const maskId = `text-cutoff-${text}`;
+
+    return (
+        <svg viewBox="0 0 30 30" className={classes.keyboardIcon}>
+            <defs>
+                <mask id={maskId}>
+                    <rect x={4} y={4} width={22} height={22} rx={2} ry={2} fill="white"/>
+                    <text x={16} y={20} fill="#000">{text.substring(0, 1)}</text>
+                </mask>
+            </defs>
+
+            <rect width="100%" height="100%" mask={`url(#${maskId})`}/>
+        </svg>
+    );
+};
 
 const buttonHelpComponents: { [action: string]: { icon: ReactElement, actionName: string } } = {
     [InputActionTypes.MouseMiddle]: {
@@ -86,6 +110,10 @@ const buttonHelpComponents: { [action: string]: { icon: ReactElement, actionName
         icon: <IconKeyDel/>,
         actionName: 'del'
     },
+    [InputActionTypes.KeyA]: {
+        icon: <KeyboardButtonIcon text={'a'}/>,
+        actionName: 'a'
+    }
 };
 
 const helpData = [
@@ -102,6 +130,10 @@ const helpData = [
         description: 'выделить ноды'
     },
     {
+        keys: [InputActionTypes.KeyShift, InputActionTypes.KeyCtrl, InputActionTypes.KeyA],
+        description: 'выделить все объекты'
+    },
+    {
         keys: [InputActionTypes.KeyDel],
         description: 'удалить выделенные объекты'
     },
@@ -111,7 +143,7 @@ const helpData = [
     }
 ];
 
-const HelpWindow: React.FC = (props) => {
+const HelpWindow: React.FC = () => {
 
     return (
         <div>
