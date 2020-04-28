@@ -23,10 +23,15 @@ export const Dropdown: React.FC<DropdownProps & React.HTMLAttributes<HTMLDivElem
     );
 };
 
-export const DropdownItem: React.FC<React.HTMLAttributes<HTMLButtonElement>> = (props) => {
+export interface DropdownItemProps {
+    title?: string;
+}
+
+export const DropdownItem: React.FC<DropdownItemProps & React.HTMLAttributes<HTMLButtonElement>> = (props) => {
     return (
         <button onClick={props.onClick} className={classes.dropdown__item}>
             {props.children}
+            <span className={classes.dropdown__itemTitle}>{props.title}</span>
         </button>
     )
 };
