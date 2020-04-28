@@ -12,6 +12,10 @@
   composes: editorButton_round from '../editor-button/EditorButton.module.scss';
 }
 
+.keyboardIcon {
+  font-weight: 400;
+}
+
 .help__helpEntry {
   display: flex;
   justify-content: space-between;
@@ -19,7 +23,7 @@
 
   width: 100%;
   padding: 0.5rem 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .help__actionShortcut {
@@ -36,19 +40,18 @@
   align-items: center;
 
   & > svg {
-    width: 1.5em;
-    height: 1.5em;
     fill: var(--font-color);
+    width: 2em;
+    height: 2em;
   }
 }
 
 .help__actionName {
-  font-size: 0.7rem;
+  font-size: 1rem;
   max-width: 50%;
 }
 
 .help__shortcutDescription {
   margin-left: 10%;
-  //padding-left: 10%;
   text-align: right;
 }
