@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {FormulaEditorLabelModel} from './FormulaEditorLabelModel';
 
 import classes from './FormulaEditorLabelWidget.module.scss';
-import LatexAutocompleteInput from './LatexAutocompleteInput';
 import LabelWidget from '../label/LabelWidget';
+import {EditableMathField} from 'react-mathquill';
 
 export interface FlowAliasLabelWidgetProps {
     model: FormulaEditorLabelModel;
@@ -56,10 +56,9 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
     return (
         <LabelWidget className={classes.mqLabel}>
             {/*А не приведет ли это к бесконечному циклу?*/}
-            <LatexAutocompleteInput
-                suggestions={autocompleteSuggestions}
-                onChange={changeVal}
-                value={str}
+            <EditableMathField
+                latex={str}
+                onChange={(mathField) => changeVal(mathField.latex())}
             />
         </LabelWidget>
     );
