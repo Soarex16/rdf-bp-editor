@@ -105,30 +105,30 @@ const Editor: React.FC = () => {
                 <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
 
                 <NavMenu>
-                    <Dropdown title="Project">
-                        <DropdownItem onClick={clearDiagram}>
-                            <IconNew/>New
+                    <Dropdown title="Проект">
+                        <DropdownItem onClick={clearDiagram} title="Новый проект">
+                            <IconNew/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={saveDiagram}>
-                            <IconDownload/>Save
+                        <DropdownItem onClick={saveDiagram} title="Сохранить копию на диск">
+                            <IconDownload/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={loadDiagram}>
-                            <IconUpload/> Load
+                        <DropdownItem onClick={loadDiagram} title="Загрузить проект">
+                            <IconUpload/>
                         </DropdownItem>
                     </Dropdown>
 
                     <NavMenuItem>
-                        Projects
+                        Проекты
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Operations
+                        Активные процессы
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Data
+                        Данные
                     </NavMenuItem>
                 </NavMenu>
 
