@@ -1,0 +1,14 @@
+.buttonContainer {
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+
+  z-index: 4;
+
+  margin: 20px;
+}
+
+.buttonLangSwitcher {
+  composes: editorButton from '../editor-button/EditorButton.module.scss';
+  composes: editorButton_round from '../editor-button/EditorButton.module.scss';
+}

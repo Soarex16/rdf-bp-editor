@@ -7,6 +7,7 @@ import {ReactComponent as IconMinus} from '../../../assets/icons/minus.svg';
 import {ReactComponent as IconZoomToFit} from '../../../assets/icons/location.svg';
 
 import EditorButton from '../editor-button/EditorButton';
+import {useTranslation} from 'react-i18next';
 
 export interface ZoomProps {
     onInc: React.MouseEventHandler<HTMLButtonElement>;
@@ -16,14 +17,16 @@ export interface ZoomProps {
 }
 
 const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset, onLocate}) => {
+    const [t, i18n] = useTranslation();
+
     return (
         <div className={classes.buttonContainer}>
             <div className={classes.zoomContainer}>
-                <EditorButton onClick={onInc} className={classes.buttonInc} title="Приблизить">
+                <EditorButton onClick={onInc} className={classes.buttonInc} title={t('editor.buttons.zoom.in')}>
                     <IconPlus/>
                 </EditorButton>
 
-                <EditorButton onClick={onDec} className={classes.buttonDec} title="Отдалить">
+                <EditorButton onClick={onDec} className={classes.buttonDec} title={t('editor.buttons.zoom.out')}>
                     <IconMinus/>
                 </EditorButton>
             </div>
@@ -31,7 +34,7 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset, onLocate}) => {
             <EditorButton
                 className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
                 onClick={onReset}
-                title="Сбросить масштаб"
+                title={t('editor.buttons.zoom.reset')}
             >
                 <IconReset/>
             </EditorButton>
@@ -40,7 +43,7 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset, onLocate}) => {
             <EditorButton
                 className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
                 onClick={onLocate}
-                title="Найти диаграмму"
+                title={t('editor.buttons.zoom.locate')}
             >
                 <IconZoomToFit/>
             </EditorButton>

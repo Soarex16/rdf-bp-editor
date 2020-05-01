@@ -25,8 +25,9 @@ const Help: React.FC = () => {
                     <HelpWindow/>
                 </div>
             </Modal>
+
             <div className={classes.buttonContainer}>
-                <button onClick={toggleHelp} className={classes.buttonHelp}>
+                <button onClick={toggleHelp} className={classes.buttonHelp} title={'Подсказки навигации'}>
                     <IconHelp/>
                 </button>
             </div>

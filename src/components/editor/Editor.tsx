@@ -25,11 +25,15 @@ import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
 import {ReactComponent as IconNew} from '../../assets/icons/file-plus.svg';
 import {ReactComponent as IconUpload} from '../../assets/icons/upload.svg';
 import {ReactComponent as IconDownload} from '../../assets/icons/download.svg';
+import {useTranslation} from 'react-i18next';
+import LanguageSwitcher from '../layout/lang-switcher/LanguageSwitcher';
 
 const themes = ['theme-light', 'theme-dark'];
 
 const Editor: React.FC = () => {
     const engine: DiagramEngine = mockEngine;
+
+    const [t, i18n] = useTranslation();
 
     const increaseScale = () => {
         engine.getModel().setZoomLevel(engine.getModel().getZoomLevel() + 10);
@@ -90,6 +94,8 @@ const Editor: React.FC = () => {
 
     return (
         <ThemeProvider themes={themes}>
+            <LanguageSwitcher/>
+
             <ThemeSwitcher/>
 
             <Zoom
@@ -102,38 +108,38 @@ const Editor: React.FC = () => {
             <Help/>
 
             <NavBar>
-                <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
+                <NavBarBrand brand="FDTFE" title={t('editor.appName')}/>
 
                 <NavMenu>
-                    <Dropdown title="Проект">
-                        <DropdownItem onClick={clearDiagram} title="Новый проект">
+                    <Dropdown title={t('editor.navMenu.currentProject')}>
+                        <DropdownItem onClick={clearDiagram} title={t('editor.navMenu.project.new')}>
                             <IconNew/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={saveDiagram} title="Сохранить копию на диск">
+                        <DropdownItem onClick={saveDiagram} title={t('editor.navMenu.project.save')}>
                             <IconDownload/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={loadDiagram} title="Загрузить проект">
+                        <DropdownItem onClick={loadDiagram} title={t('editor.navMenu.project.load')}>
                             <IconUpload/>
                         </DropdownItem>
                     </Dropdown>
 
                     <NavMenuItem>
-                        Проекты
+                        {t('editor.navMenu.projects')}
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Активные процессы
+                        {t('editor.navMenu.processes')}
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Данные
+                        {t('editor.navMenu.data')}
                     </NavMenuItem>
                 </NavMenu>
 
                 <div className={classes.editor__paletteContainer}>
-                    Palette:
+                    {t('editor.palette.title')}:
 
                     <NodePalette>
                         <NodePaletteItem

@@ -1,0 +1,32 @@
+{
+  "editor": {
+    "appName": "Formalized Data Transformation Flow Editor",
+    "navMenu": {
+      "project": {
+        "new": "New project",
+        "save": "Save project to disk",
+        "load": "Load from disk"
+      },
+      "currentProject": "Project",
+      "projects": "My projects",
+      "processes": "Active processes",
+      "data": "Data"
+    },
+    "buttons": {
+      "langSwitcher": "Change language",
+      "help": "Navigation tips",
+      "themeSwitcher": "Change theme",
+      "zoom": {
+        "in": "Zoom in",
+        "out": "Zoom out",
+        "reset": "Reset zoom",
+        "locate": "Find diagram"
+      }
+    },
+    "palette": {
+      "title": "Palette"
+    },
+    "help": {
+    }
+  }
+}
