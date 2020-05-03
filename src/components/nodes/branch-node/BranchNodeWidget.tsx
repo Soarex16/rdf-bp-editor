@@ -8,6 +8,7 @@ import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula
 
 import classes from './BranchNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';
+import clsx from 'clsx';
 
 export interface BranchNodeWidgetProps {
     node: BranchNodeModel;
@@ -18,7 +19,7 @@ export const BranchNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDiv
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${props.className || ''} ${nodeClasses.node__title_icon_only} ${classes.node__header_theme_branch}`}
+            className={clsx(props.className, nodeClasses.node__title_icon_only, classes.node__header_theme_branch)}
             icon={() => <BranchIcon className={nodeClasses.node__icon}/>}
             selected={selected}
             left={props.left}
@@ -41,12 +42,12 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 left={() => <Port
-                    className={`${nodeClasses.node__portIn_position_border} ${classes.node__port_theme_branch}`}
+                    className={clsx(nodeClasses.node__portIn_position_border, classes.node__port_theme_branch)}
                     engine={props.engine}
                     port={props.node.getPort(inPortName)}
                 />}
                 right={() => <Port
-                    className={`${nodeClasses.node__portOut_position_border} ${classes.node__port_theme_branch}`}
+                    className={clsx(nodeClasses.node__portOut_position_border, classes.node__port_theme_branch)}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}
@@ -54,7 +55,7 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
 
             <NodeContent
                 opened={opened}
-                className={`${nodeClasses.node__content_position_center} ${nodeClasses.node__content_layout_column}`}
+                className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
             >
                 PLACEHOLDER
                 <br/>

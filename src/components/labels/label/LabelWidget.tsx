@@ -1,10 +1,11 @@
 import React, {HTMLAttributes} from 'react';
 
 import classes from './LabelWidget.module.scss';
+import clsx from 'clsx';
 
 const LabelWidget: React.FC<HTMLAttributes<HTMLDivElement>> = ({className, children}) => {
     return (
-        <div className={`${classes.label} ${className || ''}`}>
+        <div className={clsx(classes.label, className)}>
             {children}
         </div>
     );
