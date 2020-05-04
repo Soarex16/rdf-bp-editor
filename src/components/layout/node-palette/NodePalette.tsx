@@ -31,7 +31,7 @@ export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, chil
 export const NodePalette: React.FC = ({children}) => {
 
     return (
-        <div className={`${classes.palette}`}>
+        <div className={classes.palette}>
             {React.Children.map(children, child => (
                 <div className={classes.palette__item}>
                     {child}

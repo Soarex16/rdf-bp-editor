@@ -133,7 +133,7 @@ const Editor: React.FC = () => {
                 </NavMenu>
 
                 <div className={classes.editor__paletteContainer}>
-                    Palette:
+                    Палитра:
 
                     <NodePalette>
                         <NodePaletteItem

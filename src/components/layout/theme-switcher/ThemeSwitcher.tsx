@@ -7,7 +7,6 @@ const ThemeSwitcher: React.FC = () => {
     const {toggleTheme} = useTheme();
 
     const handleThemeChange = React.useCallback(() => {
-        console.log('theme change');
         toggleTheme();
     }, [toggleTheme]);
 

@@ -156,7 +156,10 @@ const HelpWindow: React.FC = () => {
                                     {buttonHelpComponents[key].icon}
 
                                     <span
-                                        className={classes.help__actionName}>{buttonHelpComponents[key].actionName}</span>
+                                        className={classes.help__actionName}
+                                    >
+                                        {buttonHelpComponents[key].actionName}
+                                    </span>
                                 </div>
                                 {idx < helpEntry.keys.length - 1 && '+'}
                             </>
