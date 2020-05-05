@@ -18,6 +18,9 @@ export const Port: React.FC<PortProps & React.HTMLAttributes<HTMLDivElement>> = 
             engine={props.engine}
             port={props.port}
             className={clsx(classes.node__port, props.className)}
+        >
+            <div className={classes.node__port_ClickArea_big}/>
+        </PortWidget> 
         />
     )
 };
