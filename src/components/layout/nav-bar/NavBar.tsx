@@ -3,11 +3,12 @@ import React from 'react';
 import classes from './NavigationBar.module.scss';
 
 import {ReactComponent as LogoIcon} from '../../../assets/icons/logo.svg';
+import clsx from 'clsx';
 
 const NavBar: React.FC = ({children}) => {
     return (
         <div
-            className={`${classes.navBar} ${classes.navBar_position_top}`}
+            className={clsx(classes.navBar, classes.navBar_position_top)}
         >
             {children}
         </div>

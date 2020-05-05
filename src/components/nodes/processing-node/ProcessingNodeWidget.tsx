@@ -8,6 +8,7 @@ import {ReactComponent as CogsIcon} from '../../../assets/icons/cogs.svg';
 
 import classes from './ProcessingNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';
+import clsx from 'clsx';
 
 export interface ProcessingNodeWidgetProps {
     node: ProcessingNodeModel;
@@ -18,7 +19,7 @@ export const ProcessingNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTM
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={`${props.className || ''} ${classes.node__header_theme_processing}`}
+            className={clsx(props.className, classes.node__header_theme_processing)}
             icon={() => <CogsIcon className={nodeClasses.node__icon}/>}
             title="Обработка"
             selected={selected}
@@ -41,12 +42,12 @@ export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNode
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
                 left={() => <Port
-                    className={`${nodeClasses.node__portIn_position_border} ${classes.node__port_theme_processing}`}
+                    className={clsx(nodeClasses.node__portIn_position_border, classes.node__port_theme_processing)}
                     engine={props.engine}
                     port={props.node.getPort(inPortName)}
                 />}
                 right={() => <Port
-                    className={`${nodeClasses.node__portOut_position_border} ${classes.node__port_theme_processing}`}
+                    className={clsx(nodeClasses.node__portOut_position_border, classes.node__port_theme_processing)}
                     engine={props.engine}
                     port={props.node.getPort(outPortName)}
                 />}
@@ -54,7 +55,7 @@ export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNode
 
             <NodeContent
                 opened={opened}
-                className={`${nodeClasses.node__content_position_center} ${nodeClasses.node__content_layout_column}`}
+                className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
             >
                 Скрипт обработки:
                 <select className={classes.processingScript}>

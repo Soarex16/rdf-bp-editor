@@ -2,6 +2,7 @@ import React, {MouseEvent} from 'react';
 import {EditableMathField, MathField, StaticMathField} from 'react-mathquill';
 
 import classes from './LatexAutocompleteInput.module.scss';
+import clsx from 'clsx';
 
 export interface LatexAutocompleteInputProps {
     suggestions: string[];
@@ -71,7 +72,7 @@ const LatexAutocompleteInput: React.FC<LatexAutocompleteInputProps> = ({suggesti
                             key={suggestion}
                             onClick={handleSuggestionClick}
                             onMouseEnter={handleSuggestionHover}
-                            className={`${classes.autocomplete__suggestionsListItem} ${i === activeSuggestion ? classes.autocomplete__suggestionsListItem_active : ''}`}
+                            className={clsx(classes.autocomplete__suggestionsListItem, i === activeSuggestion && classes.autocomplete__suggestionsListItem_active)}
                         >
                             {suggestion}
                             <StaticMathField>
