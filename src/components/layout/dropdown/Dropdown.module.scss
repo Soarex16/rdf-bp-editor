@@ -64,18 +64,20 @@
   background: var(--node-content-background-color);
 }
 
-.dropdown__content:before {
+.dropdown__content::before {
+  $triangle-size: 1rem;
+
   content: '';
   position: absolute;
-  top: 0;
+  z-index: -1;
+
   left: 25%;
-  width: 0;
-  height: 0;
-  border: 0.6em solid transparent;
-  border-bottom-color: var(--node-content-border-color);
-  border-top: 0;
-  margin-left: -0.6em;
-  margin-top: calc(-0.6em - 2px);
+  top: -$triangle-size / 2;
+  width: $triangle-size;
+  height: $triangle-size;
+  transform: translateX(-50%) rotate(45deg);
+
+  background: var(--node-content-border-color);
 }
 
 .dropdown__item {
