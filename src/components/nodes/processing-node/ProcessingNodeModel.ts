@@ -6,18 +6,18 @@ import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 export const processingNodeType: string = 'processing-node';
 
 export interface ProcessingNodeModelOptions extends BaseModelOptions {
-    processingScriptName?: string;
+    processingRule?: string;
 }
 
 export class ProcessingNodeModel extends NodeModel {
-    processingScriptName: string;
+    processingRule: string;
 
     constructor(options: ProcessingNodeModelOptions = {}) {
         super({
             ...options,
             type: processingNodeType
         });
-        this.processingScriptName = options.processingScriptName || '';
+        this.processingRule = options.processingRule || `f:X\\rightarrow X`;
 
         this.addPort(
             new FlowPortModel({
@@ -37,12 +37,12 @@ export class ProcessingNodeModel extends NodeModel {
     serialize() {
         return {
             ...super.serialize(),
-            processingScriptName: this.processingScriptName
+            processingScriptName: this.processingRule
         }
     }
 
     deserialize(event: DeserializeEvent<this>): void {
         super.deserialize(event);
-        this.processingScriptName = event.data.processingScriptName;
+        this.processingRule = event.data.processingScriptName;
     }
 }

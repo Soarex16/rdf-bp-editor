@@ -12,7 +12,6 @@ export interface FlowAliasLabelWidgetProps {
 
 export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWidgetProps> = (props) => {
     const [str, setStr] = useState(props.model.formula);
-
     const changeVal = (val: string) => {
         props.model.formula = val;
         setStr(val);
@@ -20,7 +19,6 @@ export const FormulaEditorLabelWidget: React.FunctionComponent<FlowAliasLabelWid
 
     const mqRef = useRef<null | MathField>(null);
     const insertDnDLatex = (latex: string) => {
-        //changeVal(str.concat(latex));
         if (mqRef.current) {
             mqRef.current.write(latex);
         }
