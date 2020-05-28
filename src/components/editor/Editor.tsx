@@ -25,8 +25,12 @@ import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
 import {ReactComponent as IconNew} from '../../assets/icons/file-plus.svg';
 import {ReactComponent as IconUpload} from '../../assets/icons/upload.svg';
 import {ReactComponent as IconDownload} from '../../assets/icons/download.svg';
+
 import {useTranslation} from 'react-i18next';
 import LanguageSwitcher from '../layout/lang-switcher/LanguageSwitcher';
+
+import {FormulaPalette} from '../layout/formula-palette/FormulaPalette';
+
 
 const themes = ['theme-light', 'theme-dark'];
 
@@ -167,6 +171,10 @@ const Editor: React.FC = () => {
                     name="USR"
                 />
             </NavBar>
+
+            <div className={classes.editor__formulaPaletteContainer}>
+                <FormulaPalette />
+            </div>
 
             <NodePaletteDropReceiver
                 engine={engine}
