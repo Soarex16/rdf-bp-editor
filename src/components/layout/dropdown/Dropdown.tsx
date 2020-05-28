@@ -4,6 +4,7 @@ import classes from './Dropdown.module.scss';
 import navClasses from '../nav-bar/NavigationBar.module.scss';
 
 import {ReactComponent as IconChevronDown} from '../../../assets/icons/chevron-down.svg';
+import clsx from 'clsx';
 
 export interface DropdownProps {
     title: string;
@@ -12,7 +13,7 @@ export interface DropdownProps {
 export const Dropdown: React.FC<DropdownProps & React.HTMLAttributes<HTMLDivElement>> = (props) => {
     return (
         <div className={classes.dropdown}>
-            <button className={`${navClasses.navBar__navItem} ${classes.dropdown__title}`}>
+            <button className={clsx(navClasses.navBar__navItem, classes.dropdown__title)}>
                 {props.title} <IconChevronDown/>
             </button>
 

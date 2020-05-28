@@ -7,7 +7,9 @@ import {ReactComponent as IconMinus} from '../../../assets/icons/minus.svg';
 import {ReactComponent as IconZoomToFit} from '../../../assets/icons/location.svg';
 
 import EditorButton from '../editor-button/EditorButton';
+
 import {useTranslation} from 'react-i18next';
+import clsx from 'clsx';
 
 export interface ZoomProps {
     onInc: React.MouseEventHandler<HTMLButtonElement>;
@@ -32,7 +34,7 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset, onLocate}) => {
             </div>
 
             <EditorButton
-                className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
+                className={clsx(classes.buttonZoom, classes.buttonResetZoom)}
                 onClick={onReset}
                 title={t('editor.buttons.zoom.reset')}
             >
@@ -41,7 +43,7 @@ const Zoom: React.FC<ZoomProps> = ({onInc, onDec, onReset, onLocate}) => {
 
             {onLocate &&
             <EditorButton
-                className={[classes.buttonZoom, classes.buttonResetZoom].join(' ')}
+                className={clsx(classes.buttonZoom, classes.buttonResetZoom)}
                 onClick={onLocate}
                 title={t('editor.buttons.zoom.locate')}
             >

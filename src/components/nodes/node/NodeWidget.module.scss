@@ -67,6 +67,13 @@
   transition: background-color 250ms ease-in-out;
 }
 
+.node__port_ClickArea_big {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  transform: translate(-25%, -25%);
+}
+
 .node__port_theme_default {
   background-color: white;
 
