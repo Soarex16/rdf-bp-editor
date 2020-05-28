@@ -16,8 +16,7 @@ import {SparQLInputNodeModel} from '../nodes/input-node/SparQLInputNodeModel';
 import {BranchNodeModel} from '../nodes/branch-node/BranchNodeModel';
 import {ProcessingNodeModel} from '../nodes/processing-node/ProcessingNodeModel';
 import Help from '../layout/help/Help';
-import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBar';
-import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
+import NavBar, {NavBarBrand, NavMenu} from '../layout/nav-bar/NavBar';
 
 import classes from './Editor.module.scss';
 import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
@@ -25,12 +24,19 @@ import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
 import {ReactComponent as IconNew} from '../../assets/icons/file-plus.svg';
 import {ReactComponent as IconUpload} from '../../assets/icons/upload.svg';
 import {ReactComponent as IconDownload} from '../../assets/icons/download.svg';
+
+import {useTranslation} from 'react-i18next';
+import LanguageSwitcher from '../layout/lang-switcher/LanguageSwitcher';
+
 import {FormulaPalette} from '../layout/formula-palette/FormulaPalette';
+
 
 const themes = ['theme-light', 'theme-dark'];
 
 const Editor: React.FC = () => {
     const engine: DiagramEngine = mockEngine;
+
+    const [t, i18n] = useTranslation();
 
     const increaseScale = () => {
         engine.getModel().setZoomLevel(engine.getModel().getZoomLevel() + 10);
@@ -80,8 +86,9 @@ const Editor: React.FC = () => {
         input.click();
     };
 
+    //'Do you really want to continue without saving? This action cannot be undone.'
     const clearDiagram = () => {
-        const clear = window.confirm('Вы действительно хотите продолжить без сохранения? Данное действие необратимо');
+        const clear = window.confirm('Вы действительно хотите продолжить без сохранения? Данное действие не может быть отменено');
 
         if (clear) {
             engine.getModel().getModels().forEach(m => m.remove());
@@ -91,6 +98,8 @@ const Editor: React.FC = () => {
 
     return (
         <ThemeProvider themes={themes}>
+            <LanguageSwitcher/>
+
             <ThemeSwitcher/>
 
             <Zoom
@@ -103,38 +112,38 @@ const Editor: React.FC = () => {
             <Help/>
 
             <NavBar>
-                <NavBarBrand brand="FDTFE" title={'Formalized Data Transformation Flow Editor'}/>
+                <NavBarBrand brand="FDTFE" title={t('editor.appName')}/>
 
                 <NavMenu>
-                    <Dropdown title="Проект">
-                        <DropdownItem onClick={clearDiagram} title="Новый проект">
+                    <Dropdown title={t('editor.navMenu.currentProject')}>
+                        <DropdownItem onClick={clearDiagram} title={t('editor.navMenu.project.new')}>
                             <IconNew/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={saveDiagram} title="Сохранить копию на диск">
+                        <DropdownItem onClick={saveDiagram} title={t('editor.navMenu.project.save')}>
                             <IconDownload/>
                         </DropdownItem>
 
-                        <DropdownItem onClick={loadDiagram} title="Загрузить проект">
+                        <DropdownItem onClick={loadDiagram} title={t('editor.navMenu.project.load')}>
                             <IconUpload/>
                         </DropdownItem>
                     </Dropdown>
 
-                    <NavMenuItem>
-                        Проекты
+                    {/*<NavMenuItem>
+                        {t('editor.navMenu.projects')}
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Активные процессы
+                        {t('editor.navMenu.processes')}
                     </NavMenuItem>
 
                     <NavMenuItem>
-                        Данные
-                    </NavMenuItem>
+                        {t('editor.navMenu.data')}
+                    </NavMenuItem>*/}
                 </NavMenu>
 
-                <div className={classes.editor__nodePaletteContainer}>
-                    Палитра:
+                <div className={classes.editor__nodePaletteWrapper}>
+                    {t('editor.palette.title')}
 
                     <NodePalette>
                         <NodePaletteItem
@@ -157,14 +166,18 @@ const Editor: React.FC = () => {
                     </NodePalette>
                 </div>
 
-                <Avatar
-                    icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}
-                    name="USR"
-                />
+                {/*
+                <div className={classes.editor__avatarWrapper}>
+                    <Avatar
+                        icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}
+                        name="USR"
+                    />
+                </div>
+                */}
             </NavBar>
 
-            <div className={classes.editor__formulaPaletteContainer}>
-                <FormulaPalette />
+            <div className={classes.editor__formulaPaletteWrapper}>
+                <FormulaPalette/>
             </div>
 
             <NodePaletteDropReceiver

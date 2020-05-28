@@ -12,21 +12,25 @@ import {ReactComponent as IconMouseRight} from '../../../assets/icons/keys/mouse
 
 import {ReactComponent as IconHelp} from '../../../assets/icons/help.svg';
 import classes from './Help.module.scss';
+import {useTranslation} from 'react-i18next';
 
 const Help: React.FC = () => {
     const [helpVisible, setHelpVisible] = React.useState<boolean>(false);
 
     const toggleHelp = React.useCallback(() => setHelpVisible(!helpVisible), [helpVisible]);
 
+    const [t, i18n] = useTranslation();
+
     return (
         <>
-            <Modal visible={helpVisible} hide={toggleHelp} title={'Подсказки навигации'}>
+            <Modal visible={helpVisible} hide={toggleHelp} title={t('editor.help.title')}>
                 <div>
                     <HelpWindow/>
                 </div>
             </Modal>
+
             <div className={classes.buttonContainer}>
-                <button onClick={toggleHelp} className={classes.buttonHelp}>
+                <button onClick={toggleHelp} className={classes.buttonHelp} title={t('editor.help.title')}>
                     <IconHelp/>
                 </button>
             </div>
@@ -74,76 +78,77 @@ const KeyboardButtonIcon: React.FC<KeyboardButtonIconProps> = ({text}) => {
 const buttonHelpComponents: { [action: string]: { icon: ReactElement, actionName: string } } = {
     [InputActionTypes.MouseMiddle]: {
         icon: <IconMouse/>,
-        actionName: 'средняя клавиша'
+        actionName: 'editor.help.actionNames.mouseMiddle'
     },
     [InputActionTypes.MouseScroll]: {
         icon: <IconMouseScroll/>,
-        actionName: 'скролл'
+        actionName: 'editor.help.actionNames.mouseScroll'
     },
     [InputActionTypes.MouseLeft]: {
         icon: <IconMouseLeft/>,
-        actionName: 'левая кнопка'
+        actionName: 'editor.help.actionNames.mouseLeft'
     },
     [InputActionTypes.MouseRight]: {
         icon: <IconMouseRight/>,
-        actionName: 'правая кнопка'
+        actionName: 'editor.help.actionNames.mouseRight'
     }, [InputActionTypes.MouseLeftDbl]: {
         icon: <IconMouseLeft/>,
-        actionName: 'левая кнопка x2'
+        actionName: 'editor.help.actionNames.mouseLeftDbl'
     }, [InputActionTypes.MouseRightDbl]: {
         icon: <IconMouseRight/>,
-        actionName: 'правая кнопка x2'
+        actionName: 'editor.help.actionNames.mouseRightDbl'
     },
     [InputActionTypes.Mouse]: {
         icon: <IconMouse/>,
-        actionName: 'мышь'
+        actionName: 'editor.help.actionNames.mouse'
     },
     [InputActionTypes.KeyShift]: {
         icon: <IconKeyShift/>,
-        actionName: 'shift'
+        actionName: 'editor.help.actionNames.keyShift'
     },
     [InputActionTypes.KeyCtrl]: {
         icon: <IconKeyCtrl/>,
-        actionName: 'ctrl'
+        actionName: 'editor.help.actionNames.keyCtrl'
     },
     [InputActionTypes.KeyDel]: {
         icon: <IconKeyDel/>,
-        actionName: 'del'
+        actionName: 'editor.help.actionNames.keyDel'
     },
     [InputActionTypes.KeyA]: {
         icon: <KeyboardButtonIcon text={'a'}/>,
-        actionName: 'a'
+        actionName: 'editor.help.actionNames.keyA'
     }
 };
 
 const helpData = [
     {
-        keys: [InputActionTypes.MouseMiddle, InputActionTypes.MouseScroll],
-        description: 'переместить полотно'
+        keys: [InputActionTypes.MouseMiddle],
+        description: 'editor.help.shortcuts.moveCanvas'
     },
     {
         keys: [InputActionTypes.MouseScroll],
-        description: 'приблизить/отдалить'
+        description: 'editor.help.shortcuts.zoom'
     },
     {
-        keys: [InputActionTypes.KeyShift, InputActionTypes.MouseRight],
-        description: 'выделить ноды'
+        keys: [InputActionTypes.KeyShift, InputActionTypes.MouseLeft],
+        description: 'editor.help.shortcuts.select'
     },
     {
         keys: [InputActionTypes.KeyShift, InputActionTypes.KeyCtrl, InputActionTypes.KeyA],
-        description: 'выделить все объекты'
+        description: 'editor.help.shortcuts.selectAll'
     },
     {
         keys: [InputActionTypes.KeyDel],
-        description: 'удалить выделенные объекты'
+        description: 'editor.help.shortcuts.deleteSelected'
     },
     {
         keys: [InputActionTypes.MouseLeftDbl],
-        description: 'развернуть ноду'
+        description: 'editor.help.shortcuts.expandNode'
     }
 ];
 
 const HelpWindow: React.FC = () => {
+    const [t, i18n] = useTranslation();
 
     return (
         <div>
@@ -158,7 +163,7 @@ const HelpWindow: React.FC = () => {
                                     <span
                                         className={classes.help__actionName}
                                     >
-                                        {buttonHelpComponents[key].actionName}
+                                        {t(buttonHelpComponents[key].actionName)}
                                     </span>
                                 </div>
                                 {idx < helpEntry.keys.length - 1 && '+'}
@@ -167,7 +172,7 @@ const HelpWindow: React.FC = () => {
                     </div>
 
                     <div className={classes.help__shortcutDescription}>
-                        {helpEntry.description}
+                        {t(helpEntry.description)}
                     </div>
                 </div>
             ))}

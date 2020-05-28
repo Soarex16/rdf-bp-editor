@@ -1,12 +1,11 @@
 .editor {
 }
 
-.editor__nodePaletteContainer {
+.editor__nodePaletteWrapper {
   display: flex;
   align-items: center;
   align-self: stretch;
 
-  margin: 0 3vw;
   padding-left: 10px;
 
   font-family: "Yandex Sans", sans-serif;
@@ -15,7 +14,12 @@
   border-right: solid 2px var(--node-content-border-color);
 }
 
-.editor__formulaPaletteContainer {
+.editor__avatarWrapper {
+  display: flex;
+  margin-left: 3vw;
+}
+
+.editor__formulaPaletteWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,5 +33,4 @@
 
   border-right: solid 2px var(--node-content-border-color);
   background-color: var(--node-content-background-color);
-
 }

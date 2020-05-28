@@ -22,7 +22,7 @@ export class BranchPortModel extends DefaultPortModel {
         }));
 
         model.addLabel(new TextInputLabelModel({
-            value: 'alias'
+            value: 'label'
         }));
 
         return model;

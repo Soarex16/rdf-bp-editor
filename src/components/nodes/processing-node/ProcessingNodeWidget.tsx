@@ -9,6 +9,7 @@ import {ReactComponent as CogsIcon} from '../../../assets/icons/cogs.svg';
 import classes from './ProcessingNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';
 import clsx from 'clsx';
+import {useTranslation} from 'react-i18next';
 
 export interface ProcessingNodeWidgetProps {
     node: ProcessingNodeModel;
@@ -16,12 +17,14 @@ export interface ProcessingNodeWidgetProps {
 }
 
 export const ProcessingNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+    const [t, i18n] = useTranslation();
+
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
             className={clsx(props.className, classes.node__header_theme_processing)}
             icon={() => <CogsIcon className={nodeClasses.node__icon}/>}
-            title="Обработка"
+            title={t('nodes.processing.title')}
             selected={selected}
             left={props.left}
             right={props.right}
@@ -34,6 +37,8 @@ export const ProcessingNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTM
 export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
+
+    const [t, i18n] = useTranslation();
 
     return (
         <div>
@@ -57,7 +62,7 @@ export const ProcessingNodeDiagramWidget: React.FunctionComponent<ProcessingNode
                 opened={opened}
                 className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
             >
-                Скрипт обработки:
+                {t('nodes.processing.body.transformationRule')}
                 <select className={classes.processingScript}>
                     <option>Поиск клиента в базе</option>
                     <option>Проверка полноты введенных данных</option>

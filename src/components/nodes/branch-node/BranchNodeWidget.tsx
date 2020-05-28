@@ -3,7 +3,7 @@ import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 
 import {BranchNodeModel} from './BranchNodeModel';
 
-import {inPortName, NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
+import {inPortName, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
 import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula.svg';
 
 import classes from './BranchNodeWidget.module.scss';
@@ -53,6 +53,7 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
                 />}
             />
 
+            {/*
             <NodeContent
                 opened={opened}
                 className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
@@ -65,6 +66,7 @@ export const BranchNodeDiagramWidget: React.FunctionComponent<BranchNodeWidgetPr
                 <br/>
                 PLACEHOLDER
             </NodeContent>
+            */}
         </div>
     );
 };

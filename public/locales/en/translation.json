@@ -1,0 +1,69 @@
+{
+  "editor": {
+    "appName": "Formalized Data Transformation Flow Editor",
+    "navMenu": {
+      "project": {
+        "new": "New project",
+        "save": "Save project to disk",
+        "load": "Load from disk"
+      },
+      "currentProject": "Project",
+      "projects": "My projects",
+      "processes": "Active processes",
+      "data": "Data"
+    },
+    "buttons": {
+      "langSwitcher": "Change language",
+      "help": "Navigation tips",
+      "themeSwitcher": "Change theme",
+      "zoom": {
+        "in": "Zoom in",
+        "out": "Zoom out",
+        "reset": "Reset zoom",
+        "locate": "Find diagram"
+      }
+    },
+    "palette": {
+      "title": "Palette:"
+    },
+    "help": {
+      "title": "Navigation tips",
+      "actionNames": {
+        "mouseMiddle": "middle button",
+        "mouseScroll": "scroll",
+        "mouseLeft": "left button",
+        "mouseRight": "right button",
+        "mouseLeftDbl": "left button x2",
+        "mouseRightDbl": "right button x2",
+        "mouse": "mouse",
+        "keyShift": "shift",
+        "keyCtrl": "ctrl",
+        "keyDel": "del",
+        "keyA": "a"
+      },
+      "shortcuts": {
+        "moveCanvas": "move canvas",
+        "zoom": "zoom",
+        "select": "select objects",
+        "selectAll": "select all",
+        "deleteSelected": "delete selected",
+        "expandNode": "expand/collapse node"
+      }
+    }
+  },
+  "nodes": {
+    "input": {
+      "title": "Input facts",
+      "body": {
+        "queryField": "SPARQL query",
+        "resultLabel": "Result set label"
+      }
+    },
+    "processing": {
+      "title": "Processing",
+      "body": {
+        "transformationRule": "Transformation rule"
+      }
+    }
+  }
+}

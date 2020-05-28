@@ -9,6 +9,7 @@ import {ReactComponent as InputIcon} from '../../../assets/icons/database.svg';
 import classes from './SparQLInputNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';
 import clsx from 'clsx';
+import {useTranslation} from 'react-i18next';
 
 export interface SparQLInputNodeWidgetProps {
     node: SparQLInputNodeModel;
@@ -16,12 +17,14 @@ export interface SparQLInputNodeWidgetProps {
 }
 
 export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+    const [t, i18n] = useTranslation();
+
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
             className={clsx(props.className, classes.node__header_theme_sparql)}
             icon={() => <InputIcon className={nodeClasses.node__icon}/>}
-            title="Входные факты"
+            title={t('nodes.input.title')}
             selected={selected}
             left={props.left}
             right={props.right}
@@ -34,6 +37,8 @@ export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HT
 export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
+
+    const [t, i18n] = useTranslation();
 
     const [resultSetAlias, setResultSetAlias] = useState(props.node.resultSetAlias);
     const handleAliasChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +66,7 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
                 opened={opened}
                 className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
             >
-                <div className={classes.sparqlNode__inputLabel}>SPARQL запрос</div>
+                <div className={classes.sparqlNode__inputLabel}>{t('nodes.input.body.queryField')}</div>
                 <textarea
                     className={classes.sparqlNode__input}
                     placeholder={'SELECT...'}
@@ -70,13 +75,13 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
                 />
 
                 <span className={classes.sparqlNode__inputLabel}>
-                    Result set alias:
+                    {t('nodes.input.body.resultLabel')}
                 </span>
                 <input
                     className={classes.sparqlNode__input}
                     value={resultSetAlias}
                     onChange={handleAliasChange}
-                    placeholder={'Alias'}
+                    placeholder={'Label'}
                 />
             </NodeContent>
         </div>

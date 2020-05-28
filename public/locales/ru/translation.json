@@ -1,0 +1,69 @@
+{
+  "editor": {
+    "appName": "Редактор процессов трансформации формализованных знаний",
+    "navMenu": {
+      "project": {
+        "new": "Новый проект",
+        "save": "Сохранить копию на диск",
+        "load": "Загрузить проект"
+      },
+      "currentProject": "Проект",
+      "projects": "Мои проекты",
+      "processes": "Активные процессы",
+      "data": "Данные"
+    },
+    "buttons": {
+      "langSwitcher": "Сменить язык",
+      "help": "Подсказки навигации",
+      "themeSwitcher": "Сменить тему оформления",
+      "zoom": {
+        "in": "Приблизить",
+        "out": "Отдалить",
+        "reset": "Сбросить масштаб",
+        "locate": "Найти диаграмму"
+      }
+    },
+    "palette": {
+      "title": "Палитра:"
+    },
+    "help": {
+      "title": "Подсказки навигации",
+      "actionNames": {
+        "mouseMiddle": "средняя клавиша",
+        "mouseScroll": "скролл",
+        "mouseLeft": "левая кнопка",
+        "mouseRight": "правая кнопка",
+        "mouseLeftDbl": "левая кнопка x2",
+        "mouseRightDbl": "правая кнопка x2",
+        "mouse": "мышь",
+        "keyShift": "shift",
+        "keyCtrl": "ctrl",
+        "keyDel": "del",
+        "keyA": "a"
+      },
+      "shortcuts": {
+        "moveCanvas": "переместить полотно",
+        "zoom": "приблизить/отдалить",
+        "select": "выделить ноды",
+        "selectAll": "выделить все объекты",
+        "deleteSelected": "удалить выделенные объекты",
+        "expandNode": "свернуть/развернуть ноду"
+      }
+    }
+  },
+  "nodes": {
+    "input": {
+      "title": "Входные факты",
+      "body": {
+        "queryField": "SPARQL запрос",
+        "resultLabel": "Метка результирующего множества"
+      }
+    },
+    "processing": {
+      "title": "Обработка",
+      "body": {
+        "transformationRule": "Правило преобразования"
+      }
+    }
+  }
+}
