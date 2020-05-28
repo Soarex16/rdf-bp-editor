@@ -122,7 +122,7 @@ const buttonHelpComponents: { [action: string]: { icon: ReactElement, actionName
 
 const helpData = [
     {
-        keys: [InputActionTypes.MouseMiddle, InputActionTypes.MouseScroll],
+        keys: [InputActionTypes.MouseMiddle],
         description: 'editor.help.shortcuts.moveCanvas'
     },
     {
@@ -130,7 +130,7 @@ const helpData = [
         description: 'editor.help.shortcuts.zoom'
     },
     {
-        keys: [InputActionTypes.KeyShift, InputActionTypes.MouseRight],
+        keys: [InputActionTypes.KeyShift, InputActionTypes.MouseLeft],
         description: 'editor.help.shortcuts.select'
     },
     {
