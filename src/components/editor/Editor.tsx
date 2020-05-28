@@ -16,8 +16,7 @@ import {SparQLInputNodeModel} from '../nodes/input-node/SparQLInputNodeModel';
 import {BranchNodeModel} from '../nodes/branch-node/BranchNodeModel';
 import {ProcessingNodeModel} from '../nodes/processing-node/ProcessingNodeModel';
 import Help from '../layout/help/Help';
-import NavBar, {NavBarBrand, NavMenu, NavMenuItem} from '../layout/nav-bar/NavBar';
-import {Avatar, AvatarImage} from '../layout/avatar/Avatar';
+import NavBar, {NavBarBrand, NavMenu} from '../layout/nav-bar/NavBar';
 
 import classes from './Editor.module.scss';
 import {Dropdown, DropdownItem} from '../layout/dropdown/Dropdown';
@@ -87,8 +86,9 @@ const Editor: React.FC = () => {
         input.click();
     };
 
+    //'Do you really want to continue without saving? This action cannot be undone.'
     const clearDiagram = () => {
-        const clear = window.confirm('Вы действительно хотите продолжить без сохранения? Данное действие необратимо');
+        const clear = window.confirm('Вы действительно хотите продолжить без сохранения? Данное действие не может быть отменено');
 
         if (clear) {
             engine.getModel().getModels().forEach(m => m.remove());
@@ -129,7 +129,7 @@ const Editor: React.FC = () => {
                         </DropdownItem>
                     </Dropdown>
 
-                    <NavMenuItem>
+                    {/*<NavMenuItem>
                         {t('editor.navMenu.projects')}
                     </NavMenuItem>
 
@@ -139,11 +139,11 @@ const Editor: React.FC = () => {
 
                     <NavMenuItem>
                         {t('editor.navMenu.data')}
-                    </NavMenuItem>
+                    </NavMenuItem>*/}
                 </NavMenu>
 
-                <div className={classes.editor__paletteContainer}>
-                    {t('editor.palette.title')}:
+                <div className={classes.editor__nodePaletteWrapper}>
+                    {t('editor.palette.title')}
 
                     <NodePalette>
                         <NodePaletteItem
@@ -166,14 +166,18 @@ const Editor: React.FC = () => {
                     </NodePalette>
                 </div>
 
-                <Avatar
-                    icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}
-                    name="USR"
-                />
+                {/*
+                <div className={classes.editor__avatarWrapper}>
+                    <Avatar
+                        icon={() => <AvatarImage src={'https://source.unsplash.com/NohB3FJSY90'}/>}
+                        name="USR"
+                    />
+                </div>
+                */}
             </NavBar>
 
-            <div className={classes.editor__formulaPaletteContainer}>
-                <FormulaPalette />
+            <div className={classes.editor__formulaPaletteWrapper}>
+                <FormulaPalette/>
             </div>
 
             <NodePaletteDropReceiver

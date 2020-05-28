@@ -1,11 +1,8 @@
 import createEngine, {DefaultDiagramState, DiagramModel} from '@projectstorm/react-diagrams';
 import {DeleteItemsAction} from '@projectstorm/react-canvas-core';
-import {SparQLInputNodeModel} from '../components/nodes/input-node/SparQLInputNodeModel';
 import {SparQLInputNodeFactory} from '../components/nodes/input-node/SparQLInputNodeFactory';
-import {ProcessingNodeModel} from '../components/nodes/processing-node/ProcessingNodeModel';
 import {ProcessingNodeFactory} from '../components/nodes/processing-node/ProcessingNodeFactory';
 import {BranchNodeFactory} from '../components/nodes/branch-node/BranchNodeFactory';
-import {BranchNodeModel} from '../components/nodes/branch-node/BranchNodeModel';
 import {FormulaEditorLabelFactory} from '../components/labels/formual-editor-label/FormulaEditorLabelFactory';
 import {FlowLinkFactory} from '../components/links/flow-link/FlowLinkFactory';
 import {FlowPortFactory} from '../components/ports/flow-port/FlowPortFactory';
@@ -49,41 +46,6 @@ engine.getLabelFactories().registerFactory(new TextInputLabelFactory());
 
 // create a diagram model
 const model = new DiagramModel();
-
-// create some nodes
-const inputNode1 = new SparQLInputNodeModel({
-    graphQLQuery: `SELECT ?item ?itemLabel ?pic
-WHERE
-{
-    ?item wdt:P31 wd:Q146 .
-    ?item wdt:P18 ?pic
-    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" }
-}`,
-    resultSetAlias: 'cats with images'
-});
-inputNode1.setPosition(100, 150);
-
-const inputNode2 = new SparQLInputNodeModel({
-    graphQLQuery: `SELECT (COUNT(?item) AS ?count)
-WHERE {
-    ?item wdt:P31 wd:Q5 .
-}`,
-    resultSetAlias: 'num of humans'
-});
-inputNode2.setPosition(100, 350);
-
-const processingNode1 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
-processingNode1.setPosition(700, 150);
-
-const processingNode2 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
-processingNode2.setPosition(800, 250);
-
-const processingNode3 = new ProcessingNodeModel({processingScriptName: 'CheckSubstitution'});
-processingNode3.setPosition(700, 350);
-
-const branchNode1 = new BranchNodeModel();
-branchNode1.setPosition(500, 250);
-
 // install the model into the engine
 engine.setModel(model);
 

@@ -24,9 +24,46 @@
       }
     },
     "palette": {
-      "title": "Палитра"
+      "title": "Палитра:"
     },
     "help": {
+      "title": "Подсказки навигации",
+      "actionNames": {
+        "mouseMiddle": "средняя клавиша",
+        "mouseScroll": "скролл",
+        "mouseLeft": "левая кнопка",
+        "mouseRight": "правая кнопка",
+        "mouseLeftDbl": "левая кнопка x2",
+        "mouseRightDbl": "правая кнопка x2",
+        "mouse": "мышь",
+        "keyShift": "shift",
+        "keyCtrl": "ctrl",
+        "keyDel": "del",
+        "keyA": "a"
+      },
+      "shortcuts": {
+        "moveCanvas": "переместить полотно",
+        "zoom": "приблизить/отдалить",
+        "select": "выделить ноды",
+        "selectAll": "выделить все объекты",
+        "deleteSelected": "удалить выделенные объекты",
+        "expandNode": "свернуть/развернуть ноду"
+      }
+    }
+  },
+  "nodes": {
+    "input": {
+      "title": "Входные факты",
+      "body": {
+        "queryField": "SPARQL запрос",
+        "resultLabel": "Метка результирующего множества"
+      }
+    },
+    "processing": {
+      "title": "Обработка",
+      "body": {
+        "transformationRule": "Правило преобразования"
+      }
     }
   }
 }

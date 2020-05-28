@@ -17,7 +17,7 @@ export class FlowPortModel extends DefaultPortModel {
         const model = new FlowLinkModel();
 
         model.addLabel(new TextInputLabelModel({
-            value: 'alias'
+            value: 'label'
         }));
 
         return model;
