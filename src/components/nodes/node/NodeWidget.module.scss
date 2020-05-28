@@ -114,6 +114,10 @@
   transform: translateX(-50%);
 }
 
+.node__content_position_relative {
+  position: relative;
+}
+
 .node__content_layout_column {
   display: flex;
   flex-direction: column;
