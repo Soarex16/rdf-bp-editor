@@ -3,16 +3,17 @@ import {DiagramEngine, DiagramModel, NodeModel} from '@projectstorm/react-diagra
 
 import classes from './NodePalette.module.scss';
 
-interface PaletteItemProps {
+interface NodePaletteItemProps {
     data: any;
     tooltip?: string;
 }
 
 const dataTransferKey: string = 'node-palette';
 
-export const NodePaletteItem: React.FC<PaletteItemProps> = ({data, tooltip, children}) => {
+export const NodePaletteItem: React.FC<NodePaletteItemProps> = ({data, tooltip, children}) => {
     return (
         <div
+            title={tooltip}
             draggable={true}
             onDragStart={event => {
                 // wrap node with diagram model because we can't store node itself
