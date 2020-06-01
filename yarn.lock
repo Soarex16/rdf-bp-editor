@@ -7174,10 +7174,10 @@ matches-selector@0.0.1:
   resolved "https://registry.yarnpkg.com/matches-selector/-/matches-selector-0.0.1.tgz#1df5262243ae341c1a0804dd302048267ac713bb"
   integrity sha1-HfUmIkOuNBwaCATdMCBIJnrHE7s=
 
-mathjs@^6.6.4:
-  version "6.6.5"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.6.5.tgz#6bbad1fa3ac09e8f7106ef64af8d3908f877b8e8"
-  integrity sha512-jvRqk7eoEHBcx/lskmy05m+8M7xDHAJcJzRJoqIsqExtlTHPDQO0Zv85g5F0rasDAXF+DLog/70hcqCJijSzPQ==
+mathjs@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-7.0.1.tgz#63f5499cf2fd90b613a1649aa1830ebafecc5c10"
+  integrity sha512-ikFnvtvui8EA1KC+RsF7Sse34WA7EGsKnwwv7/lTRx04t25JtWpVWrs0ZcNKxygZVrOIpU9MRgbvXEFYFV3pOQ==
   dependencies:
     complex.js "^2.0.11"
     decimal.js "^10.2.0"
