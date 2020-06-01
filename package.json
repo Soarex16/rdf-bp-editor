@@ -14,7 +14,7 @@
     "dagre": "^0.8.5",
     "i18next": "^19.4.4",
     "i18next-browser-languagedetector": "^4.1.1",
-    "i18next-http-backend": "^1.0.7",
+    "i18next-http-backend": "^1.0.13",
     "lodash": "^4.17.15",
     "mathjs": "^6.6.4",
     "node-sass": "^4.14.1",
