@@ -4,25 +4,25 @@ import {inPortName, outPortName} from '../node/NodeWidget';
 import {BranchPortModel} from '../../ports/branch-port/BranchPortModel';
 import {FlowPortModel} from '../../ports/flow-port/FlowPortModel';
 
-export const branchNodeType: string = 'branch-node';
+export const mergeNodeType: string = 'merge-node';
 
-export class BranchNodeModel extends NodeModel {
+export class MergeNodeModel extends NodeModel {
 
     constructor(options: BaseModelOptions = {}) {
         super({
             ...options,
-            type: branchNodeType
+            type: mergeNodeType
         });
 
         this.addPort(
-            new FlowPortModel({
+            new BranchPortModel({
                 in: true,
                 name: inPortName
             })
         );
 
         this.addPort(
-            new BranchPortModel({
+            new FlowPortModel({
                 in: false,
                 name: outPortName
             })

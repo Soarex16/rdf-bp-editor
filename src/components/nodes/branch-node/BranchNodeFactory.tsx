@@ -1,12 +1,12 @@
 import React from 'react';
-import {BranchNodeModel, branchNodeNodeType} from './BranchNodeModel';
+import {BranchNodeModel, branchNodeType} from './BranchNodeModel';
 import {AbstractReactFactory, GenerateWidgetEvent} from '@projectstorm/react-canvas-core';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {BranchNodeDiagramWidget} from './BranchNodeWidget';
 
 export class BranchNodeFactory extends AbstractReactFactory<BranchNodeModel, DiagramEngine> {
     constructor() {
-        super(branchNodeNodeType);
+        super(branchNodeType);
     }
 
     generateModel(): BranchNodeModel {

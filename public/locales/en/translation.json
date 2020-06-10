@@ -59,6 +59,12 @@
         "resultLabel": "Result set label"
       }
     },
+    "output": {
+      "title": "Store result",
+      "body": {
+        "resultLabel": "Result set label"
+      }
+    },
     "processing": {
       "title": "Processing",
       "body": {

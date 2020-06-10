@@ -1,0 +1,54 @@
+.node__header_theme_store_output {
+  background: var(--output-node-background-color);
+  border: solid 2px var(--output-node-border-color);
+
+  &:hover {
+    background: var(--output-node-hover-color);
+  }
+}
+
+.node__port_theme_store_output {
+  background-color: var(--output-node-border-color);
+
+  &:hover {
+    background-color: var(--port-background-color-hover);
+  }
+}
+
+.outputNode__inputLabel {
+  width: 100%;
+  margin-top: 0.75rem;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.outputNode__input {
+  outline: none;
+
+  margin-top: 0.5rem;
+  padding: 4px;
+  border: solid 1.5px;
+  border-color: var(--node-content-border-color);
+  background: var(--node-content-background-color);
+  color: var(--font-color);
+  border-radius: 3px;
+
+  transition: border-color 0.15s ease-in-out;
+
+  &:focus {
+    border-color: var(--sparql-node-border-color);
+  }
+}
+
+:global(.theme-light) {
+  --output-node-background-color: #d50000;
+  --output-node-border-color: #ff5131;
+  --output-node-hover-color: #9b0000;
+}
+
+:global(.theme-dark) {
+  --output-node-background-color: #d50000;
+  --output-node-border-color: #ffffff;
+  --output-node-hover-color: #9b0000;
+}

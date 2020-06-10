@@ -17,7 +17,7 @@ const LanguageSwitcher: React.FC = () => {
 
     useEffect(() => {
         i18n.changeLanguage(lang)
-    }, [lang]);
+    }, [i18n, lang]);
 
     return (
         <div className={classes.buttonContainer}>

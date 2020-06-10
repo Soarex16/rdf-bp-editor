@@ -4,7 +4,7 @@ import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 import {BranchNodeModel} from './BranchNodeModel';
 
 import {inPortName, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
-import {ReactComponent as BranchIcon} from '../../../assets/icons/branch-formula.svg';
+import {ReactComponent as BranchIcon} from '../../../assets/icons/source-branch.svg';
 
 import classes from './BranchNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';

@@ -21,7 +21,6 @@ const autocompleteSuggestions = [
     '\\ni',
     '\\notin',
 
-
     // set operations
     '\\cap',
     '\\cup',
@@ -37,6 +36,14 @@ const autocompleteSuggestions = [
     //'\\bar',
     '\\leftarrow',
     '\\rightarrow',
+
+    // additional
+    '\\prec',
+    '\\succ',
+    '\\odot',
+    '\\oplus',
+    '\\ominus',
+    '\\otimes',
 ];
 
 interface FormulaPaletteItemProps {
