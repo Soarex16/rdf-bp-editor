@@ -47,6 +47,18 @@ interface FormulaPaletteItemProps {
 const dataTransferKey: string = 'latex-palette';
 
 export const FormulaPaletteItem: React.FC<FormulaPaletteItemProps> = ({latex, tooltip}) => {
+    const mathfieldElement = React.useRef(null);
+
+    React.useEffect(() => {
+        if (mathfieldElement.current) {
+            const el = mathfieldElement.current.element.lastChild;
+
+            if (el instanceof Text) {
+                mathfieldElement.current.element.removeChild(el);
+            }
+        }
+    }, [mathfieldElement.current]);
+
     return (
         <div
             title={tooltip}
@@ -57,7 +69,7 @@ export const FormulaPaletteItem: React.FC<FormulaPaletteItemProps> = ({latex, to
             className={classes.palette__item}
         >
             <div className={classes.palette__paletteItemOverlap}/>
-            <StaticMathField>{latex}</StaticMathField>
+            <StaticMathField ref={mathfieldElement}>{latex}</StaticMathField>
         </div>
     );
 };
