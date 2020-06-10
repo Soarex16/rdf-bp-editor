@@ -1,0 +1,28 @@
+.node__header_theme_merge {
+  background: var(--merge-node-background-color);
+  border: solid 2px var(--merge-node-border-color);
+
+  &:hover {
+    background: var(--merge-node-hover-color);
+  }
+}
+
+.node__port_theme_merge {
+  background-color: var(--merge-node-border-color);
+
+  &:hover {
+    background-color: var(--port-background-color-hover);
+  }
+}
+
+:global(.theme-light) {
+  --merge-node-background-color: #ff6d00;
+  --merge-node-border-color: #ff9e40;
+  --merge-node-hover-color: #c43c00;
+}
+
+:global(.theme-dark) {
+  --merge-node-background-color: #ff6d00;
+  --merge-node-border-color: #ffffff;
+  --merge-node-hover-color: #c43c00;
+}

@@ -1,30 +1,30 @@
 import React, {ChangeEvent, useCallback, useState} from 'react';
 import {DiagramEngine} from '@projectstorm/react-diagrams-core';
 
-import {SparQLInputNodeModel} from './SparQLInputNodeModel';
+import {StoreResultNodeModel} from './StoreResultNodeModel';
 
-import {NodeContent, NodeHeader, NodeHeaderProps, outPortName, Port} from '../node/NodeWidget';
+import {inPortName, NodeContent, NodeHeader, NodeHeaderProps, Port} from '../node/NodeWidget';
 import {ReactComponent as InputIcon} from '../../../assets/icons/database.svg';
 
-import classes from './SparQLInputNodeWidget.module.scss';
+import classes from './StoreResultNodeWidget.module.scss';
 import nodeClasses from '../node/NodeWidget.module.scss';
 import clsx from 'clsx';
 import {useTranslation} from 'react-i18next';
 
-export interface SparQLInputNodeWidgetProps {
-    node: SparQLInputNodeModel;
+export interface StoreResultNodeWidgetProps {
+    node: StoreResultNodeModel;
     engine: DiagramEngine;
 }
 
-export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
+export const StoreResultNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({selected = false, children, ...props}) => {
     const [t, i18n] = useTranslation();
 
     return (
         <NodeHeader
             onDoubleClick={props.onDoubleClick}
-            className={clsx(props.className, classes.node__header_theme_sparql)}
+            className={clsx(props.className, classes.node__header_theme_store_output)}
             icon={() => <InputIcon className={nodeClasses.node__icon}/>}
-            title={t('nodes.input.title')}
+            title={t('nodes.output.title')}
             selected={selected}
             left={props.left}
             right={props.right}
@@ -34,7 +34,7 @@ export const SparQLInputNode: React.FC<NodeHeaderProps & React.HTMLAttributes<HT
     );
 };
 
-export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNodeWidgetProps> = (props) => {
+export const StoreResultNodeDiagramWidget: React.FunctionComponent<StoreResultNodeWidgetProps> = (props) => {
     const [opened, setOpened] = useState<boolean>(false);
     const toggleContentVisibility = useCallback(() => setOpened(!opened), [opened]);
 
@@ -47,18 +47,16 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
         props.node.resultSetAlias = newVal;
     }, [props.node.resultSetAlias]);
 
-    const [queryString, setQueryString] = useState<string>('');
-
     return (
         <div>
-            <SparQLInputNode
+            <StoreResultNode
                 className={nodeClasses.node__header_position_center}
                 onDoubleClick={toggleContentVisibility}
                 selected={props.node.isSelected()}
-                right={() => <Port
-                    className={clsx(nodeClasses.node__portOut_position_border, classes.node__port_theme_sparql)}
+                left={() => <Port
+                    className={clsx(nodeClasses.node__portIn_position_border, classes.node__port_theme_store_output)}
                     engine={props.engine}
-                    port={props.node.getPort(outPortName)}
+                    port={props.node.getPort(inPortName)}
                 />}
             />
 
@@ -66,19 +64,9 @@ export const SparQLInputNodeDiagramWidget: React.FunctionComponent<SparQLInputNo
                 opened={opened}
                 className={clsx(nodeClasses.node__content_position_center, nodeClasses.node__content_layout_column)}
             >
-                <div className={classes.sparqlNode__inputLabel}>{t('nodes.input.body.queryField')}</div>
-                <textarea
-                    className={classes.sparqlNode__input}
-                    placeholder={'SELECT...'}
-                    value={queryString}
-                    onChange={(ev) => setQueryString(ev.target.value)}
-                />
-
-                <span className={classes.sparqlNode__inputLabel}>
-                    {t('nodes.input.body.resultLabel')}
-                </span>
+                {t('nodes.output.body.resultLabel')}
                 <input
-                    className={classes.sparqlNode__input}
+                    className={classes.outputNode__input}
                     value={resultSetAlias}
                     onChange={handleAliasChange}
                     placeholder={'Label'}

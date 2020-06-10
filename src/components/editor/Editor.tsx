@@ -1,6 +1,6 @@
 import React from 'react';
 
-import mockEngine from '../../mocks/testEngine';
+import mockEngine from '../../diagramEngine';
 
 import DiagramContainer from '../layout/diagram-container/DiagramContainer';
 
@@ -29,6 +29,10 @@ import {useTranslation} from 'react-i18next';
 import LanguageSwitcher from '../layout/lang-switcher/LanguageSwitcher';
 
 import {FormulaPalette} from '../layout/formula-palette/FormulaPalette';
+import {StoreResultNodeModel} from '../nodes/output-node/StoreResultNodeModel';
+import {StoreResultNode} from '../nodes/output-node/StoreResultNodeWidget';
+import {MergeNode} from '../nodes/merge-node/MergeNodeWidget';
+import {MergeNodeModel} from '../nodes/merge-node/MergeNodeModel';
 
 
 const themes = ['theme-light', 'theme-dark'];
@@ -159,9 +163,21 @@ const Editor: React.FC = () => {
                         </NodePaletteItem>
 
                         <NodePaletteItem
+                            data={new MergeNodeModel()}
+                        >
+                            <MergeNode/>
+                        </NodePaletteItem>
+
+                        <NodePaletteItem
                             data={new ProcessingNodeModel()}
                         >
                             <ProcessingNode/>
+                        </NodePaletteItem>
+
+                        <NodePaletteItem
+                            data={new StoreResultNodeModel()}
+                        >
+                            <StoreResultNode/>
                         </NodePaletteItem>
                     </NodePalette>
                 </div>
