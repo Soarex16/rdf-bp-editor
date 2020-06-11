@@ -6647,7 +6647,7 @@ jest@24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
-jquery@^3.5.0:
+jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
@@ -9326,14 +9326,14 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-mathquill@^0.2.4:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/react-mathquill/-/react-mathquill-0.2.5.tgz#b774310a2d6d2c8720bd67bd7d299245ea373412"
-  integrity sha512-x/3cqXfltsjyvJDQvTYSHKxnw4TQVbYcMtE/Ud0ySZHGeonQolmVBh5ZHtFmCq3xA/2sYlf8rk611+EY7u4zaQ==
+react-mathquill@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-mathquill/-/react-mathquill-0.2.6.tgz#3eca1af1490f32d778fe9cc729ac6bc37560d6f5"
+  integrity sha512-jEaXFvS7UR2q3fhW5sjPNx/HRchYMfUMZR/dpz8dAmHHfw35MPUmXTDEWnRi6gZDpjCqHDWAT8PRdJX8t+iung==
   dependencies:
     "@edtr-io/mathquill" "^0.11.0"
-    jquery "^3.5.0"
-    prop-types "^15.6.2"
+    jquery "^3.5.1"
+    prop-types "^15.7.2"
     react "^16.13.1"
 
 react-scripts@3.4.1:
