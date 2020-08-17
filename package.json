@@ -23,7 +23,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-i18next": "^11.4.0",
-    "react-mathquill": "^0.2.4",
+    "react-mathquill": "^0.2.7",
     "react-scripts": "3.4.1",
     "resize-observer-polyfill": "^1.5.1",
     "source-map-explorer": "^2.4.2",
