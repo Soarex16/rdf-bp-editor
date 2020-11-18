@@ -6,7 +6,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@projectstorm/react-diagrams": "^6.2.0",
-    "@types/node": "^14.0.1",
+    "@types/node": "^14.14.8",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.8",
     "closest": "^0.0.1",
