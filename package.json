@@ -12,7 +12,7 @@
     "closest": "^0.0.1",
     "clsx": "^1.1.1",
     "dagre": "^0.8.5",
-    "i18next": "^19.4.4",
+    "i18next": "^20.3.2",
     "i18next-browser-languagedetector": "^4.1.1",
     "i18next-http-backend": "^1.1.1",
     "lodash": "^4.17.15",
